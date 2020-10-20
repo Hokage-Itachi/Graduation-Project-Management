@@ -1,2 +1,2 @@
 # Graduation-Project-Managerment
-Web application project for Graduation project Managerment
+Web application project for Graduation project Management
