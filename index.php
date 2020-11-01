@@ -20,5 +20,8 @@ $router->add_route('/teacher', function () {
     $user_controller = new UserController();
     $user_controller->render();
 });
+$router->add_route('/login', function(){
+    include("views/login_ui.php");
+});
 /* Execute the router */
 $router->execute();

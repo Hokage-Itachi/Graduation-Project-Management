@@ -5,7 +5,7 @@ class Router
 
     /* Routes array where we store the various routes defined. */
     private $routes;
-    const APP_PREFIX = "Graduation-Project-Management/";
+    const APP_PREFIX = "";
 
     /* The methods adds each route defined to the $routes array */
     function add_route($route, callable $closure)
