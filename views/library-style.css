@@ -1,0 +1,512 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.left {
+    min-height: 100vh;
+    padding-right: 30px;
+    width: 20%;
+    display: inline-block;
+}
+.right{
+    width: 80%;
+    float: right;
+    height: 100%;
+    overflow: auto;
+}
+.container-right {
+    width: 100%;
+    height: 100%;
+}
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background-color: #f1f1f1;
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+
+}
+.search {
+    margin: 10px;
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+.search-form {
+    display: flex;
+}
+.search input[type="text"] {
+    width: 100%;
+    border: 3px solid #8bc34a;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+.search input[type="text"]:focus {
+    color: #8bc34a;
+}
+.search button
+{
+    width: 40px;
+    height: 36px;
+    border: 1px solid #8bc34a;
+    background: #8bc34a;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.checkbox-container {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+
+}
+.checkbox-container label {
+    cursor: pointer;
+    display: flex;
+}
+.checkbox-container input[type='checkbox'] {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+}
+.checkbox-container label::before {
+    content: '';
+    width: 1em;
+    height: 1em;
+    border-radius: .15em;
+    margin-right: .5em;
+    border: .05em solid black;
+}
+.checkbox-container label:hover::before,
+.checkbox-container input[type='checkbox']:hover + label::before {
+    background-color: #35E07D;
+}
+
+.checkbox-container input[type='checkbox']:focus + label::before {
+    box-shadow: 0 0 20px black;
+}
+
+.checkbox-container input[type='checkbox']:disabled + label,
+.checkbox-container input[type='checkbox']:disabled {
+    color: #aaa;
+    cursor: default;
+}
+
+.checkbox-container input[type='checkbox']:checked + label::before {
+    content: '\002714';
+    background-color: #27AE60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.checkbox-container input[type='checkbox']:disabled + label::before {
+    background-color: #ccc;
+    border-color: #999;
+}
+.checkbox-container:not(#foo) label {
+
+    word-break: break-word;
+    white-space: nowrap;
+
+}
+
+hr {
+    margin-top: 250px;
+    border: 3px solid #8bc34a;
+    border-radius: 5px;
+}
+.logout button{
+    background-color: #8bc34a;
+    width: 40%;
+    padding: 10px;
+}
+.header {
+    padding: 40px;
+    border-bottom: 6px solid #8bc34a;
+}
+
+.user{
+    float: right;
+    margin-top:-30px;
+    margin-right: -30px;
+}
+.user span {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.user img {
+    margin-bottom: -10px;
+}
+
+.open-button {
+    /*transition: margin-left .5s; !* If you want a transition effect *!*/
+    padding: 20px;
+}
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.content {
+    width: 100%;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display:block;
+    }
+
+}
+
+
+    @media only screen and (max-width : 768px) {
+
+        .bar {
+            display: block;
+        }
+
+
+        [class*="sidebar"] {
+            width: 50%;
+            display: inline-block;
+        }
+        [class*="container-right"] {
+            display: grid;
+            width: 65%;
+            float: right;
+            overflow: auto;
+        }
+
+    }
+.footer-distributed {
+    background-color: #dddddd;
+    color: black;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.12);
+    width: 100%;
+    text-align: center;
+    font: bold 16px sans-serif;
+    padding: 35px;
+    bottom: 0;
+    margin-top: 20px;
+
+}
+@media (max-width: 768px) {
+
+    .footer-distributed {
+        font: bold 14px sans-serif;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+}
+.footer p{
+    padding-left: 500px;
+}
+/* Style the counter cards */
+.card {
+    background: #fff;
+    height: 10em;
+    padding:3em;
+    margin:2em 0;
+    -webkit-transition: margin 0.5s ease,box-shadow 0.5s ease; /* Safari */
+    transition: margin 0.5s ease,box-shadow 0.5s ease;
+    -moz-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    text-align: center;
+    background-color: white;
+}
+#icon{
+    color: mediumaquamarine;
+    font-size:3.5em;
+    float: left;
+    margin-top: -30px;
+    margin-left: -20px;
+}
+
+.card:hover{
+    margin-top:0.5em;
+    -moz-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+}
+.card div {
+    width: 100%;
+    display: block;
+    float: right;
+    text-align: right;
+}
+.card div b {
+    font-size:2.2em;
+    width: 100%;
+    padding-top:0px;
+    margin-top:-50px;
+    margin-bottom:-0.2em;
+    display: block;
+    color: mediumaquamarine;
+}
+.card div span {
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size:1em;
+    width: 100%;
+    color: black;
+    display: block;
+}
+.card i {
+    float: left;
+    color: black;
+    font-size:1em;
+    margin-top: 50px;
+}
+.card-one {
+    background: #fff;
+    height: 10em;
+    padding:3em;
+    margin:2em 0;
+    -webkit-transition: margin 0.5s ease,box-shadow 0.5s ease; /* Safari */
+    transition: margin 0.5s ease,box-shadow 0.5s ease;
+    -moz-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    text-align: center;
+    background-color: #009688;
+}
+#icon-one{
+    color: white;
+    font-size:3.5em;
+    float: left;
+    margin-top: -30px;
+    margin-left: -20px;
+}
+
+.card-one:hover{
+    margin-top:0.5em;
+    -moz-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+}
+.card-one div {
+    width: 100%;
+    display: block;
+    float: right;
+    text-align: right;
+}
+.card-one div b {
+    font-size:2.2em;
+    width: 100%;
+    padding-top:0px;
+    margin-top:-50px;
+    margin-bottom:-0.2em;
+    display: block;
+    color: white;
+}
+.card-one div span {
+    margin-top: -20px;
+    margin-left: 30px;
+    font-size:1em;
+    width: 100%;
+    color: black;
+    display: block;
+    padding: 20px;
+}
+.card-one i {
+    float: left;
+    color: black;
+    font-size:1em;
+    margin-top: 15px;
+}
+.card-two {
+    background: #fff;
+    height: 10em;
+    padding:3em;
+    margin:2em 0;
+    -webkit-transition: margin 0.5s ease,box-shadow 0.5s ease; /* Safari */
+    transition: margin 0.5s ease,box-shadow 0.5s ease;
+    -moz-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    text-align: center;
+    background-color: #9c27b0;
+}
+#icon-two{
+    color: white;
+    font-size:3.5em;
+    float: left;
+    margin-top: -30px;
+    margin-left: -20px;
+}
+
+.card-two:hover{
+    margin-top:0.5em;
+    -moz-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+}
+.card-two div {
+    width: 100%;
+    display: block;
+    float: right;
+    text-align: right;
+}
+.card-two div b {
+    font-size:2.2em;
+    width: 100%;
+    padding-top:0px;
+    margin-top:-50px;
+    margin-bottom:-0.2em;
+    display: block;
+    color: white;
+}
+.card-two div span {
+    margin-top: -10px;
+    margin-left: 30px;
+    font-size:1em;
+    width: 100%;
+    color: black;
+    display: block;
+    padding: 20px;
+}
+.card-two i {
+    float: left;
+    color: black;
+    font-size:1em;
+    margin-top: 20px;
+}
+
+.card-three {
+    background: #fff;
+    height: 10em;
+    padding:3em;
+    margin:2em 0;
+    -webkit-transition: margin 0.5s ease,box-shadow 0.5s ease; /* Safari */
+    transition: margin 0.5s ease,box-shadow 0.5s ease;
+    -moz-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    text-align: center;
+    background-color: rgb(192, 57, 43);
+}
+#icon-three{
+    color: white;
+    font-size:3.5em;
+    float: left;
+    margin-top: -30px;
+    margin-left: -20px;
+}
+
+.card-three:hover{
+    margin-top:0.5em;
+    -moz-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+}
+.card-three div {
+    width: 100%;
+    display: block;
+    float: right;
+    text-align: right;
+}
+.card-three div b {
+    font-size:2.2em;
+    width: 100%;
+    padding-top:0px;
+    margin-top:-50px;
+    margin-bottom:-0.2em;
+    display: block;
+    color: white;
+}
+.card-three div span {
+    margin-top: -10px;
+    margin-left: 30px;
+    font-size:1em;
+    width: 100%;
+    color: black;
+    display: block;
+    padding: 20px;
+}
+.card-three i {
+    float: left;
+    color: black;
+    font-size:1em;
+    margin-top: 20px;
+}
+.card-four {
+    background: #fff;
+    height: 10em;
+    padding:3em;
+    margin:2em 0;
+    -webkit-transition: margin 0.5s ease,box-shadow 0.5s ease; /* Safari */
+    transition: margin 0.5s ease,box-shadow 0.5s ease;
+    -moz-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.2em 0.4em rgba(67, 65, 65, 0.8);
+    text-align: center;
+    background-color: #ffeb3b;
+}
+#icon-four{
+    color: white;
+    font-size:3.5em;
+    float: left;
+    margin-top: -30px;
+    margin-left: -20px;
+}
+
+.card-four:hover{
+    margin-top:0.5em;
+    -moz-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    -webkit-box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+    box-shadow:0px 0.4em 0.5em rgba(67, 65, 65, 0.8);
+}
+.card-four div {
+    width: 100%;
+    display: block;
+    float: right;
+    text-align: right;
+}
+.card-four div b {
+    font-size:2.2em;
+    width: 100%;
+    padding-top:0px;
+    margin-top:-50px;
+    margin-bottom:-0.2em;
+    display: block;
+    color: white;
+}
+.card-four div span {
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size:1em;
+    width: 100%;
+    color: black;
+    display: block;
+    padding-left: 10px;
+}
+.card-four i {
+    float: left;
+    color: black;
+    font-size:1em;
+    margin-top: 50px;
+}
