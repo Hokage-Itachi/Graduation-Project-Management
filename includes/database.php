@@ -1,13 +1,14 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $passwd = "uchihaitachi";
-    $db_name = "gpms_schema";
-
-    $conn = new mysqli($servername, $username, $passwd, $db_name);
-
-    if($conn->connect_error){
-        die("Connection failed: " . $conn->connect_error);
+class DB
+{
+    private static $instance = null;
+    public static function getInstance()
+    {
+        self::$instance = new mysqli("localhost", 'root', 'uchihaitachi', 'gpms_schema');
+        if(self::$instance){
+            return self::$instance;
+        } else{
+            die("Connection failed: " . self::$instance->connect_error);
+        }
     }
-
-?>
+}
