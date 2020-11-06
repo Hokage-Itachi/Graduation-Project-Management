@@ -29,7 +29,11 @@ $router->add_route('/login', function () {
     require_once("controllers/user_controller.php");
     $user_controller = new UserController();
     if ($_SERVER["REQUEST_METHOD"] == 'GET') {
+        // if ($_SESSION['user']) {
+        //     header('location: /home');
+        // } else {
         $user_controller->render();
+        // }
     } else {
         $user_controller->login();
     }
