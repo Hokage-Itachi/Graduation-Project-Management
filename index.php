@@ -17,13 +17,20 @@ $router->add_route('/', function () {
 
 /* Add another route as a closure */
 $router->add_route('/home', function () {
+    // $s = password_hash('itachi', PASSWORD_DEFAULT);
+    // echo "$s";
     echo 'Greetings, my fellow men.';
 });
 
 $router->add_route('/teacher', function () {
-    require_once("controllers/user_controller.php");
-    $user_controller = new UserController();
-    $user_controller->render();
+    require_once("controllers/teacher_controller.php");
+    $teacher_controller = new TeacherController();
+    $teacher_controller->render();
+});
+$router->add_route('/student', function () {
+    require_once("controllers/student_controller.php");
+    $student_controller = new StudentController();
+    $student_controller->render();
 });
 $router->add_route('/login', function () {
     require_once("controllers/user_controller.php");

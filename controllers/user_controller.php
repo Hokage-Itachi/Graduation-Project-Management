@@ -22,11 +22,18 @@ class UserController extends BaseController
 
         $user = $this->userService->findByEmail($email);
         if ($user) {
-
             if (password_verify($password, $user->getPassHashed())) {
                 $_SESSION['user'] = $email;
-                header('location: /home');
-                die();
+                if ($user->getRoleId() == 2) {
+                    header("location: /teacher");
+                    die();
+                } elseif ($user->getRoleId() == 3) {
+                    header("location: /student");
+                    die();
+                } else {
+                    header('location: /home');
+                    die();
+                }
             }
             // echo "Fail password";
         }
