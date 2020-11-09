@@ -20,16 +20,16 @@ class Router
     {
         $path = substr($_SERVER['REQUEST_URI'], strlen(self::APP_PREFIX));
 
-//        echo "<h1>$path<h1>";
+        //        echo "<h1>$path<h1>";
 
         /* Check if the given route is defined,
-        * or execute the default '/' home route.
+        * or execute the error page.
         */
         if (array_key_exists($path, $this->routes)) {
             $this->routes[$path]();
         } else {
-            $this->routes['/']();
-//            header('Location: index.php?controller=pages&action=error');
+            // $this->routes['/']();
+            include_once('./views/error_page/404.php');
         }
     }
 }

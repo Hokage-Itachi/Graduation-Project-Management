@@ -35,10 +35,9 @@ class UserController extends BaseController
                     die();
                 }
             }
-            // echo "Fail password";
+            // error_log(Message::PASSWD_ERROR);
         }
+        // error_log(Message::EMAIL_ERROR);
         header(("location: /login"));
-        // echo "Fail email";
-
     }
 }

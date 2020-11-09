@@ -2,6 +2,7 @@
 session_start();
 require_once('includes/database.php');
 require_once("routes.php");
+require_once("includes/message.php");
 
 /* Create a new router */
 $router = new Router();
@@ -17,9 +18,11 @@ $router->add_route('/', function () {
 
 /* Add another route as a closure */
 $router->add_route('/home', function () {
-    // $s = password_hash('itachi', PASSWORD_DEFAULT);
-    // echo "$s";
-    echo 'Greetings, my fellow men.';
+    if ($_SESSION['user']) {
+        echo 'Greetings, my fellow men.';
+    } else {
+        header('location: /login');
+    }
 });
 
 $router->add_route('/teacher', function () {
@@ -33,11 +36,14 @@ $router->add_route('/student', function () {
     $student_controller->render();
 });
 $router->add_route('/login', function () {
+    if (isset($_SESSION['user'])) {
+        header('location: /home');
+        die();
+    }
     require_once("controllers/user_controller.php");
     $user_controller = new UserController();
     if ($_SERVER["REQUEST_METHOD"] == 'GET') {
-        // if ($_SESSION['user']) {
-        //     header('location: /home');
+
         // } else {
         $user_controller->render();
         // }
