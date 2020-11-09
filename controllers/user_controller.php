@@ -4,7 +4,9 @@ include_once('./models/service/UserService.php');
 class UserController extends BaseController
 {
     private $userService;
-    public function __construct()
+
+    // private static $userController;
+    public final function __construct()
     {
         $this->file = "login_ui.php";
         $this->userService = new UserService();
@@ -23,7 +25,7 @@ class UserController extends BaseController
         $user = $this->userService->findByEmail($email);
         if ($user) {
             if (password_verify($password, $user->getPassHashed())) {
-                $_SESSION['user'] = $email;
+                $_SESSION['user'] = $user->getRoleId();
                 if ($user->getRoleId() == 2) {
                     header("location: /teacher");
                     die();
@@ -35,9 +37,15 @@ class UserController extends BaseController
                     die();
                 }
             }
+            // $_SESSION['message'] = 'Invalid Password';
+            self::setMessage("Invalid Password");
+            header(("location: /login"));
+            die();
             // error_log(Message::PASSWD_ERROR);
         }
         // error_log(Message::EMAIL_ERROR);
+        self::setMessage("Invalid Email");
+        // $_SESSION['message'] = 'Invalid Email';
         header(("location: /login"));
     }
 }

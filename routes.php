@@ -26,7 +26,27 @@ class Router
         * or execute the error page.
         */
         if (array_key_exists($path, $this->routes)) {
-            $this->routes[$path]();
+            if (isset($_SESSION['user'])) {
+                if ($path == '/login') {
+                    if ($_SESSION['user'] == 1) {
+                        header(('location: /admin'));
+                        die();
+                    } elseif ($_SESSION['user'] == 2) {
+                        header(('location: /teacher'));
+                        die();
+                    } else {
+                        header(('location: /student'));
+                        die();
+                    }
+                }
+                $this->routes[$path]();
+            } else {
+                if ($path != '/login') {
+                    header('location: /login');
+                    die();
+                }
+                $this->routes[$path]();
+            }
         } else {
             // $this->routes['/']();
             include_once('./views/error_page/404.php');
