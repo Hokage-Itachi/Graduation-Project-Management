@@ -1,0 +1,318 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.left {
+    min-height: 100vh;
+    padding-right: 30px;
+    width: 20%;
+    display: inline-block;
+}
+.right{
+    width: 80%;
+    float: right;
+    height: 100%;
+    overflow: auto;
+}
+.container-right {
+    width: 100%;
+    height: 100%;
+}
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background-color: #f1f1f1;
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100%;
+
+}
+.search {
+    margin: 10px;
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+.search-form {
+    display: flex;
+}
+.search input[type="text"] {
+    width: 100%;
+    border: 3px solid #8bc34a;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+.search input[type="text"]:focus {
+    color: #8bc34a;
+}
+.search button
+{
+    width: 40px;
+    height: 36px;
+    border: 1px solid #8bc34a;
+    background: #8bc34a;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.checkbox-container {
+    margin-left: 10px;
+    display: block;
+    align-items: center;
+    padding-top: 5px;
+    margin-top: 3px;
+
+}
+.checkbox-container label {
+    cursor: pointer;
+    display: flex;
+}
+.checkbox-container input[type='checkbox'] {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+}
+.checkbox-container label::before {
+    content: '';
+    width: 1em;
+    height: 1em;
+    border-radius: .15em;
+    margin-left: .5em;
+    margin-bottom: .7em;
+    border: .05em solid black;
+}
+.checkbox-container label:hover::before,
+.checkbox-container input[type='checkbox']:hover + label::before {
+    background-color: #35E07D;
+}
+
+.checkbox-container input[type='checkbox']:focus + label::before {
+    box-shadow: 0 0 20px black;
+}
+.checkbox-container input[type='checkbox']:checked + label::before {
+    content: '\002714';
+    background-color: #27AE60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.checkbox-container:not(#foo) label {
+
+    word-break: break-word;
+    white-space: nowrap;
+
+}
+
+hr {
+    /*margin-top: 250px;*/
+    border: 3px solid #8bc34a;
+    border-radius: 5px;
+}
+.header {
+    padding: 26px;
+    border-bottom: 6px solid #8bc34a;
+}
+.header h1 {
+    font: 40px "Comic Sans MS";
+    text-align: center;
+    color:seagreen;
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+
+.user{
+    float: right;
+    margin-top:-40px;
+    margin-right: -20px;
+}
+.user a {
+    color: black;
+    text-decoration: none;
+}
+.user a:hover{
+    cursor: pointer;
+    color: #27AE60;
+}
+.user span {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.user img {
+    margin-bottom: -10px;
+}
+
+.open-button {
+    /*transition: margin-left .5s; !* If you want a transition effect *!*/
+    padding: 20px;
+}
+.column {
+    float: left;
+    width: 17em;
+    padding: 0 10px;
+    margin: 0 2em;
+}
+
+/* Remove extra left and right margins, due to padding */
+.content {
+    width: 100%;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display:block;
+    }
+
+}
+
+
+    @media only screen and (max-width : 768px) {
+
+        .bar {
+            display: block;
+        }
+
+
+        [class*="sidebar"] {
+            width: 50%;
+            display: inline-block;
+        }
+        [class*="container-right"] {
+            display: grid;
+            width: 65%;
+            float: right;
+            overflow: auto;
+        }
+
+    }
+.footer-distributed {
+    background-color: #dddddd;
+    color: black;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.12);
+    width: 100%;
+    text-align: center;
+    font: bold 16px sans-serif;
+    padding: 35px;
+    bottom: 0;
+    margin-top: 20px;
+
+}
+@media (max-width: 768px) {
+
+    .footer-distributed {
+        font: bold 14px sans-serif;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+}
+.footer p{
+    padding-left: 500px;
+}
+/* Style the counter cards */
+.card {
+    background: #ffd54f;
+    width: 17em;
+    height: 23em;
+    padding:0px;
+    margin:2em 2em;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.2s ease-in-out;
+}
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.project-info{
+    margin: 0px 0 0 0;
+    padding: 0.4em;
+}
+.card h1 {
+    font-size: 17px;
+    font-family:  "noto sans", sans-serif, Helvetical;
+    /*background-color: #27AE60;*/
+
+}
+.meta-data {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.info-y {
+    padding-top: 10px;
+    margin-left: 5px;
+}
+.info-y li {
+    margin-bottom: 10px;
+    padding: 0;
+    text-align: left;
+}
+.info-y label {
+    color: black;
+    font-size: 14px;
+    font-family: "noto sans", sans-serif, Helvetical;
+}
+.info-y strong {
+    color: green;
+    font-size: 14px;
+    font-family:"noto sans", sans-serif, Helvetical; ;
+}
+.user-card i {
+    margin-top: 10px;
+    padding-top: 5px;
+    font-size: 3em;
+    background-color:  #ffd54f;
+    height: 60px;
+    -moz-border-radius:75px;
+    -webkit-border-radius: 75px;
+    width: 60px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.22);
+
+}
+.selective {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 80%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    margin: 20px;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+}
+.selective:hover {
+    border-color: #888;
+}
+.selective:focus {
+    border-color: #aaa;
+    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+    box-shadow: 0 0 1px 3px #8bc34a;
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: black;
+    outline: none;
+}
+.checkbox-teacher {
+    display: none;
+}
+
