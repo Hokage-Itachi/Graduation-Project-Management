@@ -9,12 +9,15 @@ $router = new Router();
 /* Add a Homepage route as a closure */
 $router->add_route('/', function () {
 
-    header('location: /home');
+    header('location: /library');
 });
 
 /* Add another route as a closure */
-$router->add_route('/home', function () {
-    echo "Hello Itachi";
+$router->add_route('/library', function () {
+    require_once("controllers/library_controller.php");
+    $library_controller = new LibraryController();
+    $library_controller->render();
+    // $library_controller->test();
 });
 
 $router->add_route('/teacher', function () {

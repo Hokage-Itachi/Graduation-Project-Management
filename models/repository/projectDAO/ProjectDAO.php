@@ -3,7 +3,7 @@ require_once('./models/repository/projectDAO/ProjectQuery.php');
 class ProjectDAO
 {
 
-    function findByEmail($project_id)
+    function findByID($project_id)
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectQuery::SELECT_BY_ID, $project_id);

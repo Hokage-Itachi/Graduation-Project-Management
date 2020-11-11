@@ -41,7 +41,7 @@ class Router
                 }
                 $this->routes[$path]();
             } else {
-                if ($path != '/login') {
+                if ($path != '/login' && $path != '/library' && $path != '/') {
                     header('location: /login');
                     die();
                 }
