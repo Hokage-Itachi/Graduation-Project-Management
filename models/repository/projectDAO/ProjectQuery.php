@@ -12,7 +12,7 @@ class ProjectQuery
 
     const COUNT_ROW_NUM = "SELECT COUNT(*) AS row_num FROM project";
     const SELECT_PROJECT = "SELECT * FROM project WHERE '%s'";
-	const INSERT_PROJECT = "INSERT INTO project(id, name, completed, branch_id, result, point) VALUES ('%s','%s','%s','%s','%s','%s')";
+	const INSERT_PROJECT = "INSERT INTO project(name, completed, branch_id, result, point) VALUES ('%s','%s','%s','%s','%s')";
 	const UPDATE_PROJECT = "UPDATE project SET id ='%s',name= '%s' ,completed= '%s',branch_id= '%s',result= '%s',point= '%s'  WHERE '%s'";
 	const DELETE_PROJECT = "DELETE FROM project WHERE '%s'";
 }

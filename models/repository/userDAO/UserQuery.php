@@ -3,7 +3,7 @@ class UserQuery
 {
 	//user
 	const SELECT_USER= "SELECT * FROM user WHERE '%s'";
-	const INSER_USER = "INSERT INTO user(id, email, pass_hashed, name, phone_number, role_id) VALUES ('%s','%s','%s','%s','%s','%s')";
+	const INSER_USER = "INSERT INTO user(email, pass_hashed, name, phone_number, role_id) VALUES (%s','%s','%s','%s','%s')";
 	const UPDATE_USER= "UPDATE user SET id='%s',email='%s',pass_hashed='%s',name='%s',phone_number='%s',role_id='%s' WHERE '%s'";
 	const DELETE_USER= "DELETE FROM user WHERE '%s'";
     const SELECT_BY_EMAIL = "SELECT * FROM user WHERE email ='%s'";
