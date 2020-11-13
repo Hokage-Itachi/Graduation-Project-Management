@@ -15,7 +15,7 @@ class ProjectService
     {
         $result = $this->projectDAO->findByID($project_id);
         if ($result) {
-            $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day']);
+            $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day'], $result['student_id'], $result['teacher_id']);
             return $project;
         } else {
             return null;
@@ -26,8 +26,8 @@ class ProjectService
     {
         $result = $this->projectDAO->findByName($name);
         if ($result) {
-            // $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day'], $result['student_id'], $result['teacher_id']);
-            $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day']);
+            $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day'], $result['student_id'], $result['teacher_id']);
+            // $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day']);
             return $project;
         } else {
             return null;
@@ -40,8 +40,8 @@ class ProjectService
         $list_project = array();
         if ($result) {
             for ($i = 0; $i < count($result); $i++) {
-                // $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day'], $result[$i]['student_id'], $result[$i]['teacher_id']);
-                $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day']);
+                $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day'], $result[$i]['student_id'], $result[$i]['teacher_id']);
+                // $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day']);
 
                 $list_project[$i] = $project;
             }
@@ -58,7 +58,8 @@ class ProjectService
         if ($result) {
             for ($i = 0; $i < count($result); $i++) {
                 // $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day'], $result[$i]['student_id'], $result[$i]['teacher_id']);
-                $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day']);
+                $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day'], $result[$i]['student_id'], $result[$i]['teacher_id']);
+
 
                 $list_project[$i] = $project;
             }
@@ -74,7 +75,7 @@ class ProjectService
         $list_project = array();
         if ($result) {
             for ($i = 0; $i < count($result); $i++) {
-                $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day']);
+                $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day'], $result[$i]['student_id'], $result[$i]['teacher_id']);
                 $list_project[$i] = $project;
             }
             return $list_project;
@@ -82,6 +83,8 @@ class ProjectService
             return null;
         }
     }
+
+    
 
     public function getProjectNumber()
     {

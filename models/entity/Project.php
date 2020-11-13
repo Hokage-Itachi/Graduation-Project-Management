@@ -25,7 +25,7 @@ class Project
      * @param $student_id
      * @param $teacher_id
      */
-    public function __construct($project_id, $name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day)
+    public function __construct($project_id, $name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day, $student_id, $teacher_id)
     {
         $this->project_id = $project_id;
         $this->name = $name;
@@ -35,8 +35,8 @@ class Project
         $this->curriculum = $curriculum;
         $this->faculty = $faculty;
         $this->presentation_day = $presentation_day;
-        // $this->student_id = $student_id;
-        // $this->teacher_id = $teacher_id;
+        $this->student_id = $student_id;
+        $this->teacher_id = $teacher_id;
     }
 
     /**
@@ -168,36 +168,36 @@ class Project
         $this->branch_id = $branch_id;
     }
 
-    // /**
-    //  * @return mixed
-    //  */
-    // public function getStudentId()
-    // {
-    //     return $this->student_id;
-    // }
+    /**
+     * @return mixed
+     */
+    public function getStudentId()
+    {
+        return $this->student_id;
+    }
 
-    // /**
-    //  * @param mixed $student_id
-    //  */
-    // public function setStudentId($student_id)
-    // {
-    //     $this->student_id = $student_id;
-    // }
+    /**
+     * @param mixed $student_id
+     */
+    public function setStudentId($student_id)
+    {
+        $this->student_id = $student_id;
+    }
 
-    // /**
-    //  * @return mixed
-    //  */
-    // public function getTeacherId()
-    // {
-    //     return $this->teacher_id;
-    // }
+    /**
+     * @return mixed
+     */
+    public function getTeacherId()
+    {
+        return $this->teacher_id;
+    }
 
-    // /**
-    //  * @param mixed $teacher_id
-    //  */
-    // public function setTeacherId($teacher_id)
-    // {
-    //     $this->teacher_id = $teacher_id;
-    // }
+    /**
+     * @param mixed $teacher_id
+     */
+    public function setTeacherId($teacher_id)
+    {
+        $this->teacher_id = $teacher_id;
+    }
 
 }

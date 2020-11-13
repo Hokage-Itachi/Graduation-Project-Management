@@ -6,14 +6,15 @@ class StudentService
 {
     private $studentDAO;
 
-    public function __constructor()
+    public function __construct()
     {
         $this->studentDAO = new StudentDAO();
     }
 
-    public function findByID($student_id)
+    public function findByID($id)
     {
-        $result = $this->studentDAO->findByID($student_id);
+        $result = $this->studentDAO->findByID($id);
+        // error_log("Call here");
         if ($result) {
             $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['course'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id']);
             return $student;
@@ -35,7 +36,7 @@ class StudentService
 
     public function getAllStudent()
     {
-        $result = $this->studentDAO->getAllStudent();
+        $result = $this->studentDAO->getAll();
         if ($result) {
             $list_student = array();
             for ($i = 0; $i < count($list_student); $i++) {

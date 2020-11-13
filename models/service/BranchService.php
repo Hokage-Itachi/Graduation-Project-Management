@@ -6,7 +6,7 @@ class BranchService
 {
     private $branchDAO;
 
-    public function __constructor()
+    public function __construct()
     {
         $this->branchDAO = new BranchDAO();
     }

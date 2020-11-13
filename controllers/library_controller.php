@@ -38,12 +38,25 @@ class LibraryController extends BaseController
 
     public function getListProject()
     {
-        $res = $this->projectService->findByID(7);
-        if ($res) {
-            $this->data['project_name'] = $res->getName();
-        } else {
-            $this->data['project_name'] = "Not found";
+
+        $projects = $this->projectService->getAll();
+        for ($i = 0; $i < count($projects); $i++){
+            $student = $this->studentService->findByID($projects[$i]->getStudentId());
+            $teacher = $this->teacherService->findByID(($projects[$i]->getTeacherId()));
+            $branch = $this->branchService->findByID($projects[$i]->getBranchId());
+            $data = array(
+                "project_name"=>$projects[$i]->getName(),
+                "student"=>$student->getName(),
+                "year"=>$student->getCourse(),
+                "teacher"=>$teacher->getName(),
+                "branch"=>$branch->getName(),
+                "content"=> "Unknown",
+                "point"=>$projects[$i]->getPoint()
+            );
+            $this->data[$i] = $data;
         }
+
+
         // $this->render();
 
     }

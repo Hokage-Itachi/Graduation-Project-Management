@@ -50,54 +50,66 @@
                     </div>
                 </div>
                 <div class="content">
-                    <div class="column">
-                        <?php
-
-                        echo "<div class='card'>";
-                        echo "<div class='user-card'>";
-                        echo "<i class='fa fa-user'></i>";
-                        echo "</div>";
-                        echo "<div class='project-info'>";
-                        echo "<h1 class='name'>".$data['project_name']."</h1>";
-                        echo "<ul class='meta-data'>";
-                        echo "<div class='info-y'>";
-                        echo "<li>";
-                        echo "<label>Sinh viên:</label>";
-                        echo "<strong>Nguyễn Thế Hợp</strong>";
-                        echo "</li>";
-                        echo "<li>";
-                        echo "<label>Khóa:</label>";
-                        echo "<strong>QH2018</strong>";
-                        echo "</li>";
-                        echo "<li>";
-                        echo "<label>Người hướng dẫn:</label>";
-                        echo "<strong>TS. Nguyễn Văn B</strong>";
-                        echo "</li>";
-                        echo "<li>";
-                        echo "<label>Chuyên ngành:</label>";
-                        echo "<strong>Computer Science</strong>";
-                        echo "</li>";
-                        echo "<li>";
-                        echo "<label>Nội dung:</label>";
-                        echo "<strong>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML
-                                                sang CSDL quan hệ và ngược lại</strong>";
-                        echo "</li>";
-                        echo "<li>";
-                        echo "<strong>10/10</strong>";
-                        echo "</li>";
-                        echo "</div>";
-                        echo "</ul>";
-                        echo "</div>";
-                        echo "</div>";
-                        ?>
-                        <div class="card">
-                            <div class="user-card">
-                                <i class="fa fa-user"></i>
+                    <?php
+                    $index = 0;
+                    while ($index < count($data)) {
+                        echo"<div class='column'>";
+                        for ($k = 0; $k < 3; $k++) {
+                            echo"<div class='card'>
+                                <div class='user-card'>
+                                    <div class='fa fa-user'></div>
+                                </div>
+                                <div class='project-info'>
+                                    <h1 class='name'>" . $data[$index]['project_name'] . "</h1>
+                                    <ul class='meta-data'>
+                                        <div class='info-y'>
+                                            <li>
+                                                <label>Sinh viên:</label>
+                                                <strong>" . $data[$index]['student'] . "</strong>
+                                            </li>
+                                            <li>
+                                                <label>Khóa:</label>
+                                                <strong>" . $data[$index]['year'] . "</strong>
+                                            </li>
+                                            <li>
+                                                <label>Người hướng dẫn:</label>
+                                                <strong>" . $data[$index]['teacher'] . "</strong>
+                                            </li>
+                                            <li>
+                                                <label>Chuyên ngành:</label>
+                                                <strong>" . $data[$index]['branch'] . "</strong>
+                                            </li>
+                                            <li>
+                                                <label>Nội dung:</label>
+                                                <strong>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML
+                                                sang CSDL quan hệ và ngược lại</strong>
+                                            </li>
+                                            <li>
+                                                <label>Điểm số:</label>
+                                                <strong>" . $data[$index]['point'] . "/10</strong>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>";
+                            $index++;
+                            if ($index >= count($data)) {
+                                break;
+                            }
+                        }
+                        echo"</div>";
+                    }
+                    ?>
+                    <?php
+                    echo"<div class='column'>
+                        <div class='card'>
+                            <div class='user-card'>
+                                <i class='fa fa-user'></i>
                             </div>
-                            <div class="project-info">
-                                <h1 class="name">Tích Hợp Cơ Sở Dữ Liệu Và XML </h1>
-                                <ul class="meta-data">
-                                    <div class="info-y">
+                            <div class='project-info'>
+                                <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML </h1>
+                                <ul class='meta-data'>
+                                    <div class='info-y'>
                                         <li>
                                             <label>Sinh viên:</label>
                                             <strong>Nguyễn Thế Hợp</strong>
@@ -127,91 +139,15 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <div class="user-card">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="project-info">
-                                <h1 class="name">Tích Hợp Cơ Sở Dữ Liệu Và XML </h1>
-                                <ul class="meta-data">
-                                    <div class="info-y">
-                                        <li>
-                                            <label>Sinh viên:</label>
-                                            <strong>Nguyễn Thế Hợp</strong>
-                                        </li>
-                                        <li>
-                                            <label>Khóa:</label>
-                                            <strong>QH2018</strong>
-                                        </li>
-                                        <li>
-                                            <label>Người hướng dẫn:</label>
-                                            <strong>TS. Nguyễn Văn B</strong>
-                                        </li>
-                                        <li>
-                                            <label>Chuyên ngành:</label>
-                                            <strong>Computer Science</strong>
-                                        </li>
-                                        <li>
-                                            <label>Nội dung:</label>
-                                            <strong>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML
-                                                sang CSDL quan hệ và ngược lại</strong>
-                                        </li>
-                                        <li>
-                                            <label>Điểm số:</label>
-                                            <strong>10/10</strong>
-                                        </li>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <div class="user-card">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <div class="project-info">
-                                <h1 class="name">Tích Hợp Cơ Sở Dữ Liệu Và XML </h1>
-                                <ul class="meta-data">
-                                    <div class="info-y">
-                                        <li>
-                                            <label>Sinh viên:</label>
-                                            <strong>Nguyễn Thế Hợp</strong>
-                                        </li>
-                                        <li>
-                                            <label>Khóa:</label>
-                                            <strong>QH2018</strong>
-                                        </li>
-                                        <li>
-                                            <label>Người hướng dẫn:</label>
-                                            <strong>TS. Nguyễn Văn B</strong>
-                                        </li>
-                                        <li>
-                                            <label>Chuyên ngành:</label>
-                                            <strong>Computer Science</strong>
-                                        </li>
-                                        <li>
-                                            <label>Nội dung:</label>
-                                            <strong>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML
-                                                sang CSDL quan hệ và ngược lại</strong>
-                                        </li>
-                                        <li>
-                                            <label>Điểm số:</label>
-                                            <strong>10/10</strong>
-                                        </li>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-distributed">
-                    <p>&copy; Copyright 2020</p>
+                    </div>";
+                    ?>
                 </div>
             </div>
+            <div class="footer-distributed">
+                <p>&copy; Copyright 2020</p>
+            </div>
         </div>
+    </div>
 
     </div>
     <script language="JavaScript">

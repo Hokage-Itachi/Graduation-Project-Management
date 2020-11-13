@@ -6,8 +6,8 @@ class ProjectAssignmentDAO
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectAssignmentQuery::SELECT_BY_PROJECT_ID, $project_id);
-        $db->close();
         $result = $db->query($sql);
+        $db->close();
         if ($result) {
             while ($row = $result->fetch_assoc()) {
                 return $row;
@@ -31,5 +31,23 @@ class ProjectAssignmentDAO
             return "Error:" . $error;
         }
         $db->close();
+    }
+
+    public function getAll()
+    {
+        $db = DB::getInstance();
+        $sql = sprintf(ProjectAssignmentQuery::SELECT_PROJECT_ASSIGNMENT);
+        $result = $db->query($sql);
+        $db->close();
+        $rows = array();
+        $i=0;
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $rows[$i] = $row;
+            }
+            return $rows;
+        } else {
+            return null;
+        }
     }
 }

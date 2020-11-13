@@ -2,10 +2,10 @@
 require_once("./models/repository/studentDAO/StudentQuery.php");
 class StudentDAO
 {
-    public function findByID($student_id)
+    public function findByID($id)
     {
         $db = DB::getInstance();
-        $sql = sprintf(StudentQuery::SELECT_BY_ID, $student_id);
+        $sql = sprintf(StudentQuery::SELECT_BY_ID, $id);
 
         $result = $db->query($sql);
         $db->close();
