@@ -1,16 +1,29 @@
 body {
-  background-image: url("./images/cool-background.png");
+  background-image: url("./images/background.png");
 }
-.main_student,
-.main_teacher {
-  padding-top: 2rem;
+a {
+  color: #000;
+  font-size: 1.5rem;
 }
-
-.main_student-left {
-  border: 1px solid black;
+.fixed-top {
+  height: 4rem;
+  background-color: #ecf0f1;
 }
-.main_student-right {
-  border: 1px solid black;
+.info,
+.progress,
+.input-group,
+.form-group {
+  margin-top: 2rem;
+}
+.container {
+  margin-top: 2rem;
+}
+.left-content {
+  border: 1px solid blue;
+  margin-right: 6rem;
+}
+.chat-box {
+  margin-top: 1rem;
 }
 .chat_box-content {
   text-align: right;
@@ -36,9 +49,7 @@ input.input-message {
   height: 2rem;
   transition: 0.3s all;
 }
-input.input-message:focus {
-  transform: scale(1.1);
-}
+
 select:focus {
   outline: none;
 }
@@ -56,16 +67,4 @@ select:focus {
 }
 .main_teacher-center {
   display: flex;
-}
-
-.main_teacher-left,
-.main_teacher-right,
-.main_teacher-center {
-  border: 1px solid blue;
-}
-.project_info,
-.phase,
-.chat-box,
-.file_import {
-  margin-top: 2rem;
 }
