@@ -11,19 +11,20 @@
 <div class="container">
     <div class="left">
         <div class="sidebar">
-            <div class="search">
-                <form class="search-form">
-                    <input type="text" placeholder="search...">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <div class="select">
-                <form class="select-form">
-                    <select class="selective" onchange="change_select(value)">
-                        <option value="major">Ngành</option>
-                        <option value="teacher">Giáo viên hướng dẫn</option>
-                        <option value="year">Khóa</option>
-                    </select>
+            <div class="search select">
+                <form class="search-form select-form">
+                    <div class='search-div'>
+                        <input type="text" placeholder="search...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                    <div class="select-div">
+                        <select class="selective" onchange="change_select(value)">
+                            <option value="major">Ngành</option>
+                            <option value="teacher">Giáo viên hướng dẫn</option>
+                            <option value="year">Khóa</option>
+                        </select>
+                    </div>
+
                 </form>
             </div>
             <hr>
@@ -95,7 +96,7 @@
 
 </div>
 <script language="JavaScript">
-    var majors = ["Math", "Literature", "English", "Chemistry", "Computer Science"];
+    var majors = ["Math", "Literature", "English", "Chemistry", "Computer and Science Information"];
     var teachers = ["Nguyễn Văn B", "Trần Văn C", "Lê Thị D", "Vũ Văn H", "Hoàng Thị A"];
     var years = ["QH2013", "QH2014", "QH2015", "QH2016", "QH2017"];
     // var labels = document.getElementsByTagName('label');
