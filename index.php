@@ -52,5 +52,17 @@ $router->add_route('/test', function () {
     include_once("./test.php");
 });
 
+$router->add_route("/admin/students", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+    $admin_controller->renderStudentPage();
+});
+
+$router->add_route("/admin/teachers", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+    $admin_controller->renderTeacherPage();
+});
+
 /* Execute the router */
 $router->execute();
