@@ -16,25 +16,34 @@ $router->add_route('/', function () {
 $router->add_route('/library', function () {
     require_once("controllers/library_controller.php");
     $library_controller = new LibraryController();
-    $library_controller->render();
+    $library_controller->render($library_controller->getData());
     // $library_controller->test();
+});
+$router->add_route('/library/search', function () {
+    require_once("controllers/library_controller.php");
+    $library_controller = new LibraryController();
+    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+        $library_controller->render($library_controller->search());
+    } else {
+        header("location: /library");
+    }
 });
 
 $router->add_route('/teacher', function () {
     require_once("controllers/teacher_controller.php");
     $teacher_controller = new TeacherController();
-    $teacher_controller->render();
+    $teacher_controller->render("");
 });
 $router->add_route('/student', function () {
     require_once("controllers/student_controller.php");
     $student_controller = new StudentController();
-    $student_controller->render();
+    $student_controller->render("");
 });
 $router->add_route('/login', function () {
     require_once("controllers/user_controller.php");
     $user_controller = new UserController();
     if ($_SERVER["REQUEST_METHOD"] == 'GET') {
-        $user_controller->render();
+        $user_controller->render("");
     } else {
         $user_controller->login();
     }

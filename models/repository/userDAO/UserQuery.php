@@ -1,13 +1,13 @@
 <?php
-class UserQuery 
+class UserQuery
 {
 	//user
-	const SELECT_USER= "SELECT * FROM user WHERE '%s'";
-	const INSER_USER = "INSERT INTO user(email, pass_hashed, name, phone_number, role_id) VALUES (%s','%s','%s','%s','%s')";
-	const UPDATE_USER= "UPDATE user SET id='%s',email='%s',pass_hashed='%s',name='%s',phone_number='%s',role_id='%s' WHERE '%s'";
-	const DELETE_USER= "DELETE FROM user WHERE '%s'";
-    const SELECT_BY_EMAIL = "SELECT * FROM user WHERE email ='%s'";
-    const UPDATE_PASSWORD = "UPDATE user SET pass_hashed = '%s' WHERE email = '%s'";
+	const SELECT_BY_ID = "SELECT * FROM user WHERE id = '%s'";
+	const INSERT_USER = "INSERT INTO user(email, pass_hashed, name, phone_number, role_id) VALUES (%s','%s','%s','%s','%s')";
+	const UPDATE_USER = "UPDATE user SET id='%s',email='%s',pass_hashed='%s',name='%s',phone_number='%s',role_id='%s' WHERE '%s'";
+	const DELETE_USER = "DELETE FROM user WHERE '%s'";
+	const SELECT_BY_EMAIL = "SELECT * FROM user WHERE email ='%s'";
+	const UPDATE_PASSWORD = "UPDATE user SET pass_hashed = '%s' WHERE email = '%s'";
 	// student
 	// const SELECT_STUDENT = "SELECT * FROM student WHERE '%s'";
 	// const INSERT_STUDENT = "INSERT INTO student(id, user_id, class, student_id,Level, Program, faculty) VALUES ('%s','%s','%s','%s','%s','%s','%s')";
@@ -43,23 +43,23 @@ class UserQuery
 	// const INSERT_PROJECT = "INSERT INTO project(id, name, completed, branch_id, result, point) VALUES ('%s','%s','%s','%s','%s','%s')";
 	// const UPDATE_PROJECT = "UPDATE project SET id ='%s',name= '%s' ,completed= '%s',branch_id= '%s',result= '%s',point= '%s'  WHERE '%s'";
 	// const DELETE_PROJECT = "DELETE FROM project WHERE '%s'";
-	
+
 	// //project_assignment
 	// const SELECT_PROJECT_ASSIGNMENT = "SELECT * FROM project_assignment WHERE '%s'";
 	// const INSERT_PROJECT_ASSIGNMENT = "INSERT INTO project_assignment(id,project_id,student_id,teacher_id,day of protection) VALUES ('%s','%s','%s','%s','%s')";										
 	// const UPDATE_PROJECT_ASSIGNMENT = "UPDATE project_assignment SET id ='%s',project_id= '%s' ,student_id= '%s',teacher_id= '%s',day of protection= '%s'  WHERE '%s'";
 	// const DELETE_PROJECT_ASSIGNMENT = "DELETE FROM project_assignment WHERE '%s'";
-	
+
 	// //post
 	// const SELECT_POST = "SELECT * FROM post WHERE '%s'";
 	// const INSERT_POST = "INSERT INTO post(id, content, created_at, user_id, project_id, title) VALUES ('%s','%s','%s','%s','%s','%s')";
 	// const UPDATE_POST = "UPDATE post SET id='%s',content='%s',created_at='%s',user_id='%s',project_id='%s',title = '%s' WHERE '%s'";
 	// const DELETE_POST = "DELETE FROM post WHERE '%s'";
-	
+
 	// //phase
 	// const SELECT_PHASE = "SELECT * FROM phase WHERE '%s'";
 	// const INSERT_PHASE = "INSERT INTO phase(id, project_id, name, percent) VALUES ('%s','%s','%s','%s')";
 	// const UPDATE_PHASE = "UPDATE phase SET id='%s',project_id='%s',name='%s',percent='%s' WHERE '%s'";
 	// const DELETE_PHASE = "DELETE FROM phase WHERE '%s'";
-	
+
 }

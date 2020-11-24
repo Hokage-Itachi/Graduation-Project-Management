@@ -22,14 +22,19 @@ class ProjectDAO
     public function findByName($name)
     {
         $db = DB::getInstance();
-        $sql = sprintf(ProjectQuery::SELECT_BY_NAME, $name);
+        $sql = sprintf(ProjectQuery::SELECT_BY_NAME, "%", $name, "%");
+        // error_log($sql);
         $result = $db->query($sql);
         $db->close();
+        $rows = array();
+        $i = 0;
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                return $row;
+                $rows[$i] = $row;
+                $i++;
             }
+            return $rows;
         } else {
             return null;
         }

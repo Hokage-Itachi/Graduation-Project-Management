@@ -16,8 +16,19 @@ class UserService
             $user = new User($result['id'], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"]);
 
             return $user;
+        } else {
+            return null;
         }
-        else {
+    }
+
+    public function findByID($user_id)
+    {
+        $result = $this->userDAO->findByID($user_id);
+        if ($result) {
+            $user = new User($result['id'], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"]);
+
+            return $user;
+        } else {
             return null;
         }
     }
