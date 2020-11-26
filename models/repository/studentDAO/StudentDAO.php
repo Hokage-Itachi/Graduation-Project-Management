@@ -47,8 +47,9 @@ class StudentDAO
             // output data of each row
             while ($row = $result->fetch_assoc()) {
                 $rows[$i] = $row;
+                $i++;
             }
-            return $row;
+            return $rows;
         } else {
             return null;
         }

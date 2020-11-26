@@ -6,7 +6,7 @@ class BaseController
     // protected static $message = "Not set";
     public function render($data)
     {
-        $path = './views/' . $this->file;
+        $path = 'views/' . $this->file;
         // error_log(self::$message);
         // $message = self::$message;
         include_once($path);

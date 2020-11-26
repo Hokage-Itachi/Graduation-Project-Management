@@ -32,4 +32,20 @@ class UserService
             return null;
         }
     }
+    public function getAllUser()
+    {
+        $results = $this->userDAO->getAll();
+        $users = array();
+        $i = 0;
+        if ($results) {
+            foreach ($results as $result) {
+                $user = new User($result['id'], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"]);
+                $users[$i] = $user;
+                $i++;
+            }
+            return $users;
+        } else {
+            return null;
+        }
+    }
 }

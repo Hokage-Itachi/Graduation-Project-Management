@@ -1,7 +1,8 @@
 <?php
-session_start();
+session_start(['cookie_lifetime' => 1800]);
 require_once('includes/database.php');
 require_once("routes.php");
+header("Access-Control-Allow-Origin: *");
 $message = "";
 /* Create a new router */
 $router = new Router();
@@ -48,20 +49,30 @@ $router->add_route('/login', function () {
         $user_controller->login();
     }
 });
+$router->add_route('/logout', function () {
+    unset($_SESSION['user']);
+    session_destroy();
+    header('location: /login');
+});
 $router->add_route('/test', function () {
     include_once("./test.php");
 });
 
+$router->add_route("/admin", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+    $admin_controller->render($admin_controller->getUserData());
+});
 $router->add_route("/admin/students", function () {
     require_once("controllers/admin_controller.php");
     $admin_controller = new AdminController();
-    $admin_controller->renderStudentPage();
+    $admin_controller->renderStudentPage($admin_controller->getStudentData());
 });
 
 $router->add_route("/admin/teachers", function () {
     require_once("controllers/admin_controller.php");
     $admin_controller = new AdminController();
-    $admin_controller->renderTeacherPage();
+    $admin_controller->renderTeacherPage($admin_controller->getTeacherData());
 });
 
 /* Execute the router */

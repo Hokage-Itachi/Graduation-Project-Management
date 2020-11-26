@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="/asserts/css/library-css/library-style.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/png" href="/asserts/Image/favicon.ico">
+    <link href="assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 </head>
 
@@ -45,13 +45,13 @@
                 <div class="header">
                     <h1>HUS PROJECT LIBRARY</h1>
                     <div class="user">
-                        <img src="/asserts/Image/purple-linear-outline-person-icon-user-icon-in-vector-29003247.jpg" style="width: 51.3px; height: 51.7px;display: inline">
+                        <img src="/assets/Image/purple-linear-outline-person-icon-user-icon-in-vector-29003247.jpg" style="width: 51.3px; height: 51.7px;display: inline">
                         <?php
                         if (!isset($_SESSION['user'])) {
                             echo "<span><a href='/login'> Login</a></span>";
                         } else {
                             if ($_SESSION['user']['role'] == 1) {
-                                echo "<span><a href='#'>" . $data['user'] . "</a></span>";
+                                echo "<span><a href='/admin'>" . $data['user'] . "</a></span>";
                             } elseif ($_SESSION['user']['role'] == 2) {
                                 echo "<span><a href='/teacher'>" . $data['user'] . "</a></span>";
                             } else {

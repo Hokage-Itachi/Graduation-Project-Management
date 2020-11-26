@@ -2,6 +2,7 @@
 class UserQuery
 {
 	//user
+	const SELECT_ALL = "SELECT * FROM user where role_id != '1'";
 	const SELECT_BY_ID = "SELECT * FROM user WHERE id = '%s'";
 	const INSERT_USER = "INSERT INTO user(email, pass_hashed, name, phone_number, role_id) VALUES (%s','%s','%s','%s','%s')";
 	const UPDATE_USER = "UPDATE user SET id='%s',email='%s',pass_hashed='%s',name='%s',phone_number='%s',role_id='%s' WHERE '%s'";
