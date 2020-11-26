@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 
-    <title>Admin Student</title>
+    <title>Admin Teacher</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
@@ -26,7 +26,7 @@
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HUS-Admin</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field' onkeyup="search('student')">
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field' onkeyup="search('teacher')">
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="#">Sign out</a>
@@ -52,13 +52,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/admin/students">
+                            <a class="nav-link" href="/admin/students">
                                 <i class="fas fa-users"></i>
                                 <span>Students</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/teachers">
+                            <a class="nav-link active" href="/admin/teachers">
                                 <i class="fas fa-user-tie"></i>
                                 <span>Teachers</span>
                             </a>
@@ -76,7 +76,7 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Student</h1>
+                    <h1 class="h2">Teacher</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -94,21 +94,21 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Work Place</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            for ($i = 0; $i < count($data['students']); $i++) {
+                            for ($i = 0; $i < count($data['teachers']); $i++) {
                                 $j = $i + 1;
                                 echo "<tr>
                                         <td>" . $j . "</td>
-                                        <td>" . $data['students'][$i]['student_id'] . "</td>
-                                        <td>" . $data['students'][$i]['name'] . "</td>
-                                        <td>" . $data['students'][$i]['email'] . "</td>
+                                        <td>" . $data['teachers'][$i]['name'] . "</td>
+                                        <td>" . $data['teachers'][$i]['email'] . "</td>
+                                        <td>" . $data['teachers'][$i]['work_place'] . "</td>
                                         <td>
                                             <button type='button' data-toggle='modal' data-target='#student-1-detail'>
                                                 <i class='fas fa-info-circle'></i>
@@ -124,14 +124,16 @@
                                                                 <span aria-hidden='true'>&times;</span>
                                                             </button>
                                                         </div>
+                                                        <form>
                                                         <div class='modal-body'>
                                                             ...
                                                         </div>
                                                         <div class='modal-footer'>
                                                             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close
                                                             </button>
-                                                            <button type='button' class='btn btn-primary'>Save changes</button>
+                                                            <input type='submit' class='btn btn-primary' value='Save Changes'></input>
                                                         </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

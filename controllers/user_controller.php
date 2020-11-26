@@ -33,6 +33,10 @@ class UserController extends BaseController
                 } elseif ($user->getRoleId() == 3) {
                     header("location: /student");
                     die();
+                }
+                elseif ($user->getRoleId() == 1){
+                    header("location: /admin");
+                    die();
                 } else {
                     header('location: /library');
                     die();
