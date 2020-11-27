@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="./asserts/css/library-css/library-style.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/png" href="./asserts/Image/favicon.ico">
+    <link href="assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 </head>
 
@@ -16,8 +16,8 @@
         <div class="left">
             <div class="sidebar">
                 <div class="search">
-                    <form class="search-form">
-                        <input type="text" placeholder="Search...">
+                    <form class="search-form" action="/library/search" method="POST">
+                        <input type="text" placeholder="Search..." name='name_string'>
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
@@ -45,101 +45,70 @@
                 <div class="header">
                     <h1>HUS PROJECT LIBRARY</h1>
                     <div class="user">
-                        <img src="./asserts/Image/purple-linear-outline-person-icon-user-icon-in-vector-29003247.jpg" style="width: 51.3px; height: 51.7px;display: inline">
-                        <span><a href="#"> Login</a></span>
+                        <img src="/assets/Image/purple-linear-outline-person-icon-user-icon-in-vector-29003247.jpg" style="width: 51.3px; height: 51.7px;display: inline">
+                        <?php
+                        if (!isset($_SESSION['user'])) {
+                            echo "<span><a href='/login'> Login</a></span>";
+                        } else {
+                            if ($_SESSION['user']['role'] == 1) {
+                                echo "<span><a href='/admin'>" . $data['user'] . "</a></span>";
+                            } elseif ($_SESSION['user']['role'] == 2) {
+                                echo "<span><a href='/teacher'>" . $data['user'] . "</a></span>";
+                            } else {
+                                echo "<span><a href='/student'>" . $data['user'] . "</a></span>";
+                            }
+                        }
+                        ?>
+                        <!-- <span><a href="#"> Login</a></span> -->
                     </div>
                 </div>
                 <div class="content">
                     <?php
-                    $index = 0;
-                    while ($index < count($data)) {
-                        echo"<div class='column'>";
-                        for ($k = 0; $k < 3; $k++) {
-                            echo"<div class='card'>
-                                <div class='user-card'>
-                                    <div class='fa fa-user'></div>
-                                </div>
-                                <div class='project-info'>
-                                    <h1 class='name'>" . $data[$index]['project_name'] . "</h1>
-                                    <ul class='meta-data'>
-                                        <div class='info-y'>
-                                            <li>
-                                                <label>Sinh viên:</label>
-                                                <strong>" . $data[$index]['student'] . "</strong>
-                                            </li>
-                                            <li>
-                                                <label>Khóa:</label>
-                                                <strong>" . $data[$index]['year'] . "</strong>
-                                            </li>
-                                            <li>
-                                                <label>Người hướng dẫn:</label>
-                                                <strong>" . $data[$index]['teacher'] . "</strong>
-                                            </li>
-                                            <li>
-                                                <label>Chuyên ngành:</label>
-                                                <strong>" . $data[$index]['branch'] . "</strong>
-                                            </li>
-                                            <li>
-                                                <label>Nội dung:</label>
-                                                <strong>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML
-                                                sang CSDL quan hệ và ngược lại</strong>
-                                            </li>
-                                            <li>
-                                                <label>Điểm số:</label>
-                                                <strong>" . $data[$index]['point'] . "/10</strong>
-                                            </li>
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>";
-                            $index++;
-                            if ($index >= count($data)) {
-                                break;
-                            }
-                        }
-                        echo"</div>";
-                    }
-                    ?>
-                    <?php
-                    echo"<div class='column'>
-                        <div class='card'>
+                    for ($index = 0; $index < count($data['projects']); $index++) {
+                        // for ($k = 0; $k < 3; $k++) {
+                        echo "<div class='column'>";
+                        echo " <div class='card'>
                             <div class='user-card'>
                                 <i class='fa fa-user'></i>
                             </div>
                             <div class='project-info'>
-                                <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML </h1>
-                                <ul class='meta-data'>
+                                <h1 class='name'>" . $data['projects'][$index]['project_name'] . "</h1>
+                                <ul class='meta-data['projects']'>
                                     <div class='info-y'>
                                         <li>
                                             <label>Sinh viên:</label>
-                                            <strong>Nguyễn Thế Hợp</strong>
+                                            <strong>" . $data['projects'][$index]['student'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Khóa:</label>
-                                            <strong>QH2018</strong>
+                                            <strong>" . $data['projects'][$index]['year'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Người hướng dẫn:</label>
-                                            <strong>TS. Nguyễn Văn B</strong>
+                                            <strong>" . $data['projects'][$index]['teacher'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Chuyên ngành:</label>
-                                            <strong>Computer Science</strong>
+                                            <strong>" . $data['projects'][$index]['branch'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Nội dung:</label>
-                                            <strong>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML
-                                                sang CSDL quan hệ và ngược lại</strong>
+                                            <strong>" . $data['projects'][$index]['content'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Điểm số:</label>
-                                            <strong>10/10</strong>
+                                            <strong>" . $data['projects'][$index]['point'] . "/10</strong>
                                         </li>
                                     </div>
                                 </ul>
                             </div>
-                        </div>
-                    </div>";
+                        </div>";
+                        //     if ($index >= count($data['projects'])) {
+                        //         break;
+                        //     }
+                        // }
+                        echo "</div>";
+                    }
                     ?>
                 </div>
             </div>
@@ -151,8 +120,14 @@
 
     </div>
     <script language="JavaScript">
-        var majors = ["Math", "Literature", "English", "Chemistry", "Computer Science"];
-        var teachers = ["Nguyễn Văn B", "Trần Văn C", "Lê Thị D", "Vũ Văn H", "Hoàng Thị A"];
+        var majors = <?php echo $data['branches']['names']; ?>;
+        var branch_ids = <?php echo $data['branches']['ids']?>;
+        // var majors = ["Math", "Literature", "English", "Chemistry", "Computer Science"];
+        // var teachers = ["Nguyễn Văn B", "Trần Văn C", "Lê Thị D", "Vũ Văn H", "Hoàng Thị A"];
+        var teacher_names = <?php echo $data['teachers']['names']; ?>;
+        // console.log(teacher_names);
+        var teacher_ids = <?php echo $data['teachers']['ids']; ?>;
+        // console.log(teacher_ids);
         var years = ["QH2013", "QH2014", "QH2015", "QH2016", "QH2017"];
         // var labels = document.getElementsByTagName('label');
         var i;
@@ -162,14 +137,17 @@
             divTag.innerHTML = "";
 
             if ($value == "teacher") {
-                for (i = 0; i < teachers.length; i++) {
+                for (i = 0; i < teacher_names.length; i++) {
                     const new_checkbox = document.createElement('input');
                     new_checkbox.setAttribute("type", "checkbox");
-                    new_checkbox.innerHTML = teachers[i];
+                    new_checkbox.innerHTML = teacher_names[i];
                     new_checkbox.classList.add("mixed");
+                    new_checkbox.name = "teacher_id[]";
+                    console.log(new_checkbox.name)
+                    new_checkbox.value = teacher_ids[i];
 
                     const label = document.createElement('label');
-                    label.innerHTML = teachers[i];
+                    label.innerHTML = teacher_names[i];
 
                     divTag.appendChild(new_checkbox);
                     divTag.appendChild(label);
@@ -192,6 +170,8 @@
                     const new_checkbox = document.createElement('input');
                     new_checkbox.setAttribute("type", "checkbox");
                     new_checkbox.innerHTML = majors[i];
+                    new_checkbox.name = "branch_id[]";
+                    new_checkbox.value = branch_ids[i];
                     new_checkbox.classList.add("mixed");
 
                     const label = document.createElement('label');

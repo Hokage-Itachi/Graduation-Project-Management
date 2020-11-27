@@ -25,10 +25,15 @@ class ProjectService
     public function findByName($name)
     {
         $result = $this->projectDAO->findByName($name);
+        $list_project = array();
         if ($result) {
-            $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day'], $result['student_id'], $result['teacher_id']);
-            // $project = new Project($result['id'], $result['name'], $result['completed'], $result['branch_id'], $result['point'], $result['curriculum'], $result['faculty'], $result['presentation_day']);
-            return $project;
+            for ($i = 0; $i < count($result); $i++) {
+                $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day'], $result[$i]['student_id'], $result[$i]['teacher_id']);
+                // $project = new Project($result[$i]['id'], $result[$i]['name'], $result[$i]['completed'], $result[$i]['branch_id'], $result[$i]['point'], $result[$i]['curriculum'], $result[$i]['faculty'], $result[$i]['presentation_day']);
+
+                $list_project[$i] = $project;
+            }
+            return $list_project;
         } else {
             return null;
         }
@@ -84,7 +89,7 @@ class ProjectService
         }
     }
 
-    
+
 
     public function getProjectNumber()
     {

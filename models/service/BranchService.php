@@ -14,7 +14,28 @@ class BranchService
     public function findByID($branch_id)
     {
         $result = $this->branchDAO->findByID($branch_id);
-        $branch = new Branch($result['id'], $result['name']);
-        return $branch;
+        if ($result) {
+            $branch = new Branch($result['id'], $result['name']);
+            return $branch;
+        } else {
+            return null;
+        }
+    }
+
+    public function getAll()
+    {
+        $result = $this->branchDAO->getAll();
+        $branches = array();
+        $i = 0;
+        if ($result) {
+            foreach ($result as $row) {
+                $branch = new Branch($row['id'], $row['name']);
+                $branches[$i] = $branch;
+                $i++;
+            }
+            return $branches;
+        } else {
+            return null;
+        }
     }
 }

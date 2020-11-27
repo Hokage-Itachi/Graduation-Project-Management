@@ -5,6 +5,9 @@ class Router
 
     /* Routes array where we store the various routes defined. */
     private $routes;
+    private $controller = "library";
+    private $action = "render";
+    private $param = [];
     // const APP_PREFIX = "Graduation-Project-Management/";
     const APP_PREFIX = "";
 
@@ -28,10 +31,10 @@ class Router
         if (array_key_exists($path, $this->routes)) {
             if (isset($_SESSION['user'])) {
                 if ($path == '/login') {
-                    if ($_SESSION['user'] == 1) {
+                    if ($_SESSION['user']['role'] == 1) {
                         header(('location: /admin'));
                         die();
-                    } elseif ($_SESSION['user'] == 2) {
+                    } elseif ($_SESSION['user']['role'] == 2) {
                         header(('location: /teacher'));
                         die();
                     } else {
@@ -41,7 +44,8 @@ class Router
                 }
                 $this->routes[$path]();
             } else {
-                if ($path != '/login' && $path != '/library' && $path != '/') {
+                // error_log($path);
+                if ($path != '/login' && $path != '/' && strpos($path, "library") === false) {
                     header('location: /login');
                     die();
                 }

@@ -39,7 +39,7 @@ class StudentService
         $result = $this->studentDAO->getAll();
         if ($result) {
             $list_student = array();
-            for ($i = 0; $i < count($list_student); $i++) {
+            for ($i = 0; $i < count($result); $i++) {
                 $student = new Student($result[$i]['student_id'], $result[$i]['class'], $result[$i]['grade'], $result[$i]['course'], $result[$i]['user_id'], $result[$i]['email'], $result[$i]['pass_hashed'], $result[$i]['name'], $result[$i]['phone_number'], $result[$i]['role_id']);
                 $list_student[$i] = $student;
             }
