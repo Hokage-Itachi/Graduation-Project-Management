@@ -13,38 +13,31 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="left">
-            <div class="sidebar">
-               <div class="search select">
-                    <form class="search-form select-form">
-                          <div class='search-div'>
-                                <input type="text" placeholder="search...">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                          </div>
-                          <div class="select-div">
-                                <select class="selective" onchange="change_select(value)">
-                                     <option value="major">Ngành</option>
-                                     <option value="teacher">Giáo viên hướng dẫn</option>
-                                     <option value="year">Khóa</option>
-                                </select>
-                          </div>
-
-                    </form>
+    <div class='container'>
+        <div class='left'>
+            <div class='container-left'>
+               <div class='search-div'>
+                   <input type="text" placeholder="search...">
+                   <button type="submit"><i class="fa fa-search"></i></button>
                </div>
-                <hr>
-                <div class="checkbox-container" id="checkbox-container">
-                    <input class="mixed" type="checkbox">
+               <div class='select-div'>
+                    <select class="selective" onchange="change_select(value)">
+                         <option value="major">Ngành</option>
+                         <option value="teacher">Giáo viên hướng dẫn</option>
+                         <option value="year">Khóa</option>
+                    </select>
+               </div>
+               <hr>
+               <div class='checkbox-container' id='checkbox-container'>
+                   <input class='mixed' type="checkbox">
 
-
-                </div>
+               </div>
 
             </div>
 
         </div>
-        <div class="right">
-            <div class="container-right">
-                <div class="header">
+        <div class='right'>
+                <div class='header'>
                     <h1>HUS PROJECT LIBRARY</h1>
                     <div class="user">
                         <!-- <?php
@@ -63,11 +56,12 @@
                          <span><a href="#"><i class="fa fa-user"></i> Login</a></span>
                     </div>
                 </div>
-                <div class="content">
+                <div class="main">
+
                     <?php
                     for ($index = 0; $index < count($data['projects']); $index++) {
                         // for ($k = 0; $k < 3; $k++) {
-                        echo "<div class='column'>";
+                          echo "<div class='column'>";
                         echo " <div class='card'>
                             <div class='user-card'>
                                 <i class='fa fa-user'></i>
@@ -112,7 +106,6 @@
                     }
                     ?>
                 </div>
-            </div>
         </div>
     </div>
 
