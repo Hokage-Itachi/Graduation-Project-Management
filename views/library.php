@@ -7,7 +7,7 @@
     <title>Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
-        <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 
 </head>
@@ -16,22 +16,22 @@
     <div class="container">
         <div class="left">
             <div class="sidebar">
-               <div class="search select">
+                <div class="search select">
                     <form class="search-form select-form">
-                          <div class='search-div'>
-                                <input type="text" placeholder="search...">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                          </div>
-                          <div class="select-div">
-                                <select class="selective" onchange="change_select(value)">
-                                     <option value="major">Ngành</option>
-                                     <option value="teacher">Giáo viên hướng dẫn</option>
-                                     <option value="year">Khóa</option>
-                                </select>
-                          </div>
+                        <div class='search-div'>
+                            <input type="text" placeholder="search...">
+                            <button type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="select-div">
+                            <select class="selective" onchange="change_select(value)">
+                                <option value="major">Ngành</option>
+                                <option value="teacher">Giáo viên hướng dẫn</option>
+                                <option value="year">Khóa</option>
+                            </select>
+                        </div>
 
                     </form>
-               </div>
+                </div>
                 <hr>
                 <div class="checkbox-container" id="checkbox-container">
                     <input class="mixed" type="checkbox">
@@ -47,20 +47,20 @@
                 <div class="header">
                     <h1>HUS PROJECT LIBRARY</h1>
                     <div class="user">
-                        <!-- <?php
+                        <?php
                         if (!isset($_SESSION['user'])) {
-                            echo "<span><a href='/login'> Login</a></span>";
+                            echo "<span><a href='/login'><i class='fa fa-user'></i> Login</a></span>";
                         } else {
                             if ($_SESSION['user']['role'] == 1) {
-                                echo "<span><a href='#'>" . $data['user'] . "</a></span>";
+                                echo "<span><a href='/admin'><i class='fa fa-user'></i>" . $data['user'] . "</a></span>";
                             } elseif ($_SESSION['user']['role'] == 2) {
-                                echo "<span><a href='/teacher'>" . $data['user'] . "</a></span>";
+                                echo "<span><a href='/teacher'><i class='fa fa-user'></i>" . $data['user'] . "</a></span>";
                             } else {
-                                echo "<span><a href='/student'>" . $data['user'] . "</a></span>";
+                                echo "<span><a href='/student'><i class='fa fa-user'></i>" . $data['user'] . "</a></span>";
                             }
                         }
-                        ?> -->
-                         <span><a href="#"><i class="fa fa-user"></i> Login</a></span>
+                        ?>
+                        <!-- <span><a href="#"><i class="fa fa-user"></i> Login</a></span> -->
                     </div>
                 </div>
                 <div class="content">
@@ -119,7 +119,7 @@
     </div>
     <script language="JavaScript">
         var majors = <?php echo $data['branches']['names']; ?>;
-        var branch_ids = <?php echo $data['branches']['ids']?>;
+        var branch_ids = <?php echo $data['branches']['ids'] ?>;
         // var majors = ["Math", "Literature", "English", "Chemistry", "Computer Science"];
         // var teachers = ["Nguyễn Văn B", "Trần Văn C", "Lê Thị D", "Vũ Văn H", "Hoàng Thị A"];
         var teacher_names = <?php echo $data['teachers']['names']; ?>;
@@ -141,7 +141,7 @@
                     new_checkbox.innerHTML = teacher_names[i];
                     new_checkbox.classList.add("mixed");
                     new_checkbox.name = "teacher_id[]";
-                    console.log(new_checkbox.name)
+                    // console.log(new_checkbox.name)
                     new_checkbox.value = teacher_ids[i];
 
                     const label = document.createElement('label');
