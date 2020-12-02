@@ -7,7 +7,7 @@
     <title>Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
-        <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 
 </head>
@@ -16,53 +16,53 @@
     <div class='container'>
         <div class='left'>
             <div class='container-left'>
-               <div class='search-div'>
-                   <input type="text" placeholder="search...">
-                   <button type="submit"><i class="fa fa-search"></i></button>
-               </div>
-               <div class='select-div'>
-                    <select class="selective" onchange="change_select(value)">
-                         <option value="major">Ngành</option>
-                         <option value="teacher">Giáo viên hướng dẫn</option>
-                         <option value="year">Khóa</option>
+                <div class='search-div'>
+                    <input type="text" placeholder="search..." id='search'>
+                    <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
+                </div>
+                <div class='select-div'>
+                    <select class="selective" onchange="change_select(value)" id='fill_by'>
+                        <option value="major">Ngành</option>
+                        <option value="teacher">Giáo viên hướng dẫn</option>
+                        <!-- <option value="year">Khóa</option> -->
                     </select>
-               </div>
-               <hr>
-               <div class='checkbox-container' id='checkbox-container'>
-                   <input class='mixed' type="checkbox">
+                </div>
+                <hr>
+                <div class='checkbox-container' id='checkbox-container'>
+                    <input class='mixed' type="checkbox" onchange="filter()">
 
-               </div>
+                </div>
 
             </div>
 
         </div>
         <div class='right'>
-                <div class='header'>
-                    <h1>HUS PROJECT LIBRARY</h1>
-                    <div class="user">
-                        <!-- <?php
-                        if (!isset($_SESSION['user'])) {
-                            echo "<span><a href='/login'> Login</a></span>";
-                        } else {
-                            if ($_SESSION['user']['role'] == 1) {
-                                echo "<span><a href='#'>" . $data['user'] . "</a></span>";
-                            } elseif ($_SESSION['user']['role'] == 2) {
-                                echo "<span><a href='/teacher'>" . $data['user'] . "</a></span>";
-                            } else {
-                                echo "<span><a href='/student'>" . $data['user'] . "</a></span>";
-                            }
-                        }
-                        ?> -->
-                         <span><a href="#"><i class="fa fa-user"></i> Login</a></span>
-                    </div>
-                </div>
-                <div class="main">
-
+            <div class='header'>
+                <h1>HUS PROJECT LIBRARY</h1>
+                <div class="user">
                     <?php
-                    for ($index = 0; $index < count($data['projects']); $index++) {
-                        // for ($k = 0; $k < 3; $k++) {
-                          echo "<div class='column'>";
-                        echo " <div class='card'>
+                    if (!isset($_SESSION['user'])) {
+                        echo "<span><a href='/login'><i class='fa fa-user'></i> Login</a></span>";
+                    } else {
+                        if ($_SESSION['user']['role'] == 1) {
+                            echo "<span><a href='/admin'><i class='fa fa-user'></i>" . $data['user'] . "</a></span>";
+                        } elseif ($_SESSION['user']['role'] == 2) {
+                            echo "<span><a href='/teacher'><i class='fa fa-user'></i>" . $data['user'] . "</a></span>";
+                        } else {
+                            echo "<span><a href='/student'><i class='fa fa-user'></i>" . $data['user'] . "</a></span>";
+                        }
+                    }
+                    ?>
+                    <!-- <span><a href="#"><i class="fa fa-user"></i> Login</a></span> -->
+                </div>
+            </div>
+            <div class="main">
+
+                <?php
+                for ($index = 0; $index < count($data['projects']); $index++) {
+                    // for ($k = 0; $k < 3; $k++) {
+                    echo "<div class='column'>";
+                    echo " <div class='card'>
                             <div class='user-card'>
                                 <i class='fa fa-user'></i>
                             </div>
@@ -72,47 +72,47 @@
                                     <div class='info-y'>
                                         <li>
                                             <label>Sinh viên:</label>
-                                            <strong>" . $data['projects'][$index]['student'] . "</strong>
+                                            <strong class='student'>" . $data['projects'][$index]['student'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Khóa:</label>
-                                            <strong>" . $data['projects'][$index]['year'] . "</strong>
+                                            <strong class='year'>" . $data['projects'][$index]['year'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Người hướng dẫn:</label>
-                                            <strong>" . $data['projects'][$index]['teacher'] . "</strong>
+                                            <strong class='teacher'>" . $data['projects'][$index]['teacher'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Chuyên ngành:</label>
-                                            <strong>" . $data['projects'][$index]['branch'] . "</strong>
+                                            <strong class='branch'>" . $data['projects'][$index]['branch'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Nội dung:</label>
-                                            <strong>" . $data['projects'][$index]['content'] . "</strong>
+                                            <strong class='content'>" . $data['projects'][$index]['content'] . "</strong>
                                         </li>
                                         <li>
                                             <label>Điểm số:</label>
-                                            <strong>" . $data['projects'][$index]['point'] . "/10</strong>
+                                            <strong class='point'>" . $data['projects'][$index]['point'] . "/10</strong>
                                         </li>
                                     </div>
                                 </ul>
                             </div>
                         </div>";
-                        //     if ($index >= count($data['projects'])) {
-                        //         break;
-                        //     }
-                        // }
-                        echo "</div>";
-                    }
-                    ?>
-                </div>
+                    //     if ($index >= count($data['projects'])) {
+                    //         break;
+                    //     }
+                    // }
+                    echo "</div>";
+                }
+                ?>
+            </div>
         </div>
     </div>
 
     </div>
     <script language="JavaScript">
         var majors = <?php echo $data['branches']['names']; ?>;
-        var branch_ids = <?php echo $data['branches']['ids']?>;
+        var branch_ids = <?php echo $data['branches']['ids'] ?>;
         // var majors = ["Math", "Literature", "English", "Chemistry", "Computer Science"];
         // var teachers = ["Nguyễn Văn B", "Trần Văn C", "Lê Thị D", "Vũ Văn H", "Hoàng Thị A"];
         var teacher_names = <?php echo $data['teachers']['names']; ?>;
@@ -132,13 +132,15 @@
                     const new_checkbox = document.createElement('input');
                     new_checkbox.setAttribute("type", "checkbox");
                     new_checkbox.innerHTML = teacher_names[i];
+                    new_checkbox.addEventListener("change", filter);
                     new_checkbox.classList.add("mixed");
-                    new_checkbox.name = "teacher_id[]";
-                    console.log(new_checkbox.name)
-                    new_checkbox.value = teacher_ids[i];
+                    new_checkbox.name = teacher_names[i];
+                    // console.log(new_checkbox.name)
+                    new_checkbox.id = teacher_ids[i];
 
                     const label = document.createElement('label');
                     label.innerHTML = teacher_names[i];
+                    label.htmlFor = new_checkbox.id;
 
                     divTag.appendChild(new_checkbox);
                     divTag.appendChild(label);
@@ -148,7 +150,9 @@
                     const new_checkbox = document.createElement('input');
                     new_checkbox.setAttribute("type", "checkbox");
                     new_checkbox.innerHTML = years[i];
+                    new_checkbox.name = years[i];
                     new_checkbox.classList.add("mixed");
+                    new_checkbox.addEventListener("change", filter);
 
                     const label = document.createElement('label');
                     label.innerHTML = years[i];
@@ -161,12 +165,14 @@
                     const new_checkbox = document.createElement('input');
                     new_checkbox.setAttribute("type", "checkbox");
                     new_checkbox.innerHTML = majors[i];
-                    new_checkbox.name = "branch_id[]";
-                    new_checkbox.value = branch_ids[i];
+                    new_checkbox.name = majors[i];
+                    new_checkbox.id = branch_ids[i];
+                    new_checkbox.addEventListener("change", filter);
                     new_checkbox.classList.add("mixed");
 
                     const label = document.createElement('label');
                     label.innerHTML = majors[i];
+                    label.htmlFor = new_checkbox.id;
 
                     divTag.appendChild(new_checkbox);
                     divTag.appendChild(label);
@@ -174,6 +180,7 @@
             }
         }
     </script>
+    <script src="/assets/js/library_script.js"></script>
 </body>
 
 </html>
