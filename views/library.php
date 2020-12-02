@@ -6,67 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link href="/assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="left">
-            <div class="sidebar">
-                <div class="search">
-                    <form class="search-form" action="/library/search" method="POST">
-                        <input type="text" placeholder="Search..." name='name_string'>
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <div class="select">
-                    <form class="select-form">
-                        <select class="selective" onchange="change_select(value)">
-                            <option value="major">Ngành</option>
-                            <option value="teacher">Giáo viên hướng dẫn</option>
-                            <option value="year">Khóa</option>
-                        </select>
-                    </form>
-                </div>
-                <hr>
-                <div class="checkbox-container" id="checkbox-container">
-                    <input class="mixed" type="checkbox">
+    <div class='container'>
+        <div class='left'>
+            <div class='container-left'>
+               <div class='search-div'>
+                   <input type="text" placeholder="search...">
+                   <button type="submit"><i class="fa fa-search"></i></button>
+               </div>
+               <div class='select-div'>
+                    <select class="selective" onchange="change_select(value)">
+                         <option value="major">Ngành</option>
+                         <option value="teacher">Giáo viên hướng dẫn</option>
+                         <option value="year">Khóa</option>
+                    </select>
+               </div>
+               <hr>
+               <div class='checkbox-container' id='checkbox-container'>
+                   <input class='mixed' type="checkbox">
 
-
-                </div>
+               </div>
 
             </div>
 
         </div>
-        <div class="right">
-            <div class="container-right">
-                <div class="header">
+        <div class='right'>
+                <div class='header'>
                     <h1>HUS PROJECT LIBRARY</h1>
                     <div class="user">
-                        <img src="/assets/Image/purple-linear-outline-person-icon-user-icon-in-vector-29003247.jpg" style="width: 51.3px; height: 51.7px;display: inline">
-                        <?php
+                        <!-- <?php
                         if (!isset($_SESSION['user'])) {
                             echo "<span><a href='/login'> Login</a></span>";
                         } else {
                             if ($_SESSION['user']['role'] == 1) {
-                                echo "<span><a href='/admin'>" . $data['user'] . "</a></span>";
+                                echo "<span><a href='#'>" . $data['user'] . "</a></span>";
                             } elseif ($_SESSION['user']['role'] == 2) {
                                 echo "<span><a href='/teacher'>" . $data['user'] . "</a></span>";
                             } else {
                                 echo "<span><a href='/student'>" . $data['user'] . "</a></span>";
                             }
                         }
-                        ?>
-                        <!-- <span><a href="#"> Login</a></span> -->
+                        ?> -->
+                         <span><a href="#"><i class="fa fa-user"></i> Login</a></span>
                     </div>
                 </div>
-                <div class="content">
+                <div class="main">
+
                     <?php
                     for ($index = 0; $index < count($data['projects']); $index++) {
                         // for ($k = 0; $k < 3; $k++) {
-                        echo "<div class='column'>";
+                          echo "<div class='column'>";
                         echo " <div class='card'>
                             <div class='user-card'>
                                 <i class='fa fa-user'></i>
@@ -111,10 +106,6 @@
                     }
                     ?>
                 </div>
-            </div>
-            <div class="footer-distributed">
-                <p>&copy; Copyright 2020</p>
-            </div>
         </div>
     </div>
 
