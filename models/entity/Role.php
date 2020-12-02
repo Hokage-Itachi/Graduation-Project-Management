@@ -1,30 +1,18 @@
 <?php
-
-class Branch
+class Role
 {
     private $id;
     private $name;
 
-    /**
-     * Branch constructor.
-     * @param $id
-     * @param $name
-     */
     public function __construct($id, $name)
     {
         $this->id = $id;
         $this->name = $name;
     }
 
-
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     public function getName()
