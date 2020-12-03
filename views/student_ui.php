@@ -14,18 +14,96 @@
   </head>
   <body>
     <div class="container">
-      <div class="fixed-top">
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Student</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Teacher</a>
-          </li>
+     <div class="nav-bar">
+        <ul class="nav-ul">
+          <li class="nav-li"><a href="#">Home</a></li>
+          <li class="nav-li"><a href="#">Student</a></li>
+          <li class="nav-li"><a href="#">Teacher</a></li>
         </ul>
+        <div class="info">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            User
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5
+                    class="modal-title"
+                    id="exampleModalLabel"
+                    style="margin-left: auto"
+                  >
+                    User
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card" style="width: 18rem; margin: auto">
+                    <img
+                      class="card-img-top"
+                      src="./images/teacher.jpg"
+                      alt="Card image cap"
+                    />
+                    <div class="card-body" style="margin: auto">
+                      <h5 class="card-title" style="margin: auto">
+                        User Profile
+                      </h5>
+
+                      <ul class="info-list">
+                        <li class="info-btn">
+                          <a href="#" class="btn btn-primary">Details</a>
+                        </li>
+
+                        <li class="info-btn">
+                          <a href="#" class="btn btn-primary">Update</a>
+                        </li>
+                        <li class="info-btn">
+                          <a href="#" class="btn btn-primary"
+                            >Change password</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" style="margin: auto">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="jumbotron">
         <h1 class="display-4">Graduation-Project-Management</h1>

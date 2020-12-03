@@ -14,18 +14,96 @@
   </head>
   <body>
     <div class="container">
-      <div class="fixed-top">
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Student</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Teacher</a>
-          </li>
+      <div class="nav-bar">
+        <ul class="nav-ul">
+          <li class="nav-li"><a href="#">Home</a></li>
+          <li class="nav-li"><a href="#">Student</a></li>
+          <li class="nav-li"><a href="#">Teacher</a></li>
         </ul>
+        <div class="info">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#exampleModal"
+          >
+            User
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5
+                    class="modal-title"
+                    id="exampleModalLabel"
+                    style="margin-left: auto"
+                  >
+                    User
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card" style="width: 18rem; margin: auto">
+                    <img
+                      class="card-img-top"
+                      src="./images/teacher.jpg"
+                      alt="Card image cap"
+                    />
+                    <div class="card-body" style="margin: auto">
+                      <h5 class="card-title" style="margin: auto">
+                        User Profile
+                      </h5>
+
+                      <ul class="info-list">
+                        <li class="info-btn">
+                          <a href="#" class="btn btn-primary">Details</a>
+                        </li>
+
+                        <li class="info-btn">
+                          <a href="#" class="btn btn-primary">Update</a>
+                        </li>
+                        <li class="info-btn">
+                          <a href="#" class="btn btn-primary"
+                            >Change password</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" style="margin: auto">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="jumbotron">
         <h1 class="display-4">Graduation-Project-Management</h1>
@@ -43,52 +121,54 @@
       </div>
       <div class="row">
         <div
-          class="col-sm col-lg-3"
+          class="col-sm col-lg-4"
           style="border: 1px solid rgb(51, 100, 206)"
         >
-          <h3>Teacher infor</h3>
-          <div class="card" style="width: 16rem">
-            <img
-              style="width: 95%"
-              src="./images/teacher.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Information</h5>
-              <ul class="list-group">
-                <li class="list-group-item">Name</li>
-                <li class="list-group-item">info...</li>
-                <li class="list-group-item">info...</li>
-              </ul>
-              <a style="margin-top: 10px" href="#" class="btn btn-primary"
-                >Change info</a
-              >
-            </div>
-          </div>
           <div class="list-project" style="margin-top: 2rem">
-            <h5>List Projects</h5>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Options</label
+                >
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>List Projects</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+                <option value="6">Six</option>
+              </select>
+            </div>
             <ul class="list-group">
-              <li class="list-group-item">Project name</li>
-              <li class="list-group-item">Project name</li>
-              <li class="list-group-item">Project name</li>
-              <li class="list-group-item">Project name</li>
-              <li class="list-group-item">Project name</li>
-              <li class="list-group-item">Project name</li>
+              <li class="list-group-item">List project</li>
+              <li class="list-group-item">List project</li>
+              <li class="list-group-item">List project</li>
+              <li class="list-group-item">List project</li>
+              <li class="list-group-item">List project</li>
             </ul>
           </div>
         </div>
         <div
-          class="col-sm col-lg-4"
+          class="col-sm col-lg-3"
           style="border: 1px solid rgb(51, 100, 206)"
         >
           <h3>Project information</h3>
           <div style="border: 1px solid rgb(51, 100, 206)" class="info">
-            <ul class="list-group">
-              <li class="list-group-item">Name :</li>
-              <li class="list-group-item">Branch :</li>
-              <li class="list-group-item">Teacher :</li>
-            </ul>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Project Information</label
+                >
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Info</option>
+                <option value="Name">Name</option>
+                <option value="Branch">Branch</option>
+                <option value="Teacher">Teacher</option>
+              </select>
+            </div>
           </div>
 
           <div style="border: 1px solid rgb(51, 100, 206)" class="progress">
@@ -224,6 +304,8 @@
                   </button>
                 </div>
               </div>
+
+              >
             </form>
           </div>
           <div class="comment">
