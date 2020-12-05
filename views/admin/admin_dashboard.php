@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
-    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/image/favicon.ico">
 
 
     <title>Dashboard</title>

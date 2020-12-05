@@ -10,7 +10,8 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="/assets/image/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
     <div class="container">
@@ -215,6 +216,6 @@
       src="https://kit.fontawesome.com/0343562330.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./script.js"></script>
+    <script src="/assets/js/script.js"></script>
   </body>
 </html>
