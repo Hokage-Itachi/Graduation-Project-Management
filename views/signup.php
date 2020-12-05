@@ -58,14 +58,18 @@
                 <input type='text' id="school" placeholder="Trường" required>
             </div>
             <div class='form-child'>
-                <input type="text" id="projec" placeholder="Tên Đề Án" required>
+                <input type="text" id="projec" placeholder="Đề tài" required>
             </div>
             <div class='form-child'>
-                <input type="text" id="teacher" placeholder="Người Hướng Dẫn" required>
+                <label class='lab' for="teacher">Người Hướng Dẫn</label><br>
+              <select class='selective' id="teacher">
+                  <option>Teacher A</option>
+                  <option>Teacher B</option>
+              </select>
             </div>
         </div>
         <div class='form-content'>
-            <textarea placeholder="Nội Dung Đề Án"></textarea>
+            <textarea placeholder="Nội Dung Đề Tài"></textarea>
         </div>
         <button type="button">Add</button>
 
