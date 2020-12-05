@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ <<<<<<< HEAD
 // handle message
 const sendMessage = (event) => {
   event.preventDefault();

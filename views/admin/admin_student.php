@@ -136,6 +136,7 @@
                                                 </div>
                                             </div>
                                             <button><i class='fas fa-user-edit'></i></button>
+
                                             <button><i class='fas fa-user-minus'></i></button>
                                         </td>
                                     </tr>";
