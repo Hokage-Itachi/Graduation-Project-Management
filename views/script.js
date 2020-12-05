@@ -10,4 +10,4 @@ const sendMessage = (event) => {
     document.getElementById("type_text").value = "";
   }
 };
->>>>>>> v1.0-dev
+
