@@ -88,6 +88,51 @@
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button class="btn btn-sm btn-outline-secondary">Add User</button>
+                             <div class='modal fade' id='student-1-detail' tabindex='-1' role='dialog' aria-labelledby='student-detail' aria-hidden='true'>
+                                   <div class='modal-dialog' role='document'>
+                                       <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                 <h5 class='modal-title' id='student-detail'>Add User
+
+                                                 </h5>
+                                                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                     <span aria-hidden='true'>&times;</span>
+                                                 </button>
+                                            </div>
+                                             <div class='modal-body'>
+                                                  <form>
+                                                       <div class='form-group'>
+                                                            <div class='form-child'>
+                                                                <input  type="number" class="form-item" id="id" placeholder="No." type="number">
+                                                            </div>
+                                                            <div class='form-child'>
+                                                                <input  type="text" class="form-item" id="name" placeholder="Name" type="text">
+                                                            </div>
+                                                       </div>
+                                                       <div class='form-group'>
+                                                             <div class='form-child'>
+                                                                 <input  type="email" class="form-item" id="email" placeholder="Email">
+                                                             </div>
+                                                             <div class='form-child'>
+                                                                 <input  type="text" class="form-item" id="role" placeholder="Role">
+                                                             </div>
+                                                       </div>
+                                                       <div class='form-group'>
+                                                            <div class='form-child'>
+                                                                <input  type="text" class="form-item" id="action" placeholder="Action">
+                                                            </div>
+                                                       </div>
+
+                                                  </form>
+
+                                             </div>
+                                             <div class='modal-footer'>
+                                                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>Add
+                                                    </button>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
                             <!-- <button class="btn btn-sm btn-outline-secondary">Export</button> -->
                         </div>
                         <!-- <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
