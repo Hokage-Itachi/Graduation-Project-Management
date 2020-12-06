@@ -1,5 +1,6 @@
 <?php
 require_once('./models/repository/projectDAO/ProjectQuery.php');
+require_once('./models/repository/projectDAO/ProjectAssigmentQuery.php');
 class ProjectDAO
 {
 
@@ -80,15 +81,20 @@ class ProjectDAO
         }
     }
 
-    public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day)
+    public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day, $student_id, $teacher_id)
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectQuery::INSERT, $name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day);
 
         $result = $db->query($sql);
         if ($result) {
-            $db->close();
-            return "Success";
+            $project_id = $this->findByName($name)[0]['id'];
+            $sql = sprintf(ProjectAssignmentQuery::INSERT, $project_id, $student_id, $teacher_id);
+            $result = $db->query($sql);
+            if ($result) {
+                $db->close();
+                return "Success";
+            }
         } else {
             $error = $db->connect_error;
             $db->close();

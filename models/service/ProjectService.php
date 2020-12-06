@@ -101,4 +101,9 @@ class ProjectService
             return null;
         }
     }
+
+    public function insert($project)
+    {
+        $result = $this->projectDAO->insert($project->getName(), $project->getCompleted(), $project->getBranchId(), $project->getPoint(), $project->getCurriculum(), $project->getFaculty(), $project->getPresentationDay(), $project->getStudentId(), $project->getTeacherId());
+    }
 }
