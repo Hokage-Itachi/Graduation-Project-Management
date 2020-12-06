@@ -14,6 +14,7 @@ class AdminController extends BaseController
     private $studentService;
     private $teacherService;
     private $data;
+
     public function __construct()
     {
         $this->userService = new UserService();
@@ -34,6 +35,13 @@ class AdminController extends BaseController
     public function renderTeacherPage($data)
     {
         $this->file = "admin/admin_teacher.php";
+        $path = './views/' . $this->file;
+        include_once($path);
+    }
+
+    public function renderProjectPage($data)
+    {
+        $this->file = "admin/admin_project.php";
         $path = './views/' . $this->file;
         include_once($path);
     }
@@ -66,7 +74,7 @@ class AdminController extends BaseController
         // error_log($students[0]->getName());
         foreach ($students as $student) {
             $data = array(
-                'student_id'=> $student->getStudentId(),
+                'student_id' => $student->getStudentId(),
                 'email' => $student->getEmail(),
                 'name' => $student->getName()
             );
@@ -86,7 +94,7 @@ class AdminController extends BaseController
         // error_log($teachers[0]->getName());
         foreach ($teachers as $teacher) {
             $data = array(
-                'work_place'=> $teacher->getWorkPlace(),
+                'work_place' => $teacher->getWorkPlace(),
                 'email' => $teacher->getEmail(),
                 'name' => $teacher->getName()
             );
@@ -96,5 +104,10 @@ class AdminController extends BaseController
         $this->data['teachers'] = $teacher_data;
 
         return $this->data;
+    }
+
+    public function addStudent()
+    {
+        // TODO: implement here....
     }
 }
