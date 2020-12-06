@@ -10,12 +10,13 @@
     <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 
-    <title>Admin Student</title>
+    <title>Admin | Student</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/admin-style.css" rel="stylesheet">
@@ -24,100 +25,155 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HUS-Admin</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field' onkeyup="search('student')">
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
-            </li>
-        </ul>
-    </nav>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HUS-Admin</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"
+           id='search-field' onkeyup="search('student')">
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="/logout">Log out</a>
+        </li>
+    </ul>
+</nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">
-                                <i class="fas fa-home"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-file-alt"></i>
-                                <span>Projects</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/admin/students">
-                                <i class="fas fa-users"></i>
-                                <span>Students</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/teachers">
-                                <i class="fas fa-user-tie"></i>
-                                <span>Teachers</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Some Actions</span>
-                        <a class="d-flex align-items-center text-muted" href="#">
-                            <span data-feather="plus-circle"></span>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
                         </a>
-                    </h6>
-                </div>
-            </nav>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/projects">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <i class="fas fa-users"></i>
+                            <span>Students</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/teachers">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Teachers</span>
+                        </a>
+                    </li>
+                </ul>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Student</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                            <button class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button class="btn btn-sm btn-outline-secondary">Export</button>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Some Actions</span>
+                    <a class="d-flex align-items-center text-muted" href="#">
+                        <span data-feather="plus-circle"></span>
+                    </a>
+                </h6>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <h1 class="h2">Student</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                            data-target="#addStudent">
+                        <i class="fas fa-user-plus"></i>
+                        Add student
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog"
+                         aria-labelledby="addStudentLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addStudentLabel">Add new student</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="addStudentForm" action="/admin/students/add" method="POST">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="name">Student Name</label>
+                                                <input type="email" class="form-control" id="name"
+                                                       placeholder=" Student name" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="studentId">Student ID</label>
+                                                <input type="number" min="10000000" max="99999999" class="form-control"
+                                                       id="studentId" onblur="autoDetectPassword('studentId')"
+                                                       placeholder="Student ID..." value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email address</label>
+                                                <input type="email" class="form-control" id="email"
+                                                       placeholder=" Student email" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="class">Class</label>
+                                                <input type="text" minlength="3" maxlength="8" class="form-control"
+                                                       id="class"
+                                                       placeholder="Class" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input type="text" class="form-control" id="password"
+                                                       value="password"
+                                                       readonly>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" form="addStudentForm" class="btn btn-primary">Save changes
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                            <span data-feather="calendar"></span>
-                            This week
-                        </button>
+                    </div>
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-sm btn-outline-secondary">Import</button>
+                        <button class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
                 </div>
-                <!-- <h2>Student</h2> -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm" id='data-table'>
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < count($data['students']); $i++) {
-                                $j = $i + 1;
-                                echo "<tr>
+            </div>
+            <!-- <h2>Student</h2> -->
+            <div class="table-responsive">
+                <table class="table table-striped table-sm" id='data-table'>
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    for ($i = 0; $i < count($data['students']); $i++) {
+                        $j = $i + 1;
+                        echo "<tr>
                                         <td>" . $j . "</td>
                                         <td>" . $data['students'][$i]['student_id'] . "</td>
                                         <td>" . $data['students'][$i]['name'] . "</td>
                                         <td>" . $data['students'][$i]['email'] . "</td>
                                         <td>
-                                            <button type='button' data-toggle='modal' data-target='#student-1-detail'>
-                                                <i class='fas fa-info-circle'></i>
+                                            <button type='button' data-toggle='modal' data-target='#student-" . $j . "-detail'>
+                                                <i class='fas fa-user-edit'></i>
                                             </button>
-                                            <div class='modal fade' id='student-1-detail' tabindex='-1' role='dialog' aria-labelledby='student-detail' aria-hidden='true'>
+                                            <div class='modal fade' id='student-" . $j . "-detail' tabindex='-1' role='dialog' aria-hidden='true'>
                                                 <div class='modal-dialog' role='document'>
                                                     <div class='modal-content'>
                                                         <div class='modal-header'>
-                                                            <h5 class='modal-title' id='student-detail'>Student
+                                                            <h5 class='modal-title'>Student
                                                                 Information
                                                                 Detail</h5>
                                                             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -125,32 +181,79 @@
                                                             </button>
                                                         </div>
                                                         <div class='modal-body'>
-                                                            ...
+                                                            <form id='updateStudentForm' action='/admin/students/update' method='POST'>
+                                                                <div class='form-group'>
+                                                                    <label>StudentID</label>
+                                                                    <input class='form-control' value='" . $data['students'][$i]['student_id'] . "' readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Name</label>
+                                                                    <input class='form-control' value='" . $data['students'][$i]['name'] . "'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Email</label>
+                                                                    <input class='form-control' value='" . $data['students'][$i]['email'] . "'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Class</label>
+                                                                    <input class='form-control' value='" . $data['students'][$i]['class'] . "'>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                         <div class='modal-footer'>
                                                             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close
                                                             </button>
-                                                            <button type='button' class='btn btn-primary'>Save changes</button>
+                                                            <button type='submit' form='updateStudentForm' class='btn btn-primary'>Save changes</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button><i class='fas fa-user-edit'></i></button>
-                                            <button><i class='fas fa-user-minus'></i></button>
+                                            <button type='button' data-toggle='modal' data-target='#student-" . $j . "-delete'>
+                                                <i class='fas fa-user-minus'></i>
+                                            </button>
+                                            <div class='modal fade' id='student-" . $j . "-delete' tabindex='-1' role='dialog' aria-hidden='true'>
+                                                <div class='modal-dialog' role='document'>
+                                                    <div class='modal-content'>
+                                                        <div class='modal-header'>
+                                                            <h6 class='modal-title'>Are you sure to delete student (" . $data['students'][$i]['student_id'] . ") ?</h6>
+                                                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                                <span aria-hidden='true'>&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class='modal-body'>
+                                                            <h4 class='text-danger'>To be carefully, this action can't be undo!</h4>
+                                                            <form id='deleteStudentForm' action='/admin/students/delete' method='POST'>
+                                                                <input type='hidden' value='" . $data['students'][$i]['student_id'] . "'>
+                                                            </form>
+                                                        </div>
+                                                        <div class='modal-footer'>
+                                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel
+                                                            </button>
+                                                            <button type='submit' form='deleteStudentForm' class='btn btn-primary'>Confirm delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-        </div>
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="/assets/js/admin_script.js"></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="/assets/js/admin_script.js"></script>
 </body>
 
 </html>

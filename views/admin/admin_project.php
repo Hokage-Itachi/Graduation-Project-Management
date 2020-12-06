@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 
-    <title>Admin | Dashboard</title>
+    <title>Admin | Project</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
@@ -42,13 +42,13 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link" href="/admin">
                             <i class="fas fa-home"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/projects">
+                        <a class="nav-link active" href="#">
                             <i class="fas fa-file-alt"></i>
                             <span>Projects</span>
                         </a>
@@ -78,7 +78,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h1 class="h2">Project</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
                             data-target="#addStudent">
