@@ -101,7 +101,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
+                            <!-- <?php
                             for ($i = 0; $i < count($data['students']); $i++) {
                                 $j = $i + 1;
                                 echo "<tr>
@@ -141,7 +141,65 @@
                                         </td>
                                     </tr>";
                             }
-                            ?>
+                            ?> -->
+                            <tr>
+                                        <td>01</td>
+                                        <td>180011</td>
+                                        <td>Nguyễn Văn A</td>
+                                        <td>nguyenvana@gmail.com</td>
+                                        <td>
+                                            <button type='button' data-toggle='modal' data-target='#student-1-detail'>
+                                                <i class='fas fa-info-circle'></i>
+                                            </button>
+                                            <div class='modal fade' id='student-1-detail' tabindex='-1' role='dialog' aria-labelledby='student-detail' aria-hidden='true'>
+                                                <div class='modal-dialog' role='document'>
+                                                    <div class='modal-content'>
+                                                        <div class='modal-header'>
+                                                            <h5 class='modal-title' id='student-detail'>Student
+                                                                Information
+                                                                Detail</h5>
+                                                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                                <span aria-hidden='true'>&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class='modal-body'>
+                                                            <form>
+                                                               <div class='form-group'>
+                                                                    <div class='form-child'>
+                                                                        <input  type="number" class="form-item" id="id" placeholder="Mã Sinh Viên" type="number">
+                                                                     </div>
+                                                                     <div class='form-child'>
+                                                                        <input  type="text" class="form-item" id="name" placeholder="Sinh Viên" type="text">
+                                                                     </div>
+                                                               </div>
+                                                               <div class='form-group'>
+                                                                     <div class='form-child'>
+                                                                          <input  type="email" class="form-item" id="email" placeholder="Email">
+                                                                     </div>
+                                                                     <div class='form-child'>
+                                                                        <input  type="text" class="form-item" id="project" placeholder="Project">
+                                                                     </div>
+                                                               </div>
+
+                                                               <p>Trạng Thại:Hoàn Thành</p>
+
+
+                                                            </form>
+
+                                                        </div>
+                                                        <div class='modal-footer'>
+                                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close
+                                                            </button>
+                                                            <button type='button' class='btn btn-primary'>Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button><i class='fas fa-user-edit'></i></button>
+
+                                            <button><i class='fas fa-user-minus'></i></button>
+                                        </td>
+                                    </tr>
                         </tbody>
                     </table>
                 </div>
