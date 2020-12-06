@@ -17,50 +17,24 @@
 </h1>
 <div class='container'>
     <form>
+
+
         <div class='form-group'>
-            <div class='form-child'>
-                <input type='text' id="name" placeholder="Họ Và Tên" required>
-            </div>
-            <div class='form-child'>
-                <input type='number' id="msv" placeholder="Mã Sinh viên" required>
-            </div>
-            <div class='form-child'>
-                <input type="text" id="lop" placeholder="Lớp" required>
-            </div>
-        </div>
-        <div class='gender'>
-            <div class='content'>
-                <p>Giới tính</p>
-                <div class='form-check'>
-                    <input class='form-input' type="radio">
-                    <label class='form-label'>Nam</label>
-                </div>
-                <div class='form-check'>
-                    <input class='form-input' type="radio">
-                    <label class='form-label'>Nữ</label>
-                </div>
+            <div class='form-child topic'>
+              <input type="text" id="projec" placeholder="Đề tài" required>
             </div>
 
         </div>
         <div class='form-group'>
-            <div class="form-child">
-                <input type='text' id="nganh" placeholder="Chuyên Ngành" required>
+
+            <div class='form-child st'>
+                <label class='lab' for="branch">Chuyên Ngành</label><br>
+                <select class='selective' id="branch">
+                   <option>Math</option>
+                   <option>Computer and Science Information</option>
+                </select>
             </div>
-            <div class='form-child'>
-                <input type="text" id="year" placeholder="Khóa" required>
-            </div>
-            <div class='form-child'>
-                <input type="text" id="Khoa" placeholder="Khoa" required>
-            </div>
-        </div>
-        <div class='form-group'>
-            <div class="form-child">
-                <input type='text' id="school" placeholder="Trường" required>
-            </div>
-            <div class='form-child'>
-                <input type="text" id="projec" placeholder="Đề tài" required>
-            </div>
-            <div class='form-child'>
+            <div class='form-child st'>
                 <label class='lab' for="teacher">Người Hướng Dẫn</label><br>
               <select class='selective' id="teacher">
                   <option>Teacher A</option>
@@ -68,9 +42,10 @@
               </select>
             </div>
         </div>
-        <div class='form-content'>
-            <textarea placeholder="Nội Dung Đề Tài"></textarea>
-        </div>
+         <div class='form-content'>
+             <textarea placeholder="Nội Dung Đề Tài"></textarea>
+         </div>
+
         <button type="button">Add</button>
 
     </form>
