@@ -8,6 +8,7 @@
 
 # User-specific stuff
 .idea
+.idea/**
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
@@ -79,7 +80,7 @@ fabric.properties
 ### PhpStorm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
+ *.iml
 # modules.xml
 # .idea/misc.xml
 # *.ipr
