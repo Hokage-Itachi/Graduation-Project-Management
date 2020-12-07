@@ -69,10 +69,65 @@ $router->add_route("/admin/students", function () {
     $admin_controller->renderStudentPage($admin_controller->getStudentData());
 });
 
+$router->add_route("/admin/students/add", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+    $admin_controller->addStudent();
+
+    // TODO: redirect or re-render page!
+//    http_redirect("/admin/students");
+//    $admin_controller->renderStudentPage($admin_controller->getStudentData());
+});
+
+$router->add_route("/admin/students/update", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+    $admin_controller->updateStudent();
+
+    // TODO:
+});
+
+$router->add_route("/admin/students/delete", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+    $admin_controller->deleteStudent();
+
+    // TODO:
+});
+
 $router->add_route("/admin/teachers", function () {
     require_once("controllers/admin_controller.php");
     $admin_controller = new AdminController();
     $admin_controller->renderTeacherPage($admin_controller->getTeacherData());
+});
+
+$router->add_route("/admin/teachers/add", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+
+    // TODO:
+});
+
+$router->add_route("/admin/teachers/update", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+
+    // TODO:
+});
+
+$router->add_route("/admin/teachers/delete", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+
+    // TODO:
+});
+
+$router->add_route("/admin/projects", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+
+    $admin_controller->renderProjectPage(4);
+    // TODO:
 });
 
 /* Execute the router */

@@ -6,7 +6,7 @@ function search(type) {
     for (i = 1; i < table.rows.length; i++) {
         row = table.rows[i].cells;
         n = row.length;
-        if (type != "admin"){
+        if (type != "admin") {
             n = 4;
         }
         for (j = 1; j < n; j++) {
@@ -25,4 +25,11 @@ function search(type) {
         }
         found = 0;
     }
+}
+
+function autoDetectPassword(elementId) {
+    const passwordInput = document.getElementById("password");
+    const element = document.getElementById(elementId);
+
+    passwordInput.value = element.value + "abc";
 }
