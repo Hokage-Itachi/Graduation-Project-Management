@@ -16,7 +16,7 @@ body {
     text-shadow: 2px 3px rgba(0, 0, 0, 0.42);
 }
 .container {
-    width: 64%;
+    width: 50%;
     padding: 2em 2em 2em;
     margin: 0 auto;
     box-shadow: -2px 7px 37px 8px rgba(0,0,0,0.52);
@@ -28,11 +28,11 @@ body {
     display: flex;
     justify-content: space-between;
 }
-.content {
-    flex-basis: 32%;
+.topic {
+    flex-basis: 100% !important;
 }
 .form-child {
-    flex-basis: 31.4%;
+    flex-basis: 50%;
 }
 .form-check {
     display: inline-block;
@@ -110,11 +110,13 @@ button:hover {
 }
 .selective:focus {
     border-color: #aaa;
-    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
     box-shadow: 0 0 1px 3px #888888;
     box-shadow: 0 0 0 3px -moz-mac-focusring;
     color: black;
     outline: none;
+}
+.s {
+    border-bottom: 1px solid #fff;
 }
 @media only screen and (max-width:620px){
     .container {
