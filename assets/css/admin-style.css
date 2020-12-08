@@ -85,45 +85,19 @@ body {
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
 
-/*
- * Utilities
- */
-
-.border-top {
-    border-top: 1px solid #e5e5e5;
+.height-100vh {
+    height: 100vh;
 }
 
-.border-bottom {
-    border-bottom: 1px solid #e5e5e5;
-}
-.modal-body p {
-    font-size: 18px;
-    background-color: rgb(192, 192, 192);
-    width: 80%;
-    border-radius: 15px;
-    padding-left: 10px;
-    letter-spacing: 2px;
+.height-85vh {
+    height: 85vh;
 }
 
-
-.form-group{
-    display: flex;
-    justify-content: space-between;
+.overflow-auto {
+    overflow: auto;
 }
-.form-child {
-    flex-basis: 200px;
 
-}
-.form-child input[type='text'], .form-child input[type="number"],.form-child input[type="email"] {
-    outline: none;
-    width: 100%;
-    color: black;
-    font-size: 15px;
-    padding: .7em 1em .8em 0em;
-    border: none;
-    border-bottom: 1px solid #888888;
-    margin: 0px 0px 16px;
-    display: inline-block;
-    background: none;
-    letter-spacing: 2px;
+.bottom-sticky {
+    position: sticky;
+    bottom: 20px;
 }
