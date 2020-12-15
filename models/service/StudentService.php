@@ -11,12 +11,23 @@ class StudentService
         $this->studentDAO = new StudentDAO();
     }
 
-    public function findByID($id)
+    public function findByID($id): ?Student
     {
         $result = $this->studentDAO->findByID($id);
         // error_log("Call here");
         if ($result) {
-            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['course'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id']);
+            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
+            return $student;
+        } else {
+            return null;
+        }
+    }
+    public function findByStudentID($student_id): ?Student
+    {
+        $result = $this->studentDAO->findByStudentID($student_id);
+        // error_log("Call here");
+        if ($result) {
+            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
             return $student;
         } else {
             return null;
@@ -36,16 +47,43 @@ class StudentService
 
     public function getAllStudent()
     {
-        $result = $this->studentDAO->getAll();
-        if ($result) {
+        $results = $this->studentDAO->getAll();
+        $i = 0;
+        if ($results) {
             $list_student = array();
-            for ($i = 0; $i < count($result); $i++) {
-                $student = new Student($result[$i]['student_id'], $result[$i]['class'], $result[$i]['grade'], $result[$i]['course'], $result[$i]['user_id'], $result[$i]['email'], $result[$i]['pass_hashed'], $result[$i]['name'], $result[$i]['phone_number'], $result[$i]['role_id']);
+            foreach ($results as $result) {
+                $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
                 $list_student[$i] = $student;
+                $i++;
             }
             return $list_student;
         } else {
             return null;
         }
     }
+
+    public function deleteStudent($student_id)
+    {
+        $result = $this->studentDAO->delete($student_id);
+//        error_log($result);
+    }
+
+    public function updateStudent($student_id, $class, $grade, $year, $branch_id, $user_id){
+        $result = $this->studentDAO->updateStudent($student_id, $class, $grade, $year, $branch_id, $user_id);
+    }
+    public function insertStudent($student_id, $class, $grade, $year, $branch_id, $user_id){
+        $result = $this->studentDAO->insert($user_id, $class, $student_id, $grade, $year, $branch_id);
+        error_log($result);
+    }
+    public function getByUserID($user_id){
+        $result = $this->studentDAO->findByUserID($user_id);
+        // error_log("Call here");
+        if ($result) {
+            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
+            return $student;
+        } else {
+            return null;
+        }
+    }
+
 }

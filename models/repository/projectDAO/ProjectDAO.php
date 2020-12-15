@@ -1,9 +1,10 @@
 <?php
 require_once('./models/repository/projectDAO/ProjectQuery.php');
+require_once('./models/repository/projectDAO/ProjectAssignmentQuery.php');
 class ProjectDAO
 {
 
-    function findByID($project_id)
+    function findByID($project_id): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectQuery::SELECT_BY_ID, $project_id);
@@ -19,7 +20,7 @@ class ProjectDAO
         }
     }
 
-    public function findByName($name)
+    public function findByName($name): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectQuery::SELECT_BY_NAME, "%", $name, "%");
@@ -40,7 +41,7 @@ class ProjectDAO
         }
     }
 
-    public function findByStatus($status)
+    public function findByStatus($status): ?array
     {
         $db = DB::getInstance();
         $rows = array();
@@ -60,7 +61,7 @@ class ProjectDAO
         }
     }
 
-    public function findByBranch($branch_id)
+    public function findByBranch($branch_id): ?array
     {
         $db = DB::getInstance();
         $rows = array();
@@ -80,15 +81,20 @@ class ProjectDAO
         }
     }
 
-    public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day)
+    public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day, $student_id, $teacher_id): string
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectQuery::INSERT, $name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day);
 
         $result = $db->query($sql);
         if ($result) {
-            $db->close();
-            return "Success";
+            $project_id = $this->findByName($name)[0]['id'];
+            $sql = sprintf(ProjectAssignmentQuery::INSERT, $project_id, $student_id, $teacher_id);
+            $result = $db->query($sql);
+            if ($result) {
+                $db->close();
+                return "Success";
+            }
         } else {
             $error = $db->connect_error;
             $db->close();
@@ -96,7 +102,7 @@ class ProjectDAO
         }
     }
 
-    public function getAll()
+    public function getAll(): ?array
     {
         $db = DB::getInstance();
         $rows = array();
@@ -116,7 +122,7 @@ class ProjectDAO
         }
     }
 
-    public function getRowNumber()
+    public function getRowNumber(): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectQuery::COUNT_ROW_NUM);

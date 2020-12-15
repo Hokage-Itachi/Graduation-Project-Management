@@ -6,7 +6,7 @@ class DB
 
     public static function getInstance()
     {
-        self::$instance = new mysqli("localhost", 'gpms', 'gpms', 'gpms_schema');
+        self::$instance = new mysqli("localhost", 'root', 'uchihaitachi', 'gpms_schema');
         if (self::$instance) {
             return self::$instance;
         } else {

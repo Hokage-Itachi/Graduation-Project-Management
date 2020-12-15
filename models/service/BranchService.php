@@ -11,7 +11,7 @@ class BranchService
         $this->branchDAO = new BranchDAO();
     }
 
-    public function findByID($branch_id)
+    public function findByID($branch_id): ?Branch
     {
         $result = $this->branchDAO->findByID($branch_id);
         if ($result) {
@@ -22,7 +22,7 @@ class BranchService
         }
     }
 
-    public function getAll()
+    public function getAll(): ?array
     {
         $result = $this->branchDAO->getAll();
         $branches = array();

@@ -6,14 +6,32 @@ class Teacher extends User
     private $degree;
     private $academic_rank;
     private $work_place;
+    private $branch_id;
 
-    public function __construct($teacher_id, $degree, $academic_rank, $work_place, $user_id, $email, $pass_hashed, $name, $phone_number, $role_id)
+    public function __construct($teacher_id, $degree, $academic_rank, $work_place, $user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active, $branch_id)
     {
-        parent::__construct($user_id, $email, $pass_hashed, $name, $phone_number, $role_id);
+        parent::__construct($user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active);
         $this->teacher_id = $teacher_id;
         $this->degree = $degree;
         $this->academic_rank = $academic_rank;
         $this->work_place = $work_place;
+        $this->branch_id = $branch_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBranchId()
+    {
+        return $this->branch_id;
+    }
+
+    /**
+     * @param mixed $branch_id
+     */
+    public function setBranchId($branch_id): void
+    {
+        $this->branch_id = $branch_id;
     }
 
     /**

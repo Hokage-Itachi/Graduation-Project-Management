@@ -11,6 +11,7 @@
 
 
 </head>
+
 <body>
 <h1 class='header'>
     Đăng Ký Đồ Án Tốt Nghiệp
@@ -21,7 +22,7 @@
 
         <div class='form-group'>
             <div class='form-child topic'>
-              <input type="text" id="projec" placeholder="Đề tài" required>
+              <input type="text" id="project" placeholder="Đề tài" required>
             </div>
 
         </div>
@@ -48,7 +49,8 @@
 
         <button type="button">Add</button>
 
-    </form>
-</div>
+        </form>
+    </div>
 </body>
+
 </html>
