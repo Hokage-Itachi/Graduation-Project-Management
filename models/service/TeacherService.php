@@ -14,7 +14,7 @@ class TeacherService
         $result = $this->teacherDAO->findByID($teacher_id);
 
         if ($result) {
-            $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"]);
+            $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"], $result['active'],$result['branch_id']);
             return $teacher;
         } else {
             return null;
@@ -23,13 +23,13 @@ class TeacherService
 
     public function getAll()
     {
-        $result = $this->teacherDAO->getAll();
+        $results = $this->teacherDAO->getAll();
         $teachers = array();
 
         $i = 0;
-        if ($result) {
-            foreach ($result as $row){
-                $teacher = new Teacher($row['id'], $row["degree"], $row["academic_rank"], $row["work_place"], $row["user_id"], $row["email"], $row["pass_hashed"], $row["name"], $row["phone_number"], $row["role_id"]);
+        if ($results) {
+            foreach ($results as $result){
+                $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"], $result['active'],$result['branch_id']);
                 $teachers[$i] = $teacher;
                 $i++;
             }
@@ -38,4 +38,25 @@ class TeacherService
             return null;
         }
     }
+
+    public function update($user_id, $degree, $work_place, $academic_rank, $branch_id){
+        $result= $this->teacherDAO->update($user_id, $degree, $work_place, $academic_rank, $branch_id);
+    }
+
+    public function insert($user_id, $degree, $work_place, $academic_rank, $branch_id){
+        $result = $this->teacherDAO->insert($user_id, $degree, $work_place, $academic_rank, $branch_id);
+        error_log($result);
+    }
+
+    public function getByUserID($user_id){
+        $result = $this->teacherDAO->findByUserID($user_id);
+
+        if ($result) {
+            $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"], $result['active'],$result['branch_id']);
+            return $teacher;
+        } else {
+            return null;
+        }
+    }
+
 }

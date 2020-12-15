@@ -2,7 +2,7 @@
 include_once('./models/repository/branchDAO/BranchQuery.php');
 class BranchDAO
 {
-    public function findByID($branch_id)
+    public function findByID($branch_id): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(BranchQuery::SELECT_BY_ID, $branch_id);
@@ -18,7 +18,7 @@ class BranchDAO
         }
     }
 
-    public function getAll()
+    public function getAll(): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(BranchQuery::SELECT_ALL);

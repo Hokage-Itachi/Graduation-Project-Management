@@ -5,12 +5,13 @@ class Project
     private $name;
     private $completed;
     private $branch_id;
+    private $content;
     private $point;
     private $curriculum;
     private $faculty;
     private $presentation_day;
-    // private $student_id;
-    // private $teacher_id;
+     private $student_id;
+     private $teacher_id;
 
     /**
      * Project constructor.

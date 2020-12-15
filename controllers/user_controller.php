@@ -23,7 +23,7 @@ class UserController extends BaseController
         $password = addslashes($password);
 
         $user = $this->userService->findByEmail($email);
-        if ($user) {
+        if ($user && $user-> getActive() == '1') {
             if (password_verify($password, $user->getPassHashed())) {
                 $_SESSION['user']['role'] = $user->getRoleId();
                 $_SESSION['user']['id'] = $user->getUserId();

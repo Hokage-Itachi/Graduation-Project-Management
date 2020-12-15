@@ -22,7 +22,7 @@
 
         <div class='form-group'>
             <div class='form-child topic'>
-              <input type="text" id="projec" placeholder="Đề tài" required>
+              <input type="text" id="project" placeholder="Đề tài" required>
             </div>
 
         </div>

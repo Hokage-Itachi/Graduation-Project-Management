@@ -6,15 +6,49 @@ class Student extends User
     private $student_id;
     private $class;
     private $grade;
-    private $course;
+    private $year;
+    private $branch_id;
 
-    public function __construct($student_id, $class, $grade, $course, $user_id, $email, $pass_hashed, $name, $phone_number, $role_id)
+    public function __construct($student_id, $class, $grade, $course, $user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active, $branch_id)
     {
-        parent::__construct($user_id, $email, $pass_hashed, $name, $phone_number, $role_id);
+        parent::__construct($user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active);
         $this->student_id = $student_id;
         $this->class = $class;
         $this->grade = $grade;
-        $this->course = $course;
+        $this->year = $course;
+        $this->branch_id = $branch_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param mixed $year
+     */
+    public function setYear($year): void
+    {
+        $this->year = $year;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBranchId()
+    {
+        return $this->branch_id;
+    }
+
+    /**
+     * @param mixed $branch_id
+     */
+    public function setBranchId($branch_id): void
+    {
+        $this->branch_id = $branch_id;
     }
 
     /**
@@ -38,7 +72,7 @@ class Student extends User
      */
     public function getCourse()
     {
-        return $this->course;
+        return $this->year;
     }
 
     /**
@@ -46,7 +80,7 @@ class Student extends User
      */
     public function setCourse($course)
     {
-        $this->course = $course;
+        $this->year = $course;
     }
 
 
