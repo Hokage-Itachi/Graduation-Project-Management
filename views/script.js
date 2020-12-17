@@ -37,9 +37,33 @@ const handleCheckTask = () => {
 //handle add task
 const tasklist = [];
 const handleAddTask = () => {
-  document.getElementById("taskList").innerHTML += `<li><input
+  /* document.getElementById("taskList").innerHTML += `<li><input
                       type="checkbox"
                       id="task2"
                       onclick="handleCheckTask()"
-                    />Task @@</li>`;
+                    />Task @@</li>`;*/
+  const addTask = document.getElementById("form-addTask");
+  addTask.style.display = "block";
+};
+// task details
+const taskDetails = () => {
+  const modal = document.getElementById("myModal");
+
+  modal.style.display = "block";
+};
+
+const closeModal = () => {
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";
+};
+window.onclick = (event) => {
+  const modal = document.getElementById("myModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+//handle account
+const handleAccount = () => {
+  const account = document.getElementById("account");
+  account.style.display = "block";
 };
