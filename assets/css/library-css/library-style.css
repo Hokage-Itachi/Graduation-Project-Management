@@ -1,27 +1,11 @@
 * {
     box-sizing: border-box;
 }
-.left {
-    float: left;
-    width: 23%;
-    font: 15px Verdana;
-    /*font-family:Verdana;*/
-    /*font-size: 15px;*/
-}
-.right {
-    float: right;
-    width: 77%;
-    padding: 0 20px;
-    height: 100%;
-    /*display:grid;*/
-}
 .container-left {
     margin: 0;
     padding: 0;
-    width: 23%;
     background-color: white;
     position: fixed;
-    top:0;
     left: 0;
     height: 100%;
     border-radius: 5px;
@@ -29,7 +13,7 @@
 }
 .search-div {
     margin: 20px 10px;
-    width: 100%;
+    width: 98%;
     position: relative;
     display: flex;
 }
@@ -65,10 +49,11 @@
     font-weight: 700;
     color: #444;
     line-height: 1.3;
-    padding: .6em 1.4em .5em .8em;
-    width: 90%;
+    /*padding: .6em 1.4em .5em .8em;*/
+    padding: 5px;
+    width: 93%;
     max-width: 100%; /* useful when width is set to anything other than 100% */
-    margin: 20px;
+    margin: 20px 10px;
     border: 1px solid #aaa;
     box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
     border-radius: .5em;
@@ -133,30 +118,11 @@
 
 }
 hr {
-    margin-top: 10px;
-    border: 3px solid #8bc34a;
-    border-radius: 5px;
+    margin-top: 10px !important;
+    border: 3px solid #8bc34a !important;
+    border-radius: 5px !important;
 }
-
-
-.header {
-    width: 75%;
-    padding: 24px;
-    font: 15px Verdana;
-    height: 143px;
-    position: fixed;
-    top:0;
-    margin-left: -10px;
-    /*margin-top: 10px;*/
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
-    background-image: url("https://image.freepik.com/free-vector/virtual-graduation-ceremony-with-classmates_23-2148571604.jpg");
-    background-position: center top;
-    background-repeat: repeat;
-    background-size: 416.67px 416.67px ;
-
-}
-.header h1 {
+.page-header h1 {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
     color: white;
@@ -170,31 +136,16 @@ hr {
     width: 70%;
     padding: 20px;
     text-align: center;
+    margin-top: 20px;
 }
 .user{
     float: right;
-    margin-top:40px;
+    margin-top:60px;
     margin-right: -5px;
 }
-.user a {
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-.user a:hover{
-    cursor: pointer;
-    color: white;
-}
-.user span {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-.user i {
-    margin-top: 10px;
-    padding-top: 5px;
-    font-size: 2em;
-    padding-left: 11px;
-    background-color:  #F0D93B;
+.user img {
+    width: 85.33px;
+    height: 85.33px;
     height: 50px;
     -moz-border-radius:75px;
     -webkit-border-radius: 75px;
@@ -202,21 +153,33 @@ hr {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.22);
 
 }
-.main {
-    width: 100%;
-    margin-top: 140px;
+.user a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+
+}
+.user a:hover{
+    cursor: pointer;
+    color: #8bc34a;
+}
+.card-columns {
+   
+    margin-top: 15% !important;
+    margin-left: -3% !important;
 }
 .card {
-    float: left;
-    background:  #F0D93B;
-    width: 17em;
-    height: 23em;
+    
+    background:  #F0D93B !important;
+    width: 21em !important;
     padding:0px;
-    margin:2em 1.5em;
+    margin:2em 0 !important;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.2s ease-in-out;
+    font-size: 14px !important;
 }
 .card:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -226,6 +189,7 @@ hr {
     padding: 0.4em;
 }
 .card h1 {
+    margin-top: 10px;
     font-size: 17px;
     font-family:  "noto sans", sans-serif, Helvetical;
     /*background-color: #27AE60;*/
@@ -267,32 +231,117 @@ hr {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.22);
 
 }
-
-@media only screen and (max-width:620px) {
-    /* For mobile phones: */
-    .menu, .main, .right {
-        width:100%;
-    }
+@media screen and (max-width:576px) {
     .container-left {
-        width: 100vh;
+        width: 100%;
         position: unset;
     }
-    .header {
-        width: 100vh;
-        position: unset;
-        margin-left: -20px;
+    .search-div {
+        width: 105%;
     }
-    .header h1 {
+    .page-header{
+        width: 100% !important;
+        position: unset !important;
+        margin-top: 50px;
+        margin-left: 5px !important;
+    }
+    .page-header h1 {
+        
+        margin-top: -140% !important;
+        font-size: 20px;
         width: 80%;
-        margin-top: 10%;
-    }
-    .user {
-        margin-right: 30%;
-        margin-top: 10%;
+
     }
     .card {
-        width: 22em;
-        /*width: 100%;*/
-        display:block;
+        width: 100% !important;
+        margin-left: 10px !important;
+
     }
+}
+
+@media screen and (min-width: 768px){
+    .container-left {
+        width: 31%;
+    }
+    .page-header{
+        width: 68% !important;
+        margin-left: -30px !important;
+    }
+    .page-header h1 {
+        width: 70%;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    .card-columns {
+        display: table;
+        margin-top: 30% !important;
+    }
+    .card {
+        width: 20em !important;
+        margin: 10px !important;
+    }
+
+}
+@media screen and (min-width: 992px){
+    .container-left {
+        width: 24%;
+    }
+    .page-header {
+        width: 75% !important;
+        margin-left:-18px !important;
+    }
+    .page-header h1 {
+        width: 70%;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    .card {
+        width: 27em !important;
+        margin: 22px !important;
+
+    }
+    .card-columns {
+        margin-top: 20% !important;
+    }
+
+
+}
+@media screen and (min-width: 1280px){
+    .container-left {
+        width: 21.5%;
+    }
+    .page-header {
+        width: 77% !important;
+        margin-left:-4% !important;
+    }
+    .page-header h1 {
+        font-size: 35px !important;
+        margin-top: 2%;
+    }
+    .card-columns {
+        display: inline-block;
+        margin-top: 15% !important;
+    }
+    .card {
+        width: 21em !important;
+        margin:2em 0 !important;
+    }
+
+
+}
+.page-header {
+    width: 77%;
+    padding: 24px;
+    font: 15px Verdana;
+    height: 143px;
+    position: fixed;
+    top:0;
+    margin-left: -50px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
+    background-image: url("https://image.freepik.com/free-vector/virtual-graduation-ceremony-with-classmates_23-2148571604.jpg");
+    background-position: center top;
+    background-repeat: repeat;
+    background-size: 416.67px 416.67px ;
+    z-index: 10;
 }
