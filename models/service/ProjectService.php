@@ -102,8 +102,10 @@ class ProjectService
         }
     }
 
-    public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $presentation_day, $student_id, $teacher_id)
+    public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $student_id, $teacher_id)
     {
-        $result = $this->projectDAO->insert($project->getName(), $project->getCompleted(), $project->getBranchId(), $project->getPoint(), $project->getCurriculum(), $project->getFaculty(), $project->getPresentationDay(), $project->getStudentId(), $project->getTeacherId());
+        $result = $this->projectDAO->insert($name, $completed, $branch_id,$point, $curriculum, $faculty, $student_id, $teacher_id);
+        error_log($result);
     }
+
 }

@@ -16,7 +16,7 @@ class StudentService
         $result = $this->studentDAO->findByID($id);
         // error_log("Call here");
         if ($result) {
-            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
+            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
             return $student;
         } else {
             return null;
@@ -27,7 +27,7 @@ class StudentService
         $result = $this->studentDAO->findByStudentID($student_id);
         // error_log("Call here");
         if ($result) {
-            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
+            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
             return $student;
         } else {
             return null;
@@ -52,7 +52,7 @@ class StudentService
         if ($results) {
             $list_student = array();
             foreach ($results as $result) {
-                $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
+                $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
                 $list_student[$i] = $student;
                 $i++;
             }
@@ -79,7 +79,7 @@ class StudentService
         $result = $this->studentDAO->findByUserID($user_id);
         // error_log("Call here");
         if ($result) {
-            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id']);
+            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
             return $student;
         } else {
             return null;
