@@ -3,13 +3,14 @@
 include_once("./models/entity/User.php");
 class Student extends User
 {
+    private $row_id;
     private $student_id;
     private $class;
     private $grade;
     private $year;
     private $branch_id;
 
-    public function __construct($student_id, $class, $grade, $course, $user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active, $branch_id)
+    public function __construct($student_id, $class, $grade, $course, $user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active, $branch_id, $row_id)
     {
         parent::__construct($user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active);
         $this->student_id = $student_id;
@@ -17,6 +18,23 @@ class Student extends User
         $this->grade = $grade;
         $this->year = $course;
         $this->branch_id = $branch_id;
+        $this->row_id = $row_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRowId()
+    {
+        return $this->row_id;
+    }
+
+    /**
+     * @param mixed $row_id
+     */
+    public function setRowId($row_id): void
+    {
+        $this->row_id = $row_id;
     }
 
     /**

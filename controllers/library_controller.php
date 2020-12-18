@@ -41,20 +41,22 @@ class LibraryController extends BaseController
         $projects = $this->projectService->getAll();
         $project_data = array();
         for ($i = 0; $i < count($projects); $i++) {
-            $student = $this->studentService->findByID($projects[$i]->getStudentId());
-            // error_log($student->getName());
-            $teacher = $this->teacherService->findByID(($projects[$i]->getTeacherId()));
-            $branch = $this->branchService->findByID($projects[$i]->getBranchId());
-            $data = array(
-                "project_name" => $projects[$i]->getName(),
-                "student" => $student->getName(),
-                "year" => $student->getCourse(),
-                "teacher" => $teacher->getName(),
-                "branch" => $branch->getName(),
-                "content" => "Unknown",
-                "point" => $projects[$i]->getPoint()
-            );
-            $project_data[$i] = $data;
+            if($projects[$i]->getCompleted() == '1') {
+                $student = $this->studentService->findByID($projects[$i]->getStudentId());
+                // error_log($student->getName());
+                $teacher = $this->teacherService->findByID(($projects[$i]->getTeacherId()));
+                $branch = $this->branchService->findByID($projects[$i]->getBranchId());
+                $data = array(
+                    "project_name" => $projects[$i]->getName(),
+                    "student" => $student->getName(),
+                    "year" => $student->getCourse(),
+                    "teacher" => $teacher->getName(),
+                    "branch" => $branch->getName(),
+                    "content" => "Unknown",
+                    "point" => $projects[$i]->getPoint()
+                );
+                $project_data[$i] = $data;
+            }
         }
         return $project_data;
         // $this->render();

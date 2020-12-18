@@ -14,40 +14,46 @@
 
 <body>
 <h1 class='header'>
-    Đăng Ký Đồ Án Tốt Nghiệp
+    Sign up your granduation project
 </h1>
 <div class='container'>
-    <form>
+    <form action="/student/addproject" method="POST">
 
 
         <div class='form-group'>
             <div class='form-child topic'>
-              <input type="text" id="project" placeholder="Đề tài" required>
+              <input type="text" name="name" id="project" placeholder="Project name" required>
             </div>
 
         </div>
         <div class='form-group'>
 
             <div class='form-child st'>
-                <label class='lab' for="branch">Chuyên Ngành</label><br>
-                <select class='selective' id="branch">
-                   <option>Math</option>
-                   <option>Computer and Science Information</option>
+                <label class='lab' for="branch">Branch</label><br>
+                <select class='selective' id="branch" name="branch">
+                <?php
+                foreach ($data['branches'] as $branch){
+                    echo "<option value='".$branch['id']."'>".$branch['name']."</option>";
+                }
+                ?>
                 </select>
             </div>
             <div class='form-child st'>
-                <label class='lab' for="teacher">Người Hướng Dẫn</label><br>
-              <select class='selective' id="teacher">
-                  <option>Teacher A</option>
-                  <option>Teacher B</option>
+                <label class='lab' for="teacher">Teacher</label><br>
+              <select class='selective' id="teacher" name="teacher">
+                  <?php
+                  foreach ($data['teachers'] as $teacher){
+                      echo "<option value='".$teacher['email']."'>".$teacher['name']."</option>";
+                  }
+                  ?>
               </select>
             </div>
         </div>
          <div class='form-content'>
-             <textarea placeholder="Nội Dung Đề Tài"></textarea>
+             <textarea placeholder="Description"></textarea>
          </div>
 
-        <button type="button">Add</button>
+        <button type="submit">Sign Up</button>
 
         </form>
     </div>
