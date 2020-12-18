@@ -5,6 +5,7 @@ class Task{
     private $name;
     private $description;
     private $deadline;
+    private $status;
 
     /**
      * Task constructor.
@@ -13,15 +14,34 @@ class Task{
      * @param $name
      * @param $description
      * @param $deadline
+     * @param $status
      */
-    public function __construct($task_id, $phase_id, $name, $description, $deadline)
+    public function __construct($task_id, $phase_id, $name, $description, $deadline, $status)
     {
         $this->task_id = $task_id;
         $this->phase_id = $phase_id;
         $this->name = $name;
         $this->description = $description;
         $this->deadline = $deadline;
+        $this->status = $status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
+
 
     /**
      * @return mixed
