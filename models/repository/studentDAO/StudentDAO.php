@@ -6,7 +6,7 @@ class StudentDAO
     {
         $db = DB::getInstance();
         $sql = sprintf(StudentQuery::SELECT_BY_ID, $id);
-        // error_log($sql);
+        error_log($sql);
         $result = $db->query($sql);
         $db->close();
         if ($result->num_rows > 0) {
