@@ -3,7 +3,7 @@ include_once('./models/repository/userDAO/UserQuery.php');
 class UserDAO
 {
 
-    function findByEmail($email)
+    function findByEmail($email): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(UserQuery::SELECT_BY_EMAIL, $email);
@@ -19,7 +19,7 @@ class UserDAO
         }
     }
 
-    public function findByID($id)
+    public function findByID($id): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(UserQuery::SELECT_BY_ID, $id);
@@ -34,7 +34,7 @@ class UserDAO
             return null;
         }
     }
-    public function getAll()
+    public function getAll(): ?array
     {
         $db = DB::getInstance();
         $sql = sprintf(UserQuery::SELECT_ALL);
@@ -53,4 +53,88 @@ class UserDAO
             return null;
         }
     }
+
+    public function update($id, $email, $name, $pass_hashed): ?string
+    {
+        $db = DB::getInstance();
+        $sql = sprintf(UserQuery::UPDATE_USER, $name, $email,$pass_hashed, $id);
+        // error_log($sql);
+        $result = $db->query($sql);
+        $db->close();
+        if ($result) {
+            return "Success";
+        } else {
+            return null;
+        }
+    }
+
+    public function delete($id): string
+    {
+        $db = DB::getInstance();
+        $sql = sprintf(UserQuery::DELETE_USER, $id);
+        // error_log($sql);
+        $result = $db->query($sql);
+        if ($result) {
+            $db->close();
+            return "Success";
+        } else {
+            $error = "Error:" . $db->error;
+            $db->close();
+
+            return $error;
+        }
+    }
+
+    public function insert($email, $pass_hashed, $name, $phone_number, $role_id): string
+    {
+        $db = DB::getInstance();
+        $sql = sprintf(UserQuery::INSERT_USER, $email, $pass_hashed, $name, $phone_number, $role_id);
+        // error_log($sql);
+        $result = $db->query($sql);
+        if ($result) {
+            $db->close();
+            return "Success";
+        } else {
+            $error = "Error:" . $db->error;
+            $db->close();
+
+            return $error;
+        }
+    }
+
+    public function getInactiveUser(): ?array
+    {
+        $db = DB::getInstance();
+        $sql = sprintf(UserQuery::SELECT_INACTIVE_USER);
+        $result = $db->query($sql);
+        $db->close();
+//        $rows = array();
+//        $i = 0;
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                return $row;
+            }
+//            return $rows;
+        } else {
+            return null;
+        }
+    }
+
+    public function activeUser($id){
+        $db = DB::getInstance();
+        $sql = sprintf(UserQuery::ACTIVE_USER, $id);
+        // error_log($sql);
+        $result = $db->query($sql);
+        if ($result) {
+            $db->close();
+            return "Success";
+        } else {
+            $error = "Error:" . $db->error;
+            $db->close();
+
+            return $error;
+        }
+    }
+
 }

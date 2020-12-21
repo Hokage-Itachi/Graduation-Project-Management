@@ -22,7 +22,7 @@ class ProjectService
         }
     }
 
-    public function findByName($name)
+    public function findByName($name): ?array
     {
         $result = $this->projectDAO->findByName($name);
         $list_project = array();
@@ -39,7 +39,7 @@ class ProjectService
         }
     }
 
-    public function findByStatus($status)
+    public function findByStatus($status): ?array
     {
         $result = $this->projectDAO->findByStatus($status);
         $list_project = array();
@@ -56,9 +56,9 @@ class ProjectService
         }
     }
 
-    public function findByBranch($branch)
+    public function findByBranch($branch): ?array
     {
-        $result = $this->projectDAO->findByStatus($branch);
+        $result = $this->projectDAO->findByBranch($branch);
         $list_project = array();
         if ($result) {
             for ($i = 0; $i < count($result); $i++) {
@@ -74,7 +74,7 @@ class ProjectService
         }
     }
 
-    public function getAll()
+    public function getAll(): ?array
     {
         $result = $this->projectDAO->getAll();
         $list_project = array();
@@ -93,7 +93,7 @@ class ProjectService
 
     public function getProjectNumber()
     {
-        $result = $this->projectDAO->getAll();
+        $result = $this->projectDAO->getRowNumber();
         if ($result) {
             $row_num = $result['row_num'];
             return $row_num;
@@ -101,4 +101,11 @@ class ProjectService
             return null;
         }
     }
+
+    public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $student_id, $teacher_id)
+    {
+        $result = $this->projectDAO->insert($name, $completed, $branch_id,$point, $curriculum, $faculty, $student_id, $teacher_id);
+        error_log($result);
+    }
+
 }

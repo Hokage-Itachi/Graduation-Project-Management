@@ -9,8 +9,10 @@ class User
     protected $name;
     protected $phone_number;
     protected $role_id;
+    private $active;
+    private $avatar;
 
-    public function __construct($user_id, $email, $pass_hashed, $name, $phone_number, $role_id)
+    public function __construct($user_id, $email, $pass_hashed, $name, $phone_number, $role_id, $active)
     {
         $this->user_id = $user_id;
         $this->email = $email;
@@ -18,6 +20,39 @@ class User
         $this->name = $name;
         $this->phone_number = $phone_number;
         $this->role_id = $role_id;
+        $this->active = $active;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param mixed $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
     }
 
     /**

@@ -102,24 +102,46 @@
                                             <div class="form-group">
                                                 <label for="name">Teacher Name</label>
                                                 <input type="text" class="form-control" id="name"
-                                                       placeholder="Teacher Name" value="" required>
+                                                       placeholder="Teacher Name" name="name" value="" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email">Email address</label>
                                                 <input type="email" class="form-control" id="email"
                                                        onblur="autoDetectPassword('email')"
-                                                       placeholder="Teacher email" value="" required>
+                                                       placeholder="Teacher email" name="email" value="" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="class">Work address</label>
+                                                <label for="work_place">Work address</label>
                                                 <input type="text" class="form-control"
-                                                       id="class"
-                                                       placeholder="Work address" value="" required>
+                                                       id="work_place"
+                                                       placeholder="Work address" name="work_place" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="degree">Degree</label>
+                                                <input type="text" class="form-control"
+                                                       id="degree"
+                                                       placeholder="Degree" name="degree" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="academic_rank">Academic Rank</label>
+                                                <input type="text" class="form-control"
+                                                       id="academic_rank"
+                                                       placeholder="Academic_rank" name="academic_rank" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="branch">Branch</label>
+                                                <select name="branch" class="form-control" id="branch" required>
+                                                    <?php
+                                                    foreach ($data['branches'] as $branch){
+                                                        echo "<option value='".$branch['branch_id']."' name='branch_name'>".$branch['branch_name']."</option>";
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="password">Password</label>
                                                 <input type="text" class="form-control" id="password"
-                                                       value="password"
+                                                       value="password" name="password"
                                                        readonly>
                                             </div>
                                         </div>
@@ -148,6 +170,8 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Work Place</th>
+                        <th>Degree</th>
+                        <th>Academic Rank</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -160,6 +184,9 @@
                                         <td>" . $data['teachers'][$i]['name'] . "</td>
                                         <td>" . $data['teachers'][$i]['email'] . "</td>
                                         <td>" . $data['teachers'][$i]['work_place'] . "</td>
+                                        <td>" . $data['teachers'][$i]['degree'] . "</td>
+                                        <td>" . $data['teachers'][$i]['academic_rank'] . "</td>
+
                                         <td>
                                             <button type='button' data-toggle='modal' data-target='#teacher-" . $j . "-detail'>
                                                 <i class='fas fa-user-edit'></i>
@@ -173,29 +200,35 @@
                                                                 <span aria-hidden='true'>&times;</span>
                                                             </button>
                                                         </div>
-                                                        <form>
                                                         <div class='modal-body'>
-                                                            <form id='updateTeacherForm' action='/admin/teachers/update' method='POST'>
+                                                            <form id='updateTeacher".$data['teachers'][$i]['email']."Form' action='/admin/teachers/update' method='POST'>
                                                                 <div class='form-group'>
                                                                     <label>Name</label>
-                                                                    <input class='form-control' value='" . $data['teachers'][$i]['name'] . "'>
+                                                                    <input class='form-control' name='name' value='" . $data['teachers'][$i]['name'] . "'>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     <label>Email</label>
-                                                                    <input class='form-control' value='" . $data['teachers'][$i]['email'] . "'>
+                                                                    <input class='form-control' name='email' value='" . $data['teachers'][$i]['email'] . "'>
                                                                 </div>
                                                                 <div class='form-group'>
-                                                                    <label>StudentID</label>
-                                                                    <input class='form-control' value='" . $data['teachers'][$i]['work_place'] . "'>
+                                                                    <label>Work Place</label>
+                                                                    <input class='form-control' name='work_place' value='" . $data['teachers'][$i]['work_place'] . "'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Degree</label>
+                                                                    <input class='form-control' name='degree' value='" . $data['teachers'][$i]['degree'] . "'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Academic Rank</label>
+                                                                    <input class='form-control' name='academic_rank' value='" . $data['teachers'][$i]['academic_rank'] . "'>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                         <div class='modal-footer'>
                                                             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close
                                                             </button>
-                                                            <input type='submit' form='updateTeacherForm' class='btn btn-primary' value='Save Changes'/>
+                                                            <input type='submit' form='updateTeacher".$data['teachers'][$i]['email']."Form' class='btn btn-primary' value='Save Changes'/>
                                                         </div>
-                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,14 +244,14 @@
                                                         </div>
                                                         <div class='modal-body'>
                                                             <h4 class='text-danger'>To be carefully, this action can't be undo!</h4>
-                                                            <form id='deleteStudentForm' action='/admin/teachers/delete' method='POST'>
-                                                                <input type='hidden' value='" . $data['teachers'][$i]['email'] . "'>
+                                                            <form id='deleteTeacher".$data['teachers'][$i]['email']."Form' action='/admin/teachers/delete' method='POST'>
+                                                                <input type='hidden'  name='email' value='" . $data['teachers'][$i]['email'] . "'>
                                                             </form>
                                                         </div>
                                                         <div class='modal-footer'>
                                                             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel
                                                             </button>
-                                                            <button type='submit' form='deleteStudentForm' class='btn btn-primary'>Confirm delete</button>
+                                                            <button type='submit' form='deleteTeacher".$data['teachers'][$i]['email']."Form' class='btn btn-primary'>Confirm delete</button>
                                                         </div>
                                                     </div>
                                                 </div>

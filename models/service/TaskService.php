@@ -15,10 +15,12 @@ class TaskService
     {
         $result = $this->taskDAO->findByID($task_id);
         if ($result) {
-            $task = new Task($result['id'], $result['phase_id'], $result['name'], $result['description'], $result['deadline']);
+            $task = new Task($result['id'], $result['phase_id'], $result['name'], $result['description'], $result['deadline'], $result['status']);
             return $task;
         } else {
             return null;
         }
     }
+
+
 }
