@@ -45,11 +45,6 @@ $router->add_route('/student/signup', function () {
     $student_controller = new StudentController();
     $student_controller->renderSignupPage($student_controller->getSignUpData());
 });
-$router->add_route('/student/addproject', function () {
-    require_once("controllers/student_controller.php");
-    $student_controller = new StudentController();
-    $student_controller->addProject();
-});
 $router->add_route('/login', function () {
     require_once("controllers/user_controller.php");
     $user_controller = new UserController();
@@ -138,7 +133,7 @@ $router->add_route("/admin/projects", function () {
     require_once("controllers/admin_controller.php");
     $admin_controller = new AdminController();
 
-    $admin_controller->renderProjectPage(4);
+    $admin_controller->renderProjectPage($admin_controller->getProjectData());
     // TODO:
 });
 

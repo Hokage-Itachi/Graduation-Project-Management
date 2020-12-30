@@ -17,7 +17,7 @@ class StudentController extends BaseController{
 
     public function __construct()
     {
-        $this->file = "student_2_ui.php";
+        $this->file = "student_ui.php";
         $this->studentService = new StudentService();
         $this->teacherService = new TeacherService();
         $this->projectService = new ProjectService();

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Library</title>
+    <title>Project SignUp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="/assets/css/signup/signup-style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
@@ -17,7 +17,7 @@
     Sign up your granduation project
 </h1>
 <div class='container'>
-    <form action="/student/addproject" method="POST">
+    <form action="/student/signup" method="POST">
 
 
         <div class='form-group'>

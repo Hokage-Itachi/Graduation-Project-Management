@@ -10,13 +10,12 @@
     <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 
-    <title>Admin | Project</title>
+    <title>Admin | Student</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/admin-style.css" rel="stylesheet">
@@ -27,8 +26,7 @@
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HUS-Admin</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"
-           id='search-field' onkeyup="search('student')">
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field' onkeyup="search('student')">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="/logout">Log out</a>
@@ -48,7 +46,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="/admin/projects">
                             <i class="fas fa-file-alt"></i>
                             <span>Projects</span>
                         </a>
@@ -77,66 +75,100 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
                 <h1 class="h2">Project</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
-                            data-target="#addStudent">
-                        <i class="fas fa-user-plus"></i>
-                        Button
-                    </button>
-                    <div class="btn-group mr-2">
-                        <button class="btn btn-sm btn-outline-secondary">Import</button>
-                        <button class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                </div>
             </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-sm-36 col-md-5 col-lg-4 col-xl-3 mb-3">
-                        <div class="card text-center bg-light">
-                            <div class="card-body">
-                                <h5 class="card-title">1200</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Students</h6>
-                                <p class="card-text">All is learning online now because of N.Covi 19</p>
-                                <a href="/admin/students" class="card-link">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-36 col-md-5 col-lg-4 col-xl-3 mb-3">
-                        <div class="card text-center bg-info">
-                            <div class="card-body">
-                                <h5 class="card-title">170</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Teachers</h6>
-                                <p class="card-text">All is masters, doctors, professors</p>
-                                <a href="/admin/teachers" class="card-link">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-36 col-md-5 col-lg-4 col-xl-3 mb-3">
-                        <div class="card text-center bg-warning">
-                            <div class="card-body">
-                                <h5 class="card-title">257</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Projects</h6>
-                                <p class="card-text">From more than 200 student</p>
-                                <a href="/admin/projects" class="card-link">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- <h2>Student</h2> -->
+            <div class="table-responsive">
+                <table class="table table-striped table-sm" id='data-table'>
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Student</th>
+                        <th>Teacher</th>
+                        <th>Status</th>
+                        <th>Detail</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    for ($i = 0; $i < count($data['projects']); $i++) {
+                        $j = $i + 1;
+                        echo "<tr>
+                                        <td>" . $j . "</td>
+                                        <td>" . $data['projects'][$i]['id'] . "</td>
+                                        <td>" . $data['projects'][$i]['name'] . "</td>
+                                        <td>" . $data['projects'][$i]['student'] . "</td>
+                                        <td>" . $data['projects'][$i]['teacher'] . "</td>
+                                        <td>" . $data['projects'][$i]['status'] . "</td>
+                                        <td>
+                                            <button type='button' data-toggle='modal' data-target='#student-" . $j . "-detail'>
+                                                <i class='fas fa-user-edit'></i>
+                                            </button>
+                                            <div class='modal fade' id='student-" . $j . "-detail' tabindex='-1' role='dialog' aria-hidden='true'>
+                                                <div class='modal-dialog' role='document'>
+                                                    <div class='modal-content'>
+                                                        <div class='modal-header'>
+                                                            <h5 class='modal-title'>Project
+                                                                Information
+                                                                Detail</h5>
+                                                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                                <span aria-hidden='true'>&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class='modal-body'>
+                                                            <form id='updateStudent" . $data['projects'][$i]['id'] . "Form'>
+                                                                <div class='form-group'>
+                                                                    <label>ProjectID</label>
+                                                                    <input class='form-control' name='student_id' value='" . $data['projects'][$i]['id'] . "' readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Name</label>
+                                                                    <input class='form-control' name='name' value='" . $data['projects'][$i]['name'] . "' readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Student</label>
+                                                                    <input class='form-control' name='email' value='" . $data['projects'][$i]['student'] . "' readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Teacher</label>
+                                                                    <input class='form-control' name='email' value='" . $data['projects'][$i]['teacher'] . "' readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Branch</label>
+                                                                    <input class='form-control' name='email' value='" . $data['projects'][$i]['branch'] . "' readonly>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Point</label>
+                                                                    <input class='form-control' name='email' value='" . $data['projects'][$i]['point'] . "' readonly>
+                                                                </div>
+                                                       
+                                                            </form>
+                                                        </div>
+                                                        <div class='modal-footer'>
+                                                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close
+                                                            </button>
+                                               
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </td>
+                                    </tr>";
+                    }
+                    ?>
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="/assets/js/admin_script.js"></script>
 </body>
 

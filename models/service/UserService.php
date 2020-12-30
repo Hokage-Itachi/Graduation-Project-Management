@@ -51,7 +51,7 @@ class UserService
     public function updateUser($id, $email, $name, $pass_hashed)
     {
         $result = $this->userDAO->update($id, $email, $name, $pass_hashed);
-        // error_log($result);
+        error_log($result);
     }
 
     public function deleteUser($id)

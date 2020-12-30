@@ -4,11 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>Graduation Project management System</title>
     <link href="/assets/css/admin-style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css">
@@ -27,26 +25,26 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            First Project
+                            Website for manage staff
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Another project
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Another project again
-                        </a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">-->
+<!--                            Another project-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">-->
+<!--                            Another project again-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
                 <a class="btn btn-outline-danger my-5" href="/library">Library</a>
             </div>
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-3">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h3>Project's name here................</h3>
+                <h3>Website for manage staff</h3>
                 <div class="progress w-50">
                     <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0"
                          aria-valuemax="100">75%
@@ -66,9 +64,9 @@
                                 <label class="input-group-text" for="phaseSelectBox">Phase</label>
                             </div>
                             <select class="custom-select" id="phaseSelectBox">
-                                <option value="warm_up">Warm up</option>
-                                <option value="break_out">Break out</option>
-                                <option value="last_run">Last run</option>
+                                <option value="warm_up">Design system</option>
+                                <option value="break_out">Code</option>
+                                <option value="last_run">Test and Fix bug</option>
                             </select>
                         </div>
                         <div class="progress">
@@ -83,7 +81,7 @@
                                         <input type="checkbox" aria-label="Checkbox for following text input">
                                     </div>
                                 </div>
-                                <label class="form-control task-class">Create Something</label>
+                                <label class="form-control task-class">Design database</label>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <!-- Button trigger modal -->
@@ -99,8 +97,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form id="task-1-detail-form" action="/task/...something"
-                                                              method="POST">
+                                                        <form id="task-1-detail-form">
                                                             <div class="input-group input-group-sm mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-text">
@@ -108,9 +105,36 @@
                                                                     </div>
                                                                 </div>
                                                                 <input class="form-control" type="text"
-                                                                       value="I'm title here@">
+                                                                       value="Design database">
                                                             </div>
-                                                            <h3>Something here</h3>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        Description
+                                                                    </div>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="Design database">
+                                                            </div>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        Deadline
+                                                                    </div>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="12/12/2020">
+                                                            </div>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        Status
+                                                                    </div>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="Cmpleted">
+                                                            </div>
+
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
@@ -133,7 +157,7 @@
                                         <input type="checkbox" aria-label="Checkbox for following text input">
                                     </div>
                                 </div>
-                                <label class="form-control task-class">Create Something to long long long long</label>
+                                <label class="form-control task-class">Design Use Case and Actor</label>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <!-- Button trigger modal -->
@@ -149,8 +173,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form id="task-1-detail-form" action="/task/...something"
-                                                              method="POST">
+                                                        <form id="task-1-detail-form">
                                                             <div class="input-group input-group-sm mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-text">
@@ -158,7 +181,34 @@
                                                                     </div>
                                                                 </div>
                                                                 <input class="form-control" type="text"
-                                                                       value="I'm title here@">
+                                                                       value="Design UseCase and Actor">
+                                                            </div>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        Description
+                                                                    </div>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="Design UseCase and Actor">
+                                                            </div>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        Deadline
+                                                                    </div>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="22/12/2020">
+                                                            </div>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        Status
+                                                                    </div>
+                                                                </div>
+                                                                <input class="form-control" type="text"
+                                                                       value="Processing">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -183,7 +233,10 @@
                         </button>
                         <hr>
                         <div class="border text-center">
-                            <h3>File here</h3>
+                            <form action="/action_page.php">
+                                <input type="file" id="myFile" name="filename" />
+                                <input type="submit" />
+                            </form>
                         </div>
                     </div>
                     <div class="col-7 border">
@@ -196,14 +249,12 @@
         </main>
     </div>
 </div>
-
 <script type="application/javascript" rel="script">
     const labels = document.getElementsByClassName("task-class");
     for (let i = 0; i < labels.length; i++) {
         const label = labels[i];
         if (label.innerHTML.length > 18) label.innerHTML = label.innerHTML.slice(0, 16) + "...";
     }
-
     ClassicEditor
         .create(document.querySelector('#editor'))
         .catch(error => {

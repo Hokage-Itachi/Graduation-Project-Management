@@ -4,7 +4,7 @@ class StudentQuery
 
     const SELECT_BY_ID = "SELECT student.*, user.email, user.pass_hashed, user.name, user.phone_number, user.role_id, user.avatar, user.active
                         FROM student, user
-                        WHERE student.user_id = user.id AND student.id = '%s' AND user.active = '1'";
+                        WHERE student.user_id = user.id AND student.id = '%s'";
     const SELECT_BY_STUDENT_ID = "SELECT student.*, user.email, user.pass_hashed, user.name, user.phone_number, user.role_id, user.avatar, user.active
                         FROM student, user
                         WHERE student.user_id = user.id AND student_id = '%s'";

@@ -41,9 +41,11 @@ class LibraryController extends BaseController
         $projects = $this->projectService->getAll();
         $project_data = array();
         for ($i = 0; $i < count($projects); $i++) {
+
             if($projects[$i]->getCompleted() == '1') {
+
                 $student = $this->studentService->findByID($projects[$i]->getStudentId());
-                // error_log($student->getName());
+//                echo ($student->getName());
                 $teacher = $this->teacherService->findByID(($projects[$i]->getTeacherId()));
                 $branch = $this->branchService->findByID($projects[$i]->getBranchId());
                 $data = array(
@@ -62,7 +64,7 @@ class LibraryController extends BaseController
         // $this->render();
     }
 
-    public function getListTeacher()
+    public function getListTeacher(): array
     {
         $teachers = $this->teacherService->getAll();
         $i = 0;
