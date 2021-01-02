@@ -1,27 +1,14 @@
 * {
     box-sizing: border-box;
 }
-.left {
-    float: left;
-    width: 23%;
-    font: 15px Verdana;
-    /*font-family:Verdana;*/
-    /*font-size: 15px;*/
-}
-.right {
-    float: right;
-    width: 77%;
-    padding: 0 20px;
-    height: 100%;
-    /*display:grid;*/
+.left,.right {
+    position: relative;
 }
 .container-left {
     margin: 0;
     padding: 0;
-    width: 23%;
     background-color: white;
     position: fixed;
-    top:0;
     left: 0;
     height: 100%;
     border-radius: 5px;
@@ -29,8 +16,8 @@
 }
 .search-div {
     margin: 20px 10px;
-    width: 100%;
-    position: relative;
+    width: 98%;
+    position:relative;
     display: flex;
 }
 .search-div input[type="text"] {
@@ -65,10 +52,11 @@
     font-weight: 700;
     color: #444;
     line-height: 1.3;
-    padding: .6em 1.4em .5em .8em;
-    width: 90%;
+    /*padding: .6em 1.4em .5em .8em;*/
+    padding: 5px;
+    width: 93%;
     max-width: 100%; /* useful when width is set to anything other than 100% */
-    margin: 20px;
+    margin: 20px 10px;
     border: 1px solid #aaa;
     box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
     border-radius: .5em;
@@ -133,30 +121,27 @@
 
 }
 hr {
-    margin-top: 10px;
-    border: 3px solid #8bc34a;
-    border-radius: 5px;
+    margin-top: 10px !important;
+    border: 3px solid #8bc34a !important;
+    border-radius: 5px !important;
 }
-
-
-.header {
-    width: 75%;
+.page-header {
+    width: 102%;
     padding: 24px;
     font: 15px Verdana;
     height: 143px;
-    position: fixed;
+    position: absolute;
     top:0;
-    margin-left: -10px;
-    /*margin-top: 10px;*/
+    margin-left: -45px;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
     background-image: url("https://image.freepik.com/free-vector/virtual-graduation-ceremony-with-classmates_23-2148571604.jpg");
     background-position: center top;
     background-repeat: repeat;
     background-size: 416.67px 416.67px ;
-
+    z-index: 10;
 }
-.header h1 {
+.page-header h1 {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
     color: white;
@@ -170,31 +155,17 @@ hr {
     width: 70%;
     padding: 20px;
     text-align: center;
+    margin-top: 20px;
 }
 .user{
-    float: right;
-    margin-top:40px;
-    margin-right: -5px;
+    right: 0;
+    margin-top:60px;
+    margin-right: 20px;
+    position: absolute;
 }
-.user a {
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-.user a:hover{
-    cursor: pointer;
-    color: white;
-}
-.user span {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-.user i {
-    margin-top: 10px;
-    padding-top: 5px;
-    font-size: 2em;
-    padding-left: 11px;
-    background-color:  #F0D93B;
+.user img {
+    width: 85.33px;
+    height: 85.33px;
     height: 50px;
     -moz-border-radius:75px;
     -webkit-border-radius: 75px;
@@ -202,21 +173,80 @@ hr {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.22);
 
 }
-.main {
+.user a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+
+}
+.user a:hover{
+    cursor: pointer;
+    color: #8bc34a;
+}
+@media only screen and (max-width:1199px) {
+    body{
+        overflow-x: hidden ;
+    }
+    .container-left{
+        position:relative;
+        width: 100%;
+    }
+    .search-div {
+        width: 100%;
+        margin-left: 5%;
+    }
+    .selective {
+        width: 89%;
+        margin-left: 5%;
+    }
+    .page-header {
+        position: relative;
+        width: 100%;
+        margin-left: 1px;
+        margin-top: 5%;
+    }
+    .page-header h1 {
+        width: 60%;
+        font-size: 20px;
+    }
+    .card-column {
+        width: 100%;
+        height: 100vh;
+        margin-top: -20px !important;
+        margin-left: 20px !important;
+    }
+    .card {
+        width: 20em !important;
+    }
+
+}
+@media screen and (max-width: 562px){
+    .card-column {
+        margin-left: -10px !important;
+    }
+    .card {
+        width: 100% !important;
+    }
+}
+.card-column {
     width: 100%;
-    margin-top: 140px;
+    height: 100vh;
+    margin-top: 15%;
+    margin-left: -25px;
 }
 .card {
     float: left;
-    background:  #F0D93B;
+    background:  #F0D93B !important;
     width: 17em;
-    height: 23em;
+    height: 25em;
     padding:0px;
-    margin:2em 1.5em;
+    margin:2em 1em;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.2s ease-in-out;
+
 }
 .card:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -241,7 +271,7 @@ hr {
     margin-left: 5px;
 }
 .info-y li {
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     padding: 0;
     text-align: left;
 }
@@ -266,33 +296,4 @@ hr {
     width: 60px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.22);
 
-}
-
-@media only screen and (max-width:620px) {
-    /* For mobile phones: */
-    .menu, .main, .right {
-        width:100%;
-    }
-    .container-left {
-        width: 100vh;
-        position: unset;
-    }
-    .header {
-        width: 100vh;
-        position: unset;
-        margin-left: -20px;
-    }
-    .header h1 {
-        width: 80%;
-        margin-top: 10%;
-    }
-    .user {
-        margin-right: 30%;
-        margin-top: 10%;
-    }
-    .card {
-        width: 22em;
-        /*width: 100%;*/
-        display:block;
-    }
 }
