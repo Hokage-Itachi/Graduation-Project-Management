@@ -1,6 +1,5 @@
 <?php
 require_once('./models/repository/projectDAO/ProjectQuery.php');
-require_once('./models/repository/projectDAO/ProjectAssignmentQuery.php');
 class ProjectDAO
 {
 
@@ -84,29 +83,18 @@ class ProjectDAO
     public function insert($name, $completed, $branch_id, $point, $curriculum, $faculty, $student_id, $teacher_id): string
     {
         $db = DB::getInstance();
-        $sql = sprintf(ProjectQuery::INSERT, $name, $completed, $branch_id, $point, $curriculum, $faculty);
-
+        $sql = sprintf(ProjectQuery::INSERT, $name, $completed, $branch_id, $point, $curriculum, $faculty, $student_id, $teacher_id);
+//        error_log("Insert project SQL: ".$sql);
         $result = $db->query($sql);
         if ($result) {
-            $project_id = $this->findProjectByName($name)[0]['id'];
-            // TODO: fix project select by name query
-            $sql = sprintf(ProjectAssignmentQuery::INSERT, $project_id, $student_id, $teacher_id);
-            $result = $db->query($sql);
-            error_log($sql);
-            if ($result) {
-                $db->close();
-                return "Success";
-            }
-            else{
+            $db->close();
+            return "Success";
+        }else{
                 $error = $db->connect_error;
                 $db->close();
                 return "Error: " . $error;
             }
-        } else{
-            $error = $db->connect_error;
-            $db->close();
-            return "Error: " . $error;
-        }
+
 
 
     }
@@ -147,23 +135,18 @@ class ProjectDAO
         }
     }
 
-    public function findProjectByName($name){
+    public function updateContent($content, $id){
         $db = DB::getInstance();
-        $sql = sprintf(ProjectQuery::SELECT_PROJECT_BY_NAME, "%", $name, "%");
-        // error_log($sql);
+        $sql = sprintf(ProjectQuery::UPDATE_CONTENT, $content, $id);
         $result = $db->query($sql);
-        $db->close();
-        $rows = array();
-        $i = 0;
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                $rows[$i] = $row;
-                $i++;
-            }
-            return $rows;
-        } else {
-            return null;
+        if ($result) {
+            $db->close();
+            return "Success";
+        }else{
+            $error = $db->connect_error;
+            $db->close();
+            return "Error: " . $error;
         }
     }
+
 }

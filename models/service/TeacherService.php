@@ -15,6 +15,7 @@ class TeacherService
 
         if ($result) {
             $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"], $result['active'],$result['branch_id']);
+            $teacher->setAvatar($result['avatar']);
             return $teacher;
         } else {
             return null;
@@ -30,6 +31,7 @@ class TeacherService
         if ($results) {
             foreach ($results as $result){
                 $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"], $result['active'],$result['branch_id']);
+                $teacher->setAvatar($result['avatar']);
                 $teachers[$i] = $teacher;
                 $i++;
             }
@@ -41,18 +43,31 @@ class TeacherService
 
     public function update($user_id, $degree, $work_place, $academic_rank, $branch_id){
         $result= $this->teacherDAO->update($user_id, $degree, $work_place, $academic_rank, $branch_id);
+        return $result;
     }
 
     public function insert($user_id, $degree, $work_place, $academic_rank, $branch_id){
         $result = $this->teacherDAO->insert($user_id, $degree, $work_place, $academic_rank, $branch_id);
-        error_log($result);
+//        error_log($result);
     }
 
     public function getByUserID($user_id){
-        $result = $this->teacherDAO->findByUserID($user_id);
+            $result = $this->teacherDAO->findByUserID($user_id);
+
+            if ($result) {
+                $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"], $result['active'],$result['branch_id']);
+                $teacher->setAvatar($result['avatar']);
+                return $teacher;
+            } else {
+                return null;
+            }
+    }
+    public function getByEmail($email){
+        $result = $this->teacherDAO->getByEmail($email);
 
         if ($result) {
             $teacher = new Teacher($result['id'], $result["degree"], $result["academic_rank"], $result["work_place"], $result["user_id"], $result["email"], $result["pass_hashed"], $result["name"], $result["phone_number"], $result["role_id"], $result['active'],$result['branch_id']);
+            $teacher->setAvatar($result['avatar']);
             return $teacher;
         } else {
             return null;

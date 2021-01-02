@@ -136,14 +136,15 @@ class AdminController extends BaseController
         $class = $_POST['class'];
         $branch_id = $_POST['branch'];
         $password = $_POST['password'];
-
+//        error_log($password);
         $pass_hashed = password_hash($password, PASSWORD_DEFAULT);
+//        error_log($pass_hashed);
 
         $inactive_user = $this->userService->getInActiveUser();
         if($inactive_user){
-            $this->userService->updateUser($inactive_user->getUserId(), $email, $name, $pass_hashed);
+            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"", $pass_hashed);
             $this->userService->activeUser($inactive_user->getUserId());
-            $this->studentService->updateStudent($student_id, $class, "", $year, "", $inactive_user->getUserId());
+            $this->studentService->updateStudent($student_id, $class, $year, $branch_id, $inactive_user->getUserId());
         } else{
             $this->userService->insertUser($email, $pass_hashed, $name, '0', '3');
             $user = $this->userService->findByEmail($email);
@@ -226,5 +227,34 @@ class AdminController extends BaseController
             $this->teacherService->insert($user->getUserId(), $degree,$work_place, $academic_rank, $branch_id);
         }
         header('location: /admin/teachers');
+    }
+
+    public function getProjectData(){
+        $projects = $this->projectService->getAll();
+        $project_data = array();
+        $i = 0;
+        foreach ($projects as $project){
+            $data['id'] = $project->getProjectId();
+            $data['name'] = $project->getName();
+            $student = $this->studentService->findByID($project->getStudentId());
+            $data['student'] = $student->getName();
+            $teacher = $this->teacherService->findByID($project->getTeacherId());
+            $data['teacher'] = $teacher->getName();
+            $branch = $this->branchService->findByID($project->getBranchId());
+            $data['branch'] = $branch->getName();
+            $data['point'] = $project->getPoint();
+            if($project->getCompleted() == '0'){
+                $data['status'] = "Processing";
+            } else {
+                $data['status'] = "Completed";
+            }
+//            $data['content'] = $project->getContent();
+
+            $project_data[$i] = $data;
+            $i++;
+
+        }
+        $this->data['projects'] = $project_data;
+        return $this->data;
     }
 }

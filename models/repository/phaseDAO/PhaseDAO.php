@@ -21,12 +21,16 @@ class PhaseDAO{
         $db = DB::getInstance();
         $sql = sprintf(PhaseQuery::SELECT_BY_PROJECT_ID, $project_id);
         $result = $db->query($sql);
+        $i = 0;
+        $rows = array();
         $db->close();
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                return $row;
+                $rows[$i] =  $row;
+                $i++;
             }
+            return $rows;
         } else {
             return null;
         }
@@ -50,5 +54,22 @@ class PhaseDAO{
             return null;
         }
     }
+
+    public function insert($project_id, $name){
+        $db = DB::getInstance();
+        $sql = sprintf(PhaseQuery::INSERT,$project_id ,$name);
+        $result = $db->query($sql);
+
+        if ($result) {
+            $db->close();
+            return "Success";
+        } else {
+            $error = "Error:" . $db->error;
+            $db->close();
+            return $error;
+        }
+    }
+
+
 
 }
