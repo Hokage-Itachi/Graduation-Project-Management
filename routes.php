@@ -21,8 +21,20 @@ class Router
     /* Execute the specified route defined */
     function execute()
     {
-        $path = substr($_SERVER['REQUEST_URI'], strlen(self::APP_PREFIX));
+        $request_uri = $_SERVER['REQUEST_URI'];
 
+        $path = substr($_SERVER['REQUEST_URI'], strlen(self::APP_PREFIX));
+        $arr = explode("/", filter_var(trim($request_uri)));
+        $param = "";
+
+        if(count($arr) > 3){
+            if($arr[1] == "teacher" && $arr[2] == "project"){
+                $param = $arr[3];
+                $path = substr("/teacher/project", strlen(self::APP_PREFIX));
+            }
+        }
+
+//        error_log($_SERVER['REQUEST_URI']);
         //        echo "<h1>$path<h1>";
 
         /* Check if the given route is defined,
@@ -42,14 +54,23 @@ class Router
                         die();
                     }
                 }
-                $this->routes[$path]();
+                if($param){
+                    $this->routes[$path]($param);
+                } else {
+                    $this->routes[$path]();
+                }
+
             } else {
                 // error_log($path);
                 if ($path != '/login' && $path != '/' && strpos($path, "library") === false) {
                     header('location: /login');
                     die();
                 }
-                $this->routes[$path]();
+                if($param){
+                    $this->routes[$path]($param);
+                } else {
+                    $this->routes[$path]();
+                }
             }
         } else {
             // $this->routes['/']();

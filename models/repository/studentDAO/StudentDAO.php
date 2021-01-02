@@ -6,7 +6,7 @@ class StudentDAO
     {
         $db = DB::getInstance();
         $sql = sprintf(StudentQuery::SELECT_BY_ID, $id);
-        error_log($sql);
+//      error_log($sql);
         $result = $db->query($sql);
         $db->close();
         if ($result->num_rows > 0) {
@@ -88,9 +88,9 @@ class StudentDAO
         }
     }
 
-    public function updateStudent( $student_id, $class, $grade, $year, $branch_id, $user_id){
+    public function updateStudent( $student_id, $class, $year, $branch_id, $user_id){
         $db = DB::getInstance();
-        $sql = sprintf(StudentQuery::UPDATE_STUDENT, $student_id, $class, $grade, $year, $branch_id, $user_id );
+        $sql = sprintf(StudentQuery::UPDATE_STUDENT, $student_id, $class, $year, $branch_id, $user_id );
         // error_log($sql);
         $result = $db->query($sql);
         if ($result) {
@@ -103,9 +103,9 @@ class StudentDAO
             return $error;
         }
     }
-    public function insert($user_id, $class, $student_id, $grade, $year, $branch_id){
+    public function insert($user_id, $class, $student_id, $year, $branch_id){
         $db = DB::getInstance();
-        $sql = sprintf(StudentQuery::INSERT_STUDENT, $user_id,$class, $student_id, $grade, $year, $branch_id );
+        $sql = sprintf(StudentQuery::INSERT_STUDENT, $user_id,$class, $student_id, $year, $branch_id );
         // error_log($sql);
         $result = $db->query($sql);
         if ($result) {

@@ -16,7 +16,8 @@ class StudentService
         $result = $this->studentDAO->findByID($id);
         // error_log("Call here");
         if ($result) {
-            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+            $student = new Student($result['student_id'], $result['class'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+            $student->setAvatar($result['avatar']);
             return $student;
         } else {
             return null;
@@ -27,7 +28,8 @@ class StudentService
         $result = $this->studentDAO->findByStudentID($student_id);
         // error_log("Call here");
         if ($result) {
-            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+            $student = new Student($result['student_id'], $result['class'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+            $student->setAvatar($result['avatar']);
             return $student;
         } else {
             return null;
@@ -52,7 +54,8 @@ class StudentService
         if ($results) {
             $list_student = array();
             foreach ($results as $result) {
-                $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+                $student = new Student($result['student_id'], $result['class'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+                $student->setAvatar($result['avatar']);
                 $list_student[$i] = $student;
                 $i++;
             }
@@ -68,18 +71,24 @@ class StudentService
 //        error_log($result);
     }
 
-    public function updateStudent($student_id, $class, $grade, $year, $branch_id, $user_id){
-        $result = $this->studentDAO->updateStudent($student_id, $class, $grade, $year, $branch_id, $user_id);
+    public function updateStudent($student_id, $class, $year, $branch_id, $user_id){
+        $result = $this->studentDAO->updateStudent($student_id, $class, $year, $branch_id, $user_id);
+        if($result == "Success"){
+            error_log("Student ".$student_id." updated.");
+        } else {
+            error_log($result);
+        }
     }
     public function insertStudent($student_id, $class, $grade, $year, $branch_id, $user_id){
         $result = $this->studentDAO->insert($user_id, $class, $student_id, $grade, $year, $branch_id);
-        error_log($result);
+//        error_log($result);
     }
     public function getByUserID($user_id){
         $result = $this->studentDAO->findByUserID($user_id);
         // error_log("Call here");
         if ($result) {
-            $student = new Student($result['student_id'], $result['class'], $result['grade'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+            $student = new Student($result['student_id'], $result['class'], $result['year'], $result['user_id'], $result['email'], $result['pass_hashed'], $result['name'], $result['phone_number'], $result['role_id'], $result['active'], $result['branch_id'], $result['id']);
+            $student->setAvatar($result['avatar']);
             return $student;
         } else {
             return null;

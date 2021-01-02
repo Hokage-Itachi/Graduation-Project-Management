@@ -54,17 +54,20 @@ class UserDAO
         }
     }
 
-    public function update($id, $email, $name, $pass_hashed): ?string
+    public function update($id, $email, $name,$phone_number, $pass_hashed): ?string
     {
         $db = DB::getInstance();
-        $sql = sprintf(UserQuery::UPDATE_USER, $name, $email,$pass_hashed, $id);
+        $sql = sprintf(UserQuery::UPDATE_USER, $name, $email,$phone_number, $pass_hashed, $id);
         // error_log($sql);
         $result = $db->query($sql);
-        $db->close();
         if ($result) {
+            $db->close();
             return "Success";
         } else {
-            return null;
+            $error = "Error:" . $db->error;
+            $db->close();
+
+            return $error;
         }
     }
 
@@ -124,6 +127,22 @@ class UserDAO
     public function activeUser($id){
         $db = DB::getInstance();
         $sql = sprintf(UserQuery::ACTIVE_USER, $id);
+        // error_log($sql);
+        $result = $db->query($sql);
+        if ($result) {
+            $db->close();
+            return "Success";
+        } else {
+            $error = "Error:" . $db->error;
+            $db->close();
+
+            return $error;
+        }
+    }
+
+    public function updateAvatar($avatar, $id){
+        $db = DB::getInstance();
+        $sql = sprintf(UserQuery::UPDATE_AVATAR, $avatar,$id);
         // error_log($sql);
         $result = $db->query($sql);
         if ($result) {
