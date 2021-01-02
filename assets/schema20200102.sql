@@ -57,7 +57,7 @@ CREATE TABLE `comment` (
   KEY `fkIdx_319` (`user_id`),
   CONSTRAINT `FK_314` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
   CONSTRAINT `FK_319` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +66,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (2,'This is a comment','2020-12-31 17:00:00',2,28),(3,'wrong post','2021-01-01 09:34:27',3,2),(4,'Hello Teacher','2021-01-01 09:34:40',2,2),(5,'Hello','2021-01-02 02:46:02',2,18),(6,'Final comment','2021-01-02 03:28:55',6,18),(7,'Yes sir','2021-01-02 10:34:32',2,10);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,11 +81,10 @@ CREATE TABLE `phase` (
   `id` int NOT NULL AUTO_INCREMENT,
   `project_id` int NOT NULL,
   `name` varchar(100) NOT NULL,
-  `percent` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fkIdx_175` (`project_id`),
   CONSTRAINT `FK_175` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +93,7 @@ CREATE TABLE `phase` (
 
 LOCK TABLES `phase` WRITE;
 /*!40000 ALTER TABLE `phase` DISABLE KEYS */;
+INSERT INTO `phase` VALUES (1,23,'Warm up'),(2,23,'Break out'),(3,23,'Last run'),(4,23,'Test'),(5,23,'Release'),(6,23,'Last phase'),(7,24,'Begining'),(8,24,'Research');
 /*!40000 ALTER TABLE `phase` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,13 +110,12 @@ CREATE TABLE `post` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` int NOT NULL,
   `project_id` int NOT NULL,
-  `title` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fkIdx_239` (`project_id`),
   KEY `fkIdx_297` (`user_id`),
   CONSTRAINT `FK_239` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),
   CONSTRAINT `FK_297` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,6 +124,7 @@ CREATE TABLE `post` (
 
 LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` VALUES (2,'This is a post','2020-01-30 17:00:00',31,23),(3,'...','2021-01-01 08:58:54',2,23),(4,'This is the second post','2021-01-01 09:21:59',2,23),(5,'Important','2021-01-02 02:58:55',18,23),(6,'Final Post','2021-01-02 03:28:47',18,23),(7,'What should I do in beginning phase??','2021-01-02 04:22:26',7,24);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,11 +144,17 @@ CREATE TABLE `project` (
   `curriculum` varchar(20) DEFAULT NULL,
   `faculty` varchar(50) DEFAULT NULL,
   `presentation_day` timestamp NULL DEFAULT NULL,
-  `content` longblob,
+  `content` varchar(255) DEFAULT NULL,
+  `teacher_id` int DEFAULT NULL,
+  `student_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fkIdx_158` (`branch_id`),
-  CONSTRAINT `FK_158` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+  KEY `FK_teacher_project` (`teacher_id`),
+  KEY `FK_student_project` (`student_id`),
+  CONSTRAINT `FK_158` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`),
+  CONSTRAINT `FK_student_project` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_teacher_project` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,40 +163,8 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (7,'Website manage granduation project of student',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL),(8,'Chinese Chess Website',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL),(9,'Website for learn data structure',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL),(10,'Website for airbooking',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL),(11,'Website manage student',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL),(12,'Website manage employee',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL),(23,'Website for manage staff',0,6,0,'Standard','',NULL,NULL);
+INSERT INTO `project` VALUES (7,'Website manage granduation project of student',4,6,10,'Standard','MIM','2020-07-18 17:00:00','Pr_7_Bao_cao_DAPM_1801087_VNPAY.pdf',2,2),(8,'Chinese Chess Website',1,6,10,'Standard','MIM','2020-07-18 17:00:00','Pr_8_Bao_cao_DAPM_1801087_VNPAY.pdf',3,3),(9,'Website for learn data structure',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL,4,4),(10,'Website for airbooking',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL,5,5),(11,'Website manage student',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL,6,6),(12,'Website manage employee',1,6,10,'Standard','MIM','2020-07-18 17:00:00',NULL,7,8),(23,'Website for manage staff',0,6,0,'Standard','',NULL,NULL,2,6),(24,'AI for chinese chess',1,7,10,'Standard','',NULL,'Bao_cao_DAPM_1801087_VNPAY.pdf',7,3),(25,'Website for food booking',1,6,10,'','',NULL,'Pr_25_Bao_cao_DAPM_1801087_VNPAY.pdf',5,8);
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `project_assignment`
---
-
-DROP TABLE IF EXISTS `project_assignment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `project_assignment` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `project_id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `teacher_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fkIdx_274` (`project_id`),
-  KEY `FK_281_idx` (`student_id`),
-  KEY `FK_285_idx` (`teacher_id`),
-  CONSTRAINT `FK_274` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`),
-  CONSTRAINT `FK_student_project` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_teacher_project` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `project_assignment`
---
-
-LOCK TABLES `project_assignment` WRITE;
-/*!40000 ALTER TABLE `project_assignment` DISABLE KEYS */;
-INSERT INTO `project_assignment` VALUES (14,8,2,2),(15,9,3,3),(16,10,4,4),(17,11,5,5),(18,12,6,6),(22,23,3,7);
-/*!40000 ALTER TABLE `project_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -228,7 +203,6 @@ CREATE TABLE `student` (
   `user_id` int NOT NULL,
   `class` varchar(6) DEFAULT NULL,
   `student_id` bigint NOT NULL,
-  `grade` varchar(20) DEFAULT NULL,
   `year` varchar(6) DEFAULT NULL,
   `branch_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -236,7 +210,7 @@ CREATE TABLE `student` (
   KEY `FK_student_branch` (`branch_id`),
   CONSTRAINT `FK_student_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_user_student` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +219,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (2,6,'K63A3',18001001,'Bachelor','QH2018',6),(3,7,'K63A3',18001002,'Bachelor','QH2018',6),(4,8,'K63A3',18001003,'Bachelor','QH2018',6),(5,9,'K63A3',18001004,'Bachelor','QH2018',6),(6,10,'K63A3',18001005,'Bachelor','QH2018',6),(8,28,'K63A3',18001087,'','QH2018',6);
+INSERT INTO `student` VALUES (2,6,'K64A3',19001001,'QH2019',7),(3,7,'K63A3',7,'QH2018',6),(4,8,'K63A4',18001003,'QH2018',7),(5,9,'K63A3',18001004,'QH2018',7),(6,10,'K63A4',18001005,'QH2018',6),(8,28,'K63A3',18001087,'QH2018',6),(9,21,'K63A4',18001111,'QH2018',7),(10,33,'K63A4',18001112,'QH2018',7),(11,34,'K63A4',18001234,'QH2018',6);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +240,7 @@ CREATE TABLE `task` (
   PRIMARY KEY (`id`),
   KEY `fkIdx_172` (`phase_id`),
   CONSTRAINT `FK_172` FOREIGN KEY (`phase_id`) REFERENCES `phase` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,6 +249,7 @@ CREATE TABLE `task` (
 
 LOCK TABLES `task` WRITE;
 /*!40000 ALTER TABLE `task` DISABLE KEYS */;
+INSERT INTO `task` VALUES (1,1,'Learn HTML CSS JS','Learn HTML CSS JS basic on W3School\r\n                                                                \r\n                                                                ','2019-12-31 17:00:00',1),(2,1,'Learn SQL','Learn SQL\r\n                                                                \r\n                                                                \r\n                                                                \r\n                                                                ','2019-12-31 17:00:00',1),(3,2,'Code admin page','Complete code Front End in admin page\r\n                                                                ','2021-01-31 17:00:00',1),(7,7,'Learn about chinese chess game','Learn about chinese chess game\r\n                                                                \r\n                                                                \r\n                                                                ','2021-04-30 17:00:00',1),(8,7,'New task','new Task\r\n                                                                ','2021-06-30 17:00:00',1);
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,7 +272,7 @@ CREATE TABLE `teacher` (
   KEY `FK_teacher_branch` (`branch_id`),
   CONSTRAINT `FK_teacher_branch` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_user_teacher` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -306,7 +281,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (2,18,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(3,19,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(4,20,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(5,21,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(6,22,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(7,31,'Master','Ha Noi University of Science','Professor',7);
+INSERT INTO `teacher` VALUES (2,18,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(3,19,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(4,20,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(5,21,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(6,22,'Doctor of Philosophy','Ha Noi University of Science','Professor',NULL),(7,31,'Master','Ha Noi University of Science','Professor',7),(8,35,'Master','Konoha','Professor',7);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,14 +297,14 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `pass_hashed` varchar(255) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `phone_number` bigint NOT NULL,
+  `phone_number` varchar(10) DEFAULT NULL,
   `role_id` int NOT NULL,
-  `avatar` blob,
+  `avatar` varchar(100) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fkIdx_235` (`role_id`),
   CONSTRAINT `FK_235` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,7 +313,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'annguyenvan.2k@gmail.com','$2y$10$tJ7sy2gZcpYEkvi2yZcwJeRSPVwPGaaU27aXemHUeaRgOsoPMPKP.','Itachi',98765432,1,NULL,1),(6,'studentA@gmail.com','$2y$10$Jji9IOIJtdywyxa9KUgsdeu27A5niNlGICL/r6NRTCaB/kZwIHTri','Student A',98765432,3,NULL,1),(7,'studentB@gmail.com','$2y$10$e7Fd3Pnj3mI7giKTdnVwDecHg4y5731XJuxmsCNUcpQQXBX0yT62C','Student B',98765432,3,NULL,1),(8,'studentC@gmail.com','$2y$10$e7Fd3Pnj3mI7giKTdnVwDecHg4y5731XJuxmsCNUcpQQXBX0yT62C','Student C',98765432,3,NULL,1),(9,'studentD@gmail.com','$2y$10$qsYLgzoyzqpcVCoD.zCSdO8/LFUbcAzyNDwdXrqnUPFcPoLGtq3vC','Student D',98765432,3,NULL,1),(10,'studentE@hus.edu.vn','$2y$10$ESWO4D6ws0xoJeVhOpFfjeFTV8erCPFVjtxiH2VP1Acwi.1uvqucW','Student E',98765432,3,NULL,1),(11,'nguyenvanF@gmail.com','$2y$10$jL4MjQBotxI0lMFq2juemeoM1USVw712L9iK5..xIM/ndSgicpwpu','Nguyen Van F',98765432,3,NULL,1),(12,'nguyenvanG@gmail.com','$2y$10$sAAjwrlw/V/otbs8/gdP1uisJYTfXVNNzN8Zi0ssUfBTiXDtXMniK','Nguyen Van G',98765432,3,NULL,1),(13,'nguyenvanH@gmail.com','$2y$10$zpDmLsiNe.6Qmhi5fvHSQOyeJf7N2qAWFcIeYv6cPTZ6tbw2aOiDS','Nguyen Van H',98765432,3,NULL,1),(14,'nguyenvanI@gmail.com','$2y$10$Y7mzxhd9AgQ1Rrt0cOOpjOmJTLcEM6JfBgl5p6a1qON8025KzBFM2','Nguyen Van I',98765432,3,NULL,1),(15,'nguyenvanJ@gmail.com','$2y$10$dw1DJfRFI/O9s5/MbDRUpeJSbAmsCqgaO1vLCW11h6T9QBxvCOIIK','Nguyen Van J',98765432,3,NULL,1),(16,'nguyenvanK@gmail.com','$2y$10$TkvIjeaunqjfi2GFZjUDvuvt5VYvXUovlJ/Y.w6Ho1O.CVkz4xkL6','Nguyen Van K',98765432,3,NULL,1),(17,'nguyenvanL@gmail.com','$2y$10$IJvNobztkOTn3wIdERk7E.2aKG8JHBdkAbpAYKqFneWDYP3Deh79y','Nguyen Van L',98765432,3,NULL,1),(18,'teacherA@gmail.com','$2y$10$wAG.NrJuBHcIqEyGx9z5YOngzuN.hb05RIqtvhePyfXgsYlQDLMcm','Teacher A',98765432,2,NULL,1),(19,'teacherB@gmail.com','$2y$10$rVi5IppzuLthZ351epXuD.cHjGlTtZ7v5nk/hfe.x69sizH45Uvdq','Teacher B',98765432,2,NULL,1),(20,'teacherC@gmail.com','$2y$10$8grfbYHL.MZP1O7Ag/qFruE5SZY4CVkI5e5K6VPhpbPUrlNicUTGy','Teacher C',98765432,2,NULL,1),(21,'teacherD@gmail.com','$2y$10$fJqkri0cP3Ug7XkT5mD7HuEajLga1yS6uteay7y7jW5Kbf/IpN/Fi','Nguyen Van D',98765432,2,NULL,0),(22,'teacherE@gmail.com','$2y$10$A5hJ16sZdcTr3cAYjn/Sl.xYF1rjJpidGzganVJrgBpGaxMdrwHCi','Nguyen Van E',98765432,2,NULL,1),(28,'nguyenvanan_t63@hus.edu.vn','$2y$10$vxU4K3Rq3W3Ly..HJRiZhOy/te.qe..z73sSJpMoo6ZR8UexQnwGK','Nguyen Van An',0,3,NULL,1),(31,'johndoe@hus.edu.vn','$2y$10$iGb0dap6k.k24.I17iivbO8TI3PirTA6fOz0XamiFAX.p9Att8y82','John Doe',0,2,NULL,1);
+INSERT INTO `user` VALUES (2,'annguyenvan.2k@gmail.com','$2y$10$tJ7sy2gZcpYEkvi2yZcwJeRSPVwPGaaU27aXemHUeaRgOsoPMPKP.','Itachi','98765432',1,NULL,1),(6,'yasuo@gmail.com','$2y$10$j10qEpUpsWcTPhaDOPLK5u0bTFzHT.n4f5QGE5/Zmptz.f6Mitu.m','Yauso','0',3,NULL,1),(7,'studentB@gmail.com','$2y$10$BWm262DQEketAnF6.NjMpelbf6Cs.dvulF2GL3Zntens9U3jeHfYa','Nguyen Van Ba','0342428099',3,'erd.PNG',0),(8,'studentC@gmail.com','$2y$10$e7Fd3Pnj3mI7giKTdnVwDecHg4y5731XJuxmsCNUcpQQXBX0yT62C','Student C','98765432',3,NULL,1),(9,'studentD@gmail.com','$2y$10$qsYLgzoyzqpcVCoD.zCSdO8/LFUbcAzyNDwdXrqnUPFcPoLGtq3vC','Student D','98765432',3,NULL,1),(10,'vuthuthanh_t63@hus.edu.vn','$2y$10$VIwe9kmmNsFf8/QfXvM.auXI3XqhNHyn/RTkaUiYbwgNan1KZ.qPa','Vu Thu Thanh','0987654321',3,'Std18001005_erd.PNG',1),(11,'nguyenvanF@gmail.com','$2y$10$jL4MjQBotxI0lMFq2juemeoM1USVw712L9iK5..xIM/ndSgicpwpu','Nguyen Van F','98765432',3,NULL,1),(12,'nguyenvanG@gmail.com','$2y$10$sAAjwrlw/V/otbs8/gdP1uisJYTfXVNNzN8Zi0ssUfBTiXDtXMniK','Nguyen Van G','98765432',3,NULL,1),(13,'nguyenvanH@gmail.com','$2y$10$zpDmLsiNe.6Qmhi5fvHSQOyeJf7N2qAWFcIeYv6cPTZ6tbw2aOiDS','Nguyen Van H','98765432',3,NULL,1),(14,'nguyenvanI@gmail.com','$2y$10$Y7mzxhd9AgQ1Rrt0cOOpjOmJTLcEM6JfBgl5p6a1qON8025KzBFM2','Nguyen Van I','98765432',3,NULL,1),(15,'nguyenvanJ@gmail.com','$2y$10$dw1DJfRFI/O9s5/MbDRUpeJSbAmsCqgaO1vLCW11h6T9QBxvCOIIK','Nguyen Van J','98765432',3,NULL,1),(16,'nguyenvanK@gmail.com','$2y$10$TkvIjeaunqjfi2GFZjUDvuvt5VYvXUovlJ/Y.w6Ho1O.CVkz4xkL6','Nguyen Van K','98765432',3,NULL,1),(17,'nguyenvanL@gmail.com','$2y$10$IJvNobztkOTn3wIdERk7E.2aKG8JHBdkAbpAYKqFneWDYP3Deh79y','Nguyen Van L','98765432',3,NULL,1),(18,'teacherA@gmail.com','$2y$10$iLDzRnxaLI2sOiefENoKoOTJyofbqo1ftvvaaP0T5/Ru8M2Rla4iy','Teacher A','0342428099',2,'fav_icon.PNG',1),(19,'teacherB@gmail.com','$2y$10$rVi5IppzuLthZ351epXuD.cHjGlTtZ7v5nk/hfe.x69sizH45Uvdq','Teacher B','98765432',2,NULL,1),(20,'teacherC@gmail.com','$2y$10$8grfbYHL.MZP1O7Ag/qFruE5SZY4CVkI5e5K6VPhpbPUrlNicUTGy','Teacher C','98765432',2,NULL,1),(21,'nguyenthehop_t63@hus.edu.vn','$2y$10$5fWOMiTtcYZtzbDBw08VtelTyjZj3cDZ3vMjg3K7UP086jZbagYFC','Nguyen The Hop','98765432',2,NULL,1),(22,'teacherE@gmail.com','$2y$10$A5hJ16sZdcTr3cAYjn/Sl.xYF1rjJpidGzganVJrgBpGaxMdrwHCi','Nguyen Van E','98765432',2,NULL,0),(28,'nguyenvanan_t63@hus.edu.vn','$2y$10$vxU4K3Rq3W3Ly..HJRiZhOy/te.qe..z73sSJpMoo6ZR8UexQnwGK','Nguyen Van An','0',3,NULL,1),(31,'johndoe@hus.edu.vn','$2y$10$iGb0dap6k.k24.I17iivbO8TI3PirTA6fOz0XamiFAX.p9Att8y82','John Doe','0',2,NULL,1),(32,'nguyenthehop_t63@hus.edu.vn','$2y$10$FIBlR6vsO6IZIlZDVFU1fuB3dTwgva4a5DsxSgElx1pUUk1mVodxO','Nguyen The Hop','0',3,NULL,1),(33,'vuthuthanh_t63@gmail.com','$2y$10$xIYbN3Ylgvnzl1ff5kvGi.RU4JJKQkil3TXlrZmZlFE/ATzikkdpS','Vu Thu Thanh','0',3,NULL,1),(34,'tranthibichphuong_t63@hus.edu.vn','$2y$10$BzUeRFUMJWiXTroq1Q0vheEjHFQK9hN38wGvEZ0WJBTTVioowAUd6','Tran Thi Bich Phuong','0',3,NULL,1),(35,'kakashi@gmail.com','$2y$10$MspZZYapW7.ty8plWr0Zlel5jXhM5E6vSRhKMLR3Sn49cgJBnKPDe','Kakashi','0987654321',2,'',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-19  1:37:24
+-- Dump completed on 2021-01-02 17:39:08
