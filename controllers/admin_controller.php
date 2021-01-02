@@ -136,15 +136,15 @@ class AdminController extends BaseController
         $class = $_POST['class'];
         $branch_id = $_POST['branch'];
         $password = $_POST['password'];
-        error_log($password);
+//        error_log($password);
         $pass_hashed = password_hash($password, PASSWORD_DEFAULT);
-        error_log($pass_hashed);
+//        error_log($pass_hashed);
 
         $inactive_user = $this->userService->getInActiveUser();
         if($inactive_user){
-            $this->userService->updateUser($inactive_user->getUserId(), $email, $name, $pass_hashed);
+            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"", $pass_hashed);
             $this->userService->activeUser($inactive_user->getUserId());
-            $this->studentService->updateStudent($student_id, $class, "", $year, $branch_id, $inactive_user->getUserId());
+            $this->studentService->updateStudent($student_id, $class, $year, $branch_id, $inactive_user->getUserId());
         } else{
             $this->userService->insertUser($email, $pass_hashed, $name, '0', '3');
             $user = $this->userService->findByEmail($email);

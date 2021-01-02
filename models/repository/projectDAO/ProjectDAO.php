@@ -84,7 +84,7 @@ class ProjectDAO
     {
         $db = DB::getInstance();
         $sql = sprintf(ProjectQuery::INSERT, $name, $completed, $branch_id, $point, $curriculum, $faculty, $student_id, $teacher_id);
-
+//        error_log("Insert project SQL: ".$sql);
         $result = $db->query($sql);
         if ($result) {
             $db->close();
@@ -134,4 +134,19 @@ class ProjectDAO
             return null;
         }
     }
+
+    public function updateContent($content, $id){
+        $db = DB::getInstance();
+        $sql = sprintf(ProjectQuery::UPDATE_CONTENT, $content, $id);
+        $result = $db->query($sql);
+        if ($result) {
+            $db->close();
+            return "Success";
+        }else{
+            $error = $db->connect_error;
+            $db->close();
+            return "Error: " . $error;
+        }
+    }
+
 }

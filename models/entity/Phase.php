@@ -3,21 +3,19 @@ class Phase{
     private $id;
     private $project_id;
     private $name;
-    private $percent;
+
 
     /**
      * Phase constructor.
      * @param $id
      * @param $project_id
      * @param $name
-     * @param $percent
      */
-    public function __construct($id, $project_id, $name, $percent)
+    public function __construct($id, $project_id, $name)
     {
         $this->id = $id;
         $this->project_id = $project_id;
         $this->name = $name;
-        $this->percent = $percent;
     }
 
     /**
@@ -68,21 +66,7 @@ class Phase{
         $this->name = $name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPercent()
-    {
-        return $this->percent;
-    }
 
-    /**
-     * @param mixed $percent
-     */
-    public function setPercent($percent): void
-    {
-        $this->percent = $percent;
-    }
 
 
 }

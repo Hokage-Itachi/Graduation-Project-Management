@@ -6,7 +6,7 @@ class TaskService
 {
     private $taskDAO;
 
-    public function __constructor()
+    public function __construct()
     {
         $this->taskDAO = new TaskDAO();
     }
@@ -22,15 +22,39 @@ class TaskService
         }
     }
 
-    public function update($name, $description, $deadline, $staus, $phase_id){
-        $result = $this->taskDAO->update($name, $description, $deadline, $staus, $phase_id);
+    public function update($task_id, $name, $description, $deadline, $status){
+        $result = $this->taskDAO->update($task_id, $name, $description, $deadline, $status);
         return $result;
     }
 
-    public function insert($name, $description, $deadline, $phase_id){
+    public function insert($phase_id, $name, $description, $deadline){
         $result = $this->taskDAO->insert($phase_id, $name, $description, $deadline);
         return $result;
     }
+
+    public function getByPhaseID($phase_id){
+
+        $results = $this->taskDAO->getByPhaseID($phase_id);
+        $tasks = array();
+        $i = 0;
+        if($results){
+            foreach ($results as $result) {
+                $task = new Task($result['id'], $phase_id, $result['name'], $result['description'], $result['deadline'], $result['status']);
+                $tasks[$i] = $task;
+                $i++;
+
+            }
+            return $tasks;
+        }
+        return null;
+    }
+
+    public function delete($task_id){
+        return $this->taskDAO->delete($task_id);
+    }
+
+
+
 
 
 }

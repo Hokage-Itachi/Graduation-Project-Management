@@ -7,22 +7,33 @@ class PhaseService{
 
     /**
      * PhaseService constructor.
-     * @param $phaseDAO
      */
-    public function __construct($phaseDAO)
+    public function __construct()
     {
-        $this->phaseDAO = $phaseDAO;
+        $this->phaseDAO = new PhaseDAO();
     }
 
     public function getByProjectID($project_id){
-        $result = $this->phaseDAO->getByID($project_id);
-        if($result){
-            $phase = new Phase($result['id'], $result['project_id'], $result['name'], $result['percent']);
-            return $phase;
+        $results = $this->phaseDAO->getByProjectID($project_id);
+        $list_phase = array();
+        $i = 0;
+        if($results){
+            foreach ($results as $result) {
+                $phase = new Phase($result['id'], $result['project_id'], $result['name']);
+                $list_phase[$i] = $phase;
+                $i++;
+            }
+            return $list_phase;
+
         } else {
             return null;
         }
 
+    }
+
+    public function insert($project_id, $name){
+        $result = $this->phaseDAO->insert($project_id, $name);
+        return $result;
     }
 
 }

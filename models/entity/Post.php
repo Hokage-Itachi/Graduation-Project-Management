@@ -5,7 +5,7 @@ class Post{
     private $created_at;
     private $user_id;
     private $project_id;
-    private $title;
+
 
     /**
      * Post constructor.
@@ -16,14 +16,14 @@ class Post{
      * @param $project_id
      * @param $title
      */
-    public function __construct($post_id, $content, $created_at, $user_id, $project_id, $title)
+    public function __construct($post_id, $content, $created_at, $user_id, $project_id)
     {
         $this->post_id = $post_id;
         $this->content = $content;
         $this->created_at = $created_at;
         $this->user_id = $user_id;
         $this->project_id = $project_id;
-        $this->title = $title;
+
     }
 
 
@@ -107,21 +107,6 @@ class Post{
         $this->project_id = $project_id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param mixed $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
 
 
 }

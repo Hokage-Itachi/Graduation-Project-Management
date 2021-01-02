@@ -43,6 +43,22 @@ class Project
     /**
      * @return mixed
      */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param mixed $content
+     */
+    public function setContent($content): void
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPoint()
     {
         return $this->point;

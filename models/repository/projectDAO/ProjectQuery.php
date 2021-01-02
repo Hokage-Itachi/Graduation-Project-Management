@@ -9,12 +9,13 @@ class ProjectQuery
     const SELECT_PROJECT_BY_NAME = "SELECT * FROM project where name LIKE '%s%s%s'";
     const SELECT_BY_STATUS = "SELECT * FROM project WHERE completed = '%s'";
     const SELECT_BY_BRANCH = "SELECT * FROM project WHERE branch_id = '%s'";
-    const INSERT = "INSERT INTO project (name, completed, branch_id, point, curriculum, faculty, student_id, teacher_id) VALUE('%s', '%s', '%s', '%f', '%s', '%s')";
+    const INSERT = "INSERT INTO project (name, completed, branch_id, point, curriculum, faculty, student_id, teacher_id) VALUE('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
     const SELECT_ALL = "SELECT project.*
                         FROM project";
     const SELECT_ALL_COMPLETED = "SELECT project.*
                         FROM project
                         WHERE project.completed = '1'";
+    const UPDATE_CONTENT = "UPDATE project SET content = '%s' WHERE id = '%s'";
     const COUNT_ROW_NUM = "SELECT COUNT(*) AS row_num FROM project";
     // const SELECT_PROJECT = "SELECT * FROM project WHERE '%s'";
     // const INSERT_PROJECT = "INSERT INTO project(name, completed, branch_id, result, point) VALUES ('%s','%s','%s','%s','%s')";

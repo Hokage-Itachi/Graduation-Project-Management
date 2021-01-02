@@ -51,7 +51,7 @@ class LibraryController extends BaseController
                 $data = array(
                     "project_name" => $projects[$i]->getName(),
                     "student" => $student->getName(),
-                    "year" => $student->getCourse(),
+                    "year" => $student->getYear(),
                     "teacher" => $teacher->getName(),
                     "branch" => $branch->getName(),
                     "content" => "Unknown",
@@ -119,7 +119,7 @@ class LibraryController extends BaseController
                 $data = array(
                     "project_name" => $projects[$i]->getName(),
                     "student" => $student->getName(),
-                    "year" => $student->getCourse(),
+                    "year" => $student->getYear(),
                     "teacher" => $teacher->getName(),
                     "branch" => $branch->getName(),
                     "content" => "Unknown",
