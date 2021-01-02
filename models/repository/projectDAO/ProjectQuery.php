@@ -17,6 +17,8 @@ class ProjectQuery
                         WHERE project.completed = '1'";
     const UPDATE_CONTENT = "UPDATE project SET content = '%s' WHERE id = '%s'";
     const COUNT_ROW_NUM = "SELECT COUNT(*) AS row_num FROM project";
+    const UPDATE_COMPLETE ="UPDATE project SET completed ='%s' WHERE id ='%s'";
+    const UPDATE_POINT = "UPDATE project SET point ='%s' WHERE id ='%s'";
     // const SELECT_PROJECT = "SELECT * FROM project WHERE '%s'";
     // const INSERT_PROJECT = "INSERT INTO project(name, completed, branch_id, result, point) VALUES ('%s','%s','%s','%s','%s')";
     const UPDATE_PROJECT = "UPDATE project SET id ='%s',name= '%s' ,completed= '%s',branch_id= '%s',result= '%s',point= '%s'  WHERE '%s'";

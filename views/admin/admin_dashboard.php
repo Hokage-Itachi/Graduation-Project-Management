@@ -26,7 +26,7 @@
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HUS-Admin</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field' onkeyup="search('student')">
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field'">
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="/logout">Log out</a>
@@ -40,7 +40,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="/admin">
                                 <i class="fas fa-home"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -61,6 +61,12 @@
                             <a class="nav-link" href="/admin/teachers">
                                 <i class="fas fa-user-tie"></i>
                                 <span>Teachers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/library">
+                                <i class="fas fa-server "></i>
+                                <span>Library</span>
                             </a>
                         </li>
                     </ul>
@@ -114,7 +120,7 @@
                                 <div class="card-body">
                                     <?php echo "<h5 class='card-title'>" . $data['dashboard']['project_number'] . "</h5>"; ?>
                                     <h6 class="card-subtitle mb-2 text-muted">Projects</h6>
-                                    <p class="card-text">From more than 200 student</p>
+                                    <p class="card-text">In Library</p>
                                     <a href="/admin/projects" class="card-link">Details</a>
                                 </div>
                             </div>

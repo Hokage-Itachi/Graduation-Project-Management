@@ -72,6 +72,7 @@ class UserService
 
     public function insertUser($email, $pass_hashed, $name, $phone_number, $role_id)
     {
+        $result = $this->userDAO->insert($email, $pass_hashed, $name, $phone_number, $role_id);
         if($result == "Success"){
             error_log("User ".$email." insert success.");
         } else {

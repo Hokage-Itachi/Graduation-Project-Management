@@ -65,6 +65,12 @@
                             <span>Teachers</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/library">
+                            <i class="fas fa-server "></i>
+                            <span>Library</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -167,6 +173,7 @@
                     <thead>
                     <tr>
                         <th>No.</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Work Place</th>
@@ -181,6 +188,7 @@
                         $j = $i + 1;
                         echo "<tr>
                                         <td>" . $j . "</td>
+                                        <td>" . $data['teachers'][$i]['id'] . "</td>
                                         <td>" . $data['teachers'][$i]['name'] . "</td>
                                         <td>" . $data['teachers'][$i]['email'] . "</td>
                                         <td>" . $data['teachers'][$i]['work_place'] . "</td>

@@ -149,4 +149,33 @@ class ProjectDAO
         }
     }
 
+    public function updateComplete($id, $status){
+        $db = DB::getInstance();
+        $sql = sprintf(ProjectQuery::UPDATE_COMPLETE, $status, $id);
+        $result = $db->query($sql);
+        if ($result) {
+            $db->close();
+            return "Success";
+        }else{
+            $error = $db->connect_error;
+            $db->close();
+            return "Error: " . $error;
+        }
+    }
+
+    public function updatePoint($id, $point){
+        $db = DB::getInstance();
+        $sql = sprintf(ProjectQuery::UPDATE_POINT, $point, $id);
+        $result = $db->query($sql);
+        if ($result) {
+            $db->close();
+            return "Success";
+        }else{
+            $error = $db->connect_error;
+            $db->close();
+            return "Error: " . $error;
+        }
+    }
+
+
 }

@@ -79,6 +79,11 @@ $router->add_route('/student/profile', function () {
     $student_controller = new StudentController();
     $student_controller->render($student_controller->getProfileData());
 });
+$router->add_route('/student/project/complete', function () {
+    require_once("controllers/student_controller.php");
+    $student_controller = new StudentController();
+    $student_controller->completeProject();
+});
 $router->add_route('/student/profile/update', function () {
     require_once("controllers/student_controller.php");
     $student_controller = new StudentController();
@@ -140,7 +145,7 @@ $router->add_route('/logout', function () {
 $router->add_route('/test', function () {
     include_once("./test.php");
 });
-
+// admin URLs
 $router->add_route("/admin", function () {
     require_once("controllers/admin_controller.php");
     $admin_controller = new AdminController();
@@ -208,6 +213,20 @@ $router->add_route("/admin/projects", function () {
     $admin_controller = new AdminController();
 
     $admin_controller->renderProjectPage($admin_controller->getProjectData());
+    // TODO:
+});
+$router->add_route("/admin/projects/update", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+
+    $admin_controller->updateProject();
+    // TODO:
+});
+$router->add_route("/admin/projects/add", function () {
+    require_once("controllers/admin_controller.php");
+    $admin_controller = new AdminController();
+
+    $admin_controller->addProject();
     // TODO:
 });
 

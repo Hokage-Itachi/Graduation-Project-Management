@@ -114,4 +114,23 @@ class ProjectService
         return $result = $this->projectDAO->updateContent($content, $id);
     }
 
+    public function updateComplete($id, $status){
+        $result = $this->projectDAO->updateComplete($id, $status);
+        if($result == "Success"){
+            error_log("Project ".$id." completed");
+        } else {
+            error_log($result);
+        }
+    }
+
+    public function updatePoint($id, $point){
+        $result = $this->projectDAO->updatePoint($id, $point);
+        if($result == "Success"){
+            error_log("Project ".$id." completed");
+        } else {
+            error_log($result);
+        }
+    }
+
+
 }

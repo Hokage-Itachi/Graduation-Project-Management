@@ -9,11 +9,11 @@
     <!-- Bootstrap CSS -->
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
 
-    <title>Student GPMS</title>
+    <title>Teacher GPMS</title>
     <link href='/assets/css/admin-style.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css'>
-    <script src='https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js'></script>
     <link rel="icon" type="image/png" href="/assets/image/favicon.ico">
+    <script src='https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js'></script>
 
 </head>
 
@@ -28,14 +28,14 @@
                     ?>
                 </a>
                 <div class='dropdown-menu'>
-                    <a class='dropdown-item' href='/student/profile'>View detail profile</a>
+                    <a class='dropdown-item' href='/teacher/profile'>View detail profile</a>
                     <div class='dropdown-divider'></div>
                     <a class='dropdown-item' href='/logout'>Logout</a>
                 </div>
             </div>
 
             <div class='sidebar-sticky'>
-                <a class='btn btn-outline-danger my-5' href='/student'>Home</a>
+                <a class='btn btn-outline-danger my-5' href='/teacher'>Home</a>
                 <a class='btn btn-outline-danger my-5' href='/library'>Library</a>
             </div>
         </nav>
@@ -323,25 +323,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class='border rounded text-center' style='margin-top: 10px;'>
-                            <h3>Upload Document</h3>
-                            <form action="/student/project/upload" enctype="multipart/form-data" method="POST">
-                             <input type='file' id='uploadFile' name="document" class='form-control' required>
-                             <button class='form-control btn btn-outline-primary' type='submit'>Upload</button>
-                            </form>
-                        </div>
-                        <div class='border rounded text-center' style='margin-top: 250px;'>
-                            <form action="/student/project/complete" method="POST">
-                                <button class="form-control btn btn-outline-primary" type="submit" onclick="return canCompleted()">
-                                    <i class="fas fa-lock"></i>
-                                    Completed project
-                                </button>
-                                <?php
-                                    echo"<input type='hidden' name='project_id' value='".$data['project']['id']."'>";
-                                ?>
-                            </form>
-                        </div>
-
+                        <!--                            <div class='border rounded text-center'>-->
+                        <!--                                <h3>File here</h3>-->
+                        <!--                                <form>-->
+                        <!--                                    <label for='uploadFile'>You need to upload ?</label>-->
+                        <!--                                    <input type='file' id='uploadFile' class='form-control'>-->
+                        <!--                                    <button class='form-control btn btn-outline-primary' type='submit'>Upload</button>-->
+                        <!--                                </form>-->
+                        <!--                            </div>-->
                     </div>
                     <div class='col-7 border rounded'>
                         <div class='text-center'>
@@ -446,30 +435,6 @@
         .catch(error => {
             console.error(error);
         });
-    function canCompleted(){
-
-        let uncompleted_task = <?php
-            $uncomplete_task = 0;
-            foreach ($data['project']['phases'] as $phase) {
-                $uncomplete_task = $uncomplete_task + $phase['uncompleted_tasks'];
-            }
-            echo $uncomplete_task;
-            ?>;
-
-        let content = "<?php echo $data['project']['content'];?>";
-        // let content = "___";
-        // alert(content);
-        // return false;
-        if(uncompleted_task !== 0){
-            alert("You have " + uncompleted_task + " uncomplete task. Please complete them.")
-            return false;
-        } else if (content === ""){
-            alert("You have no document. Please upload one.")
-            return false;
-        } else {
-            return confirm("Are you sure to complete?");
-        }
-    }
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

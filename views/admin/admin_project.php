@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
 
 
-    <title>Admin | Student</title>
+    <title>Admin | Project</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
@@ -26,7 +26,7 @@
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HUS-Admin</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field' onkeyup="search('student')">
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field' onkeyup="search('project')">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="/logout">Log out</a>
@@ -63,6 +63,12 @@
                             <span>Teachers</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/library">
+                            <i class="fas fa-server "></i>
+                            <span>Library</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -77,6 +83,72 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
                 <h1 class="h2">Project</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#addStudent">
+                        <i class="fas fa-plus"></i>
+                        Upload Project
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-labelledby="addStudentLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addStudentLabel">Upload Project</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="addStudentForm" action="/admin/projects/add" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="name">Project Name</label>
+                                                <input type="text" class="form-control" name="project_name" id="name" placeholder="Project Name" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="student_id">Student ID</label>
+                                                <input type="number" name="student_id" min="10000000" max="99999999" class="form-control" id="student_id" onblur="autoDetectPassword('studentId')" placeholder="Student ID" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="teacher_id">Teacher ID</label>
+                                                <input type="number" name="teacher_id" class="form-control" id="teacher_id" placeholder="Teacher ID" value="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="branch">Branch</label>
+                                                <!--                                                    <input type="text" name="year" minlength="3" maxlength="8" class="form-control" id="year" placeholder="Year" value="" required>-->
+                                                <select name="branch" id="branch" class="form-control">
+                                                    <?php
+                                                    foreach ($data['branches'] as $branch){
+                                                        echo "<option value='".$branch['branch_id']."' name='branch_name'>".$branch['branch_name']."</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Point</label>
+                                                <input type="text" name="point" class="form-control" id="password" value="" min="1" max="10" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="date">Presentation Day</label>
+                                                <input type="date" name="presentation_day" class="form-control" id="date" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="file">Document</label>
+                                                <input type="file" name="content" class="form-control" id="file" value="" required>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" form="addStudentForm" class="btn btn-primary">Save changes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- <h2>Student</h2> -->
             <div class="table-responsive">
@@ -119,10 +191,10 @@
                                                             </button>
                                                         </div>
                                                         <div class='modal-body'>
-                                                            <form id='updateStudent" . $data['projects'][$i]['id'] . "Form'>
+                                                            <form id='updateProject" . $data['projects'][$i]['id'] . "Form' action='/admin/projects/update' enctype='multipart/form-data' method='POST'>
                                                                 <div class='form-group'>
                                                                     <label>ProjectID</label>
-                                                                    <input class='form-control' name='student_id' value='" . $data['projects'][$i]['id'] . "' readonly>
+                                                                    <input class='form-control' name='project_id' value='" . $data['projects'][$i]['id'] . "' readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     <label>Name</label>
@@ -141,14 +213,45 @@
                                                                     <input class='form-control' name='email' value='" . $data['projects'][$i]['branch'] . "' readonly>
                                                                 </div>
                                                                 <div class='form-group'>
-                                                                    <label>Point</label>
-                                                                    <input class='form-control' name='email' value='" . $data['projects'][$i]['point'] . "' readonly>
-                                                                </div>
+                                                                    <label>Point</label>";
+                                                                    if($data['projects'][$i]['status'] != "Reviewing"){
+                                                                        echo "<input class='form-control' name='point' value='" . $data['projects'][$i]['point'] . "' readonly>";
+                                                                    } else {
+                                                                        echo "<input class='form-control' name='point' value='" . $data['projects'][$i]['point'] . "'>";
+                                                                    }
+
+                                                                echo "</div>";
+                                                                    if($data['projects'][$i]['status'] != "Processing"){
+                                                                        if($data['projects'][$i]['status'] == "Public") {
+                                                                            echo "<div class='form-group'>
+                                                                                <label>Public?</label>
+                                                                                <input name='status' value='1' type='checkbox' checked>
+                                                                            </div>";
+                                                                        } else {
+                                                                            echo "<div class='form-group'>
+                                                                                <label>Public?</label>
+                                                                                <input name='status' value='1' type='checkbox'>
+                                                                            </div>";
+                                                                        }
+                                                                    }
+                                                                if($data['projects'][$i]['content'] || $data['projects'][$i]['status'] == "Processing"){
+                                                                    echo "<div class='form-group'>
+                                                                    <label>Document</label>
+                                                                    <input class='form-control' name='content' value='" . $data['projects'][$i]['content'] . "' readonly>
+                                                                     </div>";
+                                                                } else {
+                                                                    echo "<div class='form-group'>
+                                                                    <label>Document</label>
+                                                                        <input type='file' class='form-control' name='content'>
+                                                                    </div>";
+                                                                }
                                                        
-                                                            </form>
+                                                        echo"</form>
                                                         </div>
                                                         <div class='modal-footer'>
                                                             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close
+                                                            </button>
+                                                            <button type='submit' class='btn btn-primary' form='updateProject" . $data['projects'][$i]['id'] . "Form'>Save changes
                                                             </button>
                                                
                                                         </div>

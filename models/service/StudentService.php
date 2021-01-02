@@ -79,8 +79,8 @@ class StudentService
             error_log($result);
         }
     }
-    public function insertStudent($student_id, $class, $grade, $year, $branch_id, $user_id){
-        $result = $this->studentDAO->insert($user_id, $class, $student_id, $grade, $year, $branch_id);
+    public function insertStudent($student_id, $class, $year, $branch_id, $user_id){
+        $result = $this->studentDAO->insert($user_id, $class, $student_id, $year, $branch_id);
 //        error_log($result);
     }
     public function getByUserID($user_id){
