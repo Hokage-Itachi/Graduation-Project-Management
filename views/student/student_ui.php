@@ -9,10 +9,11 @@
     <!-- Bootstrap CSS -->
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
 
-    <title>Graduation Project management System</title>
+    <title>Student GPMS</title>
     <link href='/assets/css/admin-style.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css'>
     <script src='https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js'></script>
+    <link rel="icon" type="image/png" href="/assets/image/favicon.ico">
 
 </head>
 
@@ -330,7 +331,7 @@
                             </form>
                         </div>
                         <div class='border rounded text-center' style='margin-top: 250px;'>
-                            <form action="/student/project/completed" method="POST">
+                            <form action="/student/project/complete" method="POST">
                                 <button class="form-control btn btn-outline-primary" type="submit" onclick="return canCompleted()">
                                     <i class="fas fa-lock"></i>
                                     Completed project
@@ -466,7 +467,7 @@
             alert("You have no document. Please upload one.")
             return false;
         } else {
-            return confirm("Are you sure to completed?");
+            return confirm("Are you sure to complete?");
         }
     }
 </script>

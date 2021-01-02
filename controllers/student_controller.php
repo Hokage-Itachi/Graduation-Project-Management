@@ -357,7 +357,7 @@ class StudentController extends BaseController{
         $allow_type = ['image/png', 'image/jpg','image/jpeg','image/gif'];
         if($avatar_img != ""){
             if(in_array($avatar_img['type'], $allow_type)){
-                $new_avatar = $avatar_img['name'];
+                $new_avatar = "Std".$student->getStudentId()."_".$avatar_img['name'];
             }
         }
         $current_avatar = $student->getAvatar();
@@ -370,5 +370,13 @@ class StudentController extends BaseController{
         $this->userService->updateAvatar($new_avatar, $_SESSION['user']['id']);
         header("location: /student");
     }
+
+    public function completeProject(){
+        $project_id = $_POST['project_id'];
+
+        $this->projectService->updateComplete($project_id, "3");
+        header("location: /library");
+    }
+
 
 }

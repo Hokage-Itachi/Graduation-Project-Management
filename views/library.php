@@ -28,8 +28,8 @@
                 </div>
                 <div class='select-div'>
                     <select class="selective" onchange="change_select(value)" id='fill_by'>
-                        <option value="major">Ngành</option>
-                        <option value="teacher">Giáo viên hướng dẫn</option>
+                        <option value="major">Branch</option>
+                        <option value="teacher">Teacher</option>
                         <!-- <option value="year">Khóa</option> -->
                     </select>
                 </div>
@@ -43,232 +43,54 @@
             <div class="page-header">
                 <h1>HUS PROJECT LIBRARY</h1>
                 <div class="user">
-                    <img src="assets/image/img_avatar2.png" class="rounded-circle" alt="Cinque Terre">
-                    <a href="#">Login</a>
+                    <?php
+                        echo "<img src='assets/image/".$data['user']['avatar']."' class='rounded-circle' alt='Cinque Terre'>";
+                        echo "<a href='/login'>".$data['user']['user_name']."</a>";
+                    ?>
+
                 </div>
             </div>
             <div class='card-column'>
-                <div class='card'>
+            <?php
+            foreach ($data['projects'] as $project) {
+                echo "<div class='card'>
                     <div class='user-card'>
                         <i class='fa fa-user'></i>
                     </div>
                     <div class='project-info'>
-                        <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML</h1>
+                        <h1 class='name'><b>".$project['project_name']."</b></h1>
                         <ul class='meta-data'>
                             <div class='info-y'>
                                 <li>
-                                    <label>Sinh viên:</label>
-                                    <strong class='student'>Nguyễn Thế Hợp</strong>
+                                    <label><b>Student:</b></label>
+                                    <strong class='student'>".$project['student']."</strong>
                                 </li>
                                 <li>
-                                    <label>Khóa:</label>
-                                    <strong class='year'>QH2018</strong>
+                                    <label><b>Year:</b></label>
+                                    <strong class='year'>".$project['year']."</strong>
                                 </li>
                                 <li>
-                                    <label>Người hướng dẫn:</label>
-                                    <strong class='teacher'>Nguyễn Văn A</strong>
+                                    <label><b>Teacher:</b></label>
+                                    <strong class='teacher'>".$project['teacher']."</strong>
                                 </li>
                                 <li>
-                                    <label>Chuyên ngành:</label>
-                                    <strong class='branch'>Computer Science</strong>
+                                    <label><b>Branch:</b></label>
+                                    <strong class='branch'>".$project['branch']."</strong>
                                 </li>
                                 <li>
-                                    <label>Nội dung:</label>
-                                    <strong class='content'>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML sang CSDL quan hệ và ngược lại</strong>
+                                    <label><b>Document:</b>:</label>
+                                    <a href='#' style='text-decoration: none;'><strong class='content'>".$project['content']."</strong></a>
                                 </li>
                                 <li>
-                                    <label>Điểm số:</label>
-                                    <strong class='point'>10/10</strong>
+                                    <label><b>Point:</b>:</label>
+                                    <strong class='point'>".$project['point']."/10</strong>
                                 </li>
                             </div>
                         </ul>
                     </div>
-                </div>
-
-                <div class='card'>
-                    <div class='user-card'>
-                        <i class='fa fa-user'></i>
-                    </div>
-                    <div class='project-info'>
-                        <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML</h1>
-                        <ul class='meta-data'>
-                            <div class='info-y'>
-                                <li>
-                                    <label>Sinh viên:</label>
-                                    <strong class='student'>Nguyễn Thế Hợp</strong>
-                                </li>
-                                <li>
-                                    <label>Khóa:</label>
-                                    <strong class='year'>QH2018</strong>
-                                </li>
-                                <li>
-                                    <label>Người hướng dẫn:</label>
-                                    <strong class='teacher'>Nguyễn Văn A</strong>
-                                </li>
-                                <li>
-                                    <label>Chuyên ngành:</label>
-                                    <strong class='branch'>Computer Science</strong>
-                                </li>
-                                <li>
-                                    <label>Nội dung:</label>
-                                    <strong class='content'>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML sang CSDL quan hệ và ngược lại</strong>
-                                </li>
-                                <li>
-                                    <label>Điểm số:</label>
-                                    <strong class='point'>10/10</strong>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class='card'>
-                    <div class='user-card'>
-                        <i class='fa fa-user'></i>
-                    </div>
-                    <div class='project-info'>
-                        <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML</h1>
-                        <ul class='meta-data'>
-                            <div class='info-y'>
-                                <li>
-                                    <label>Sinh viên:</label>
-                                    <strong class='student'>Nguyễn Thế Hợp</strong>
-                                </li>
-                                <li>
-                                    <label>Khóa:</label>
-                                    <strong class='year'>QH2018</strong>
-                                </li>
-                                <li>
-                                    <label>Người hướng dẫn:</label>
-                                    <strong class='teacher'>Nguyễn Văn A</strong>
-                                </li>
-                                <li>
-                                    <label>Chuyên ngành:</label>
-                                    <strong class='branch'>Computer Science</strong>
-                                </li>
-                                <li>
-                                    <label>Nội dung:</label>
-                                    <strong class='content'>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML sang CSDL quan hệ và ngược lại</strong>
-                                </li>
-                                <li>
-                                    <label>Điểm số:</label>
-                                    <strong class='point'>10/10</strong>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class='card'>
-                    <div class='user-card'>
-                        <i class='fa fa-user'></i>
-                    </div>
-                    <div class='project-info'>
-                        <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML</h1>
-                        <ul class='meta-data'>
-                            <div class='info-y'>
-                                <li>
-                                    <label>Sinh viên:</label>
-                                    <strong class='student'>Nguyễn Thế Hợp</strong>
-                                </li>
-                                <li>
-                                    <label>Khóa:</label>
-                                    <strong class='year'>QH2018</strong>
-                                </li>
-                                <li>
-                                    <label>Người hướng dẫn:</label>
-                                    <strong class='teacher'>Nguyễn Văn A</strong>
-                                </li>
-                                <li>
-                                    <label>Chuyên ngành:</label>
-                                    <strong class='branch'>Computer Science</strong>
-                                </li>
-                                <li>
-                                    <label>Nội dung:</label>
-                                    <strong class='content'>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML sang CSDL quan hệ và ngược lại</strong>
-                                </li>
-                                <li>
-                                    <label>Điểm số:</label>
-                                    <strong class='point'>10/10</strong>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class='card'>
-                    <div class='user-card'>
-                        <i class='fa fa-user'></i>
-                    </div>
-                    <div class='project-info'>
-                        <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML</h1>
-                        <ul class='meta-data'>
-                            <div class='info-y'>
-                                <li>
-                                    <label>Sinh viên:</label>
-                                    <strong class='student'>Nguyễn Thế Hợp</strong>
-                                </li>
-                                <li>
-                                    <label>Khóa:</label>
-                                    <strong class='year'>QH2018</strong>
-                                </li>
-                                <li>
-                                    <label>Người hướng dẫn:</label>
-                                    <strong class='teacher'>Nguyễn Văn A</strong>
-                                </li>
-                                <li>
-                                    <label>Chuyên ngành:</label>
-                                    <strong class='branch'>Computer Science</strong>
-                                </li>
-                                <li>
-                                    <label>Nội dung:</label>
-                                    <strong class='content'>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML sang CSDL quan hệ và ngược lại</strong>
-                                </li>
-                                <li>
-                                    <label>Điểm số:</label>
-                                    <strong class='point'>10/10</strong>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class='card'>
-                    <div class='user-card'>
-                        <i class='fa fa-user'></i>
-                    </div>
-                    <div class='project-info'>
-                        <h1 class='name'>Tích Hợp Cơ Sở Dữ Liệu Và XML</h1>
-                        <ul class='meta-data'>
-                            <div class='info-y'>
-                                <li>
-                                    <label>Sinh viên:</label>
-                                    <strong class='student'>Nguyễn Thế Hợp</strong>
-                                </li>
-                                <li>
-                                    <label>Khóa:</label>
-                                    <strong class='year'>QH2018</strong>
-                                </li>
-                                <li>
-                                    <label>Người hướng dẫn:</label>
-                                    <strong class='teacher'>Nguyễn Văn A</strong>
-                                </li>
-                                <li>
-                                    <label>Chuyên ngành:</label>
-                                    <strong class='branch'>Computer Science</strong>
-                                </li>
-                                <li>
-                                    <label>Nội dung:</label>
-                                    <strong class='content'>Xây dựng cài đặt thành công các thuật toán chuyển đổi dữ liệu từ XML sang CSDL quan hệ và ngược lại</strong>
-                                </li>
-                                <li>
-                                    <label>Điểm số:</label>
-                                    <strong class='point'>10/10</strong>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
+                </div>";
+            }
+            ?>
             </div>
         </div>
     </div>

@@ -63,6 +63,12 @@
                                 <span>Teachers</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/library">
+                                <i class="fas fa-server "></i>
+                                <span>Library</span>
+                            </a>
+                        </li>
                     </ul>
 
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -117,12 +123,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="branch">Branch</label>
-<!--                                                    <input type="text" name="year" minlength="3" maxlength="8" class="form-control" id="year" placeholder="Year" value="" required>-->
+                                                    <!--                                                    <input type="text" name="year" minlength="3" maxlength="8" class="form-control" id="year" placeholder="Year" value="" required>-->
                                                     <select name="branch" id="branch" class="form-control">
                                                         <?php
-                                                            foreach ($data['branches'] as $branch){
-                                                                echo "<option value='".$branch['branch_id']."' name='branch_name'>".$branch['branch_name']."</option>";
-                                                            }
+                                                        foreach ($data['branches'] as $branch){
+                                                            echo "<option value='".$branch['branch_id']."' name='branch_name'>".$branch['branch_name']."</option>";
+                                                        }
                                                         ?>
                                                     </select>
                                                 </div>
@@ -138,9 +144,9 @@
                                         <button type="submit" form="addStudentForm" class="btn btn-primary">Save changes
                                         </button>
                                     </div>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
                         <div class="btn-group mr-2">
                             <button class="btn btn-sm btn-outline-secondary">Import</button>
                             <button class="btn btn-sm btn-outline-secondary">Export</button>
@@ -191,12 +197,38 @@
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     <label>Name</label>
-                                                                    <input class='form-control' name='name' value='" . $data['students'][$i]['name'] . "'>
+                                                                    <input class='form-control' name='name' value='" . $data['students'][$i]['name'] . "' readonly>
                                                                 </div>
                                                                 <div class='form-group'>
                                                                     <label>Email</label>
-                                                                    <input class='form-control' name='email' value='" . $data['students'][$i]['email'] . "'>
+                                                                    <input class='form-control' name='email' value='" . $data['students'][$i]['email'] . "' readonly>
                                                                 </div>
+                                                                <div class='form-group'>
+                                                                    <label>Phone</label>
+                                                                    <input class='form-control' name='phone' value='" . $data['students'][$i]['phone'] . "' readonly>
+                                                                </div>      
+                                                                <div class='form-group'>
+                                                                <label>Branch</label>
+                                                                <select class='form-control' name='branch'>";
+                                                                    foreach ($data['branches'] as $branch){
+                                                                        if($data['students'][$i]['branch'] == $branch['branch_name']){
+                                                                            echo "<option selected value='".$branch['branch_id']."' name='branch_name'>".$branch['branch_name']."</option>";
+                                                                        } else{
+                                                                            echo "<option value='".$branch['branch_id']."' name='branch_name'>".$branch['branch_name']."</option>";
+                                                                        }
+
+                                                                    }
+                                                                    echo"</select>
+                                                                    </div>  
+                                                                    <div class='form-group'>
+                                                                    <label>Class</label>
+                                                                    <input class='form-control' name='class' value='" . $data['students'][$i]['class'] . "'>
+                                                                </div>
+                                                                <div class='form-group'>
+                                                                    <label>Year</label>
+                                                                    <input class='form-control' name='year' value='" . $data['students'][$i]['year'] . "'>
+                                                                </div>    
+                                                                                             
                                                             </form>
                                                         </div>
                                                         <div class='modal-footer'>

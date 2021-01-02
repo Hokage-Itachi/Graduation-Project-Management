@@ -190,7 +190,10 @@ class TeacherController extends BaseController{
         $data = array();
         if($joinedProject){
             $data['projects'] = $joinedProject;
+        } else {
+            $data['projects'] = array();
         }
+
 
         $avatar = $teacher->getAvatar();
 //        error_log("avatar: ". $avatar);
@@ -295,7 +298,7 @@ class TeacherController extends BaseController{
         $allow_type = ['image/png', 'image/jpg','image/jpeg','image/gif'];
         if($avatar_img != ""){
             if(in_array($avatar_img['type'], $allow_type)){
-                $new_avatar = $avatar_img['name'];
+                $new_avatar = "Tec_".$teacher->getTeacherId()."_".$avatar_img['name'];
             }
         }
         $current_avatar = $teacher->getAvatar();

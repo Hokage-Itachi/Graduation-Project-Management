@@ -74,6 +74,9 @@ class AdminController extends BaseController
                     'student_id' => $student->getStudentId(),
                     'email' => $student->getEmail(),
                     'name' => $student->getName(),
+                    'class'=>$student->getClass(),
+                    'year'=>$student->getYear(),
+                    'phone'=>$student->getPhoneNumber(),
                     'branch' => $branch->getName()
                 );
 
@@ -111,6 +114,7 @@ class AdminController extends BaseController
         foreach ($teachers as $teacher) {
             if($teacher->getActive() == '1'){
                 $data = array(
+                    "id"=>$teacher->getTeacherId(),
                     'work_place' => $teacher->getWorkPlace(),
                     'email' => $teacher->getEmail(),
                     'name' => $teacher->getName(),
@@ -142,13 +146,13 @@ class AdminController extends BaseController
 
         $inactive_user = $this->userService->getInActiveUser();
         if($inactive_user){
-            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"", $pass_hashed);
+            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"0", $pass_hashed);
             $this->userService->activeUser($inactive_user->getUserId());
             $this->studentService->updateStudent($student_id, $class, $year, $branch_id, $inactive_user->getUserId());
         } else{
             $this->userService->insertUser($email, $pass_hashed, $name, '0', '3');
             $user = $this->userService->findByEmail($email);
-            $this->studentService->insertStudent($student_id, $class,"", $year, $branch_id, $user->getUserId());
+            $this->studentService->insertStudent($student_id, $class, $year, $branch_id, $user->getUserId());
         }
         header('location: /admin/students');
 
@@ -162,8 +166,14 @@ class AdminController extends BaseController
         $name = $_POST['name'];
         $email = $_POST['email'];
         $student_id = $_POST['student_id'];
+        $phone = $_POST['phone'];
+        $class = $_POST['class'];
+        $year = $_POST['year'];
+        $branch = $_POST['branch'];
         $student = $this->studentService->findByStudentID($student_id);
-        $this->userService->updateUser($student->getUserId(), $email, $name, $student->getPassHashed());
+        $this->studentService->updateStudent($student_id,$class, $year,$branch, $student->getUserId());
+        $this->userService->updateUser($student->getUserId(), $email, $name,$phone, $student->getPassHashed());
+
 
         header("location: /admin/students");
     }
@@ -190,7 +200,7 @@ class AdminController extends BaseController
 
         $user = $this->userService->findByEmail($email);
         $teacher = $this->teacherService->getByUserID($user->getUserId());
-        $this->userService->updateUser($user->getUserId(), $email, $name, $user->getPassHashed());
+        $this->userService->updateUser($user->getUserId(), $email, $name,$user->getPhoneNumber(), $user->getPassHashed());
         $this->teacherService->update($user->getUserId(),$degree, $work_place, $academic_rank, $teacher->getBranchId());
 //        error_log("HEre");
         header('location: /admin/teachers');
@@ -218,7 +228,7 @@ class AdminController extends BaseController
 
         $inactive_user = $this->userService->getInActiveUser();
         if($inactive_user){
-            $this->userService->updateUser($inactive_user->getUserId(), $email, $name, $pass_hashed);
+            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"0", $pass_hashed);
             $this->userService->activeUser($inactive_user->getUserId());
             $this->teacherService->update($inactive_user->getUserId(), $degree,$work_place, $academic_rank, $branch_id);
         } else{
@@ -245,16 +255,88 @@ class AdminController extends BaseController
             $data['point'] = $project->getPoint();
             if($project->getCompleted() == '0'){
                 $data['status'] = "Processing";
+            } else if($project->getCompleted() == '3'){
+                $data['status'] = "Reviewing";
+            } else if($project->getCompleted() == '4'){
+                $data['status'] = "Private";
             } else {
-                $data['status'] = "Completed";
+                $data['status'] = "Public";
             }
-//            $data['content'] = $project->getContent();
-
+            $data['content'] = $project->getContent();
             $project_data[$i] = $data;
             $i++;
 
         }
         $this->data['projects'] = $project_data;
+        $this->data['branches'] = $this->getBranchData();
         return $this->data;
+    }
+
+    public function updateProject(){
+        $project_id = $_POST['project_id'];
+        $project = $this->projectService->findByID($project_id);
+        $point = $_POST['point'];
+        $status = isset($_POST['status']) ? $_POST['status'] : "4";
+        $file = isset($_FILES['content']) ? $_FILES['content'] : "";
+        print_r($file);
+        $document =  $project->getContent();
+        $allowType = "application/pdf";
+
+        if($file != ""){
+            if($file['type'] != $allowType){
+                die("Not PDF document");
+            }
+            $document = "Pr_".$project_id."_".$file['name'];
+            move_uploaded_file($file['tmp_name'], "assets/user_document/".$document);
+        }
+
+
+
+
+        $this->projectService->updatePoint($project_id, $point);
+        $this->projectService->updateComplete($project_id, $status);
+        $this->projectService->updateContent($document, $project_id);
+
+        header("location: /admin/projects");
+
+
+    }
+
+    public function addProject(){
+        $project_name = $_POST['project_name'];
+        $student_id = $_POST['student_id'];
+        $teacher_id = $_POST['teacher_id'];
+        $branch = $_POST['branch'];
+        $point = $_POST['point'];
+        $presentation_day = Formatter::format_date($_POST['presentation_day'], "Y-m-d");
+        $file = $_FILES['content'];
+
+        if($file['type'] != "application/pdf"){
+            die("Not PDF document");
+        }
+
+        if($this->projectService->findByName($project_name)){
+            die("Project exist.");
+        }
+
+        if(!$this->teacherService->findByID($teacher_id)){
+            die("Teacher ID: ".$teacher_id." not exist.");
+        }
+        $student = $this->studentService->findByStudentID($student_id);
+        if(!$student){
+            die("Student ID: ".$student_id." not exist.");
+        }
+
+        $this->projectService->insert($project_name, "4", $branch, $point, "", "", $student->getRowId(), $teacher_id);
+        $project = $this->projectService->findByName($project_name)[0];
+        $document = "Pr_".$project->getProjectId()."_".$file['name'];
+
+        move_uploaded_file($file['tmp_name'], "assets/user_document/".$document);
+
+        $this->projectService->updateContent($document, $project->getProjectId());
+
+        header("location: /admin/projects");
+
+
     }
 }

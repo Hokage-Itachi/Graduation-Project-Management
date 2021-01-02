@@ -55,7 +55,7 @@ class LibraryController extends BaseController
                     "teacher" => $teacher->getName(),
                     "branch" => $branch->getName(),
                     "content" => "Unknown",
-                    "point" => $projects[$i]->getPoint()
+                    "point" => round($projects[$i]->getPoint(), 2)
                 );
                 $project_data[$i] = $data;
             }
@@ -99,54 +99,26 @@ class LibraryController extends BaseController
         return $branch_data;
     }
 
-    public function search()
-    {
-        if (isset($_POST["name_string"])) {
-            $name_string = $_POST['name_string'];
-            $name_string = strip_tags($name_string);
-            $name_string = addslashes($name_string);
-            $projects = $this->projectService->findByName($name_string);
-            $n = 0;
-            if ($projects != null) {
-                $n = count($projects);
-            }
-            $project_data = array();
-            for ($i = 0; $i < $n; $i++) {
-                $student = $this->studentService->findByID($projects[$i]->getStudentId());
-                // error_log($student->getName());
-                $teacher = $this->teacherService->findByID(($projects[$i]->getTeacherId()));
-                $branch = $this->branchService->findByID($projects[$i]->getBranchId());
-                $data = array(
-                    "project_name" => $projects[$i]->getName(),
-                    "student" => $student->getName(),
-                    "year" => $student->getYear(),
-                    "teacher" => $teacher->getName(),
-                    "branch" => $branch->getName(),
-                    "content" => "Unknown",
-                    "point" => $projects[$i]->getPoint()
-                );
-                $project_data[$i] = $data;
-            }
-            $data['projects'] = $project_data;
-            $data['branches'] = $this->getListBranch();
-            $data['teachers'] = $this->getListTeacher();
-            $data['user'] = $this->getUsername();
-            return $data;
-        } else {
-            header("location: /library");
-        }
-
-        // $this->render();
-    }
-
-    public function getUsername()
+    public function getUserData()
     {
         if (isset($_SESSION['user'])) {
-            error_log($_SESSION['user']['id']);
+//            error_log($_SESSION['user']['id']);
             $usr = $this->userService->findByID($_SESSION['user']['id']);
-            return $usr->getName();
+            $data = array(
+                "user_name"=>$usr->getName()
+            );
+            $avatar = $usr->getAvatar();
+            if(!$avatar){
+                $data['avatar'] = "default_avatar/img_avatar2.png";
+            } else{
+                $data['avatar'] = "user_avatar/".$avatar;
+            }
+            return $data;
         } else
-            return null;
+            return array(
+                "user_name"=>"Login",
+                "avatar"=>"default_avatar/img_avatar2.png"
+            );
     }
 
     public function getData()
@@ -154,7 +126,7 @@ class LibraryController extends BaseController
         $data['projects'] = $this->getListProject();
         $data['branches'] = $this->getListBranch();
         $data['teachers'] = $this->getListTeacher();
-        $data['user'] = $this->getUsername();
+        $data['user'] = $this->getUserData();
         return $data;
     }
 }
