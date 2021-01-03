@@ -23,14 +23,14 @@ class MessageController{
         $result = $this->postService->insert($content, $created_at, $user_id, $project_id);
         if($_SESSION['user']['role'] == 2){
             if($result == "Success"){
-                header('location: /teacher/project/'.$project_id);
+                header('location: /Graduation-Project-Management/teacher/project/'.$project_id);
                 die();
             } else {
                 echo $result;
             }
         } else {
             if($result == "Success"){
-                header('location: /student');
+                header('location: /Graduation-Project-Management/student');
                 die();
             } else {
                 echo $result;
@@ -48,14 +48,14 @@ class MessageController{
         $result = $this->commentService->insert($content, $created_at, $post_id, $user_id);
         if($_SESSION['user']['role'] == 2){
             if($result == "Success"){
-                header('location: /teacher/project/'.$project_id);
+                header('location: /Graduation-Project-Management/teacher/project/'.$project_id);
                 die();
             } else {
                 echo $result;
             }
         } else {
             if($result == "Success"){
-                header('location: /student');
+                header('location: /Graduation-Project-Management/student');
                 die();
             } else {
                 echo $result;

@@ -66,7 +66,7 @@ class StudentController extends BaseController{
             $student = $this->studentService->getByUserID($_SESSION['user']['id']);
             $result = $this->projectService->insert($name, '0', $branch, '0', 'Standard', '', $student->getRowId(), $teacher->getTeacherId());
 //            error_log($result);
-            header('location: /student');
+            header('location: /Graduation-Project-Management/student');
 
         }
     }
@@ -293,14 +293,16 @@ class StudentController extends BaseController{
             unlink("/assets/user_document/".$current_document);
         }
         $new_document = $file['name'];
-        move_uploaded_file($file['tmp_name'], "assets/user_document/".$new_document);
+        if(move_uploaded_file($file['tmp_name'], "./assets/user_document/".$new_document)){
+            die("Upload Document Failed");
+        }
 
         $result = $this->projectService->updateContent($new_document, $project->getProjectId());
         if($result != "Success"){
             die($result);
         }
 
-        header("location: /student");
+        header("location: /Graduation-Project-Management/student");
 
 
     }
@@ -340,6 +342,9 @@ class StudentController extends BaseController{
         $student = $this->studentService->getByUserID($_SESSION['user']['id']);
         $student_id = $_POST['student_id'];
         $email = $_POST['email'];
+        if($this->userService->findByEmail($email) && $student->getEmail() != $email){
+            die("Email has exist on system");
+        }
         $name = $_POST['name'];
         $phone = $_POST['phone'];
         $branch = $_POST['branch'];
@@ -361,14 +366,13 @@ class StudentController extends BaseController{
             }
         }
         $current_avatar = $student->getAvatar();
-        if(file_exists("/assets/image/user_avatar/".$current_avatar)){
-            unlink("/assets/image/user_avatar/".$current_avatar);
-        }
 //        die(getcwd());
-        move_uploaded_file($avatar_img['tmp_name'], "assets/image/user_avatar/".$new_avatar);
+        if(!move_uploaded_file($avatar_img['tmp_name'], "./assets/image/user_avatar/".$new_avatar)){
+            error_log("Upload avatar Failed: ".$new_avatar);
+        }
 
         $this->userService->updateAvatar($new_avatar, $_SESSION['user']['id']);
-        header("location: /student");
+        header("location: /Graduation-Project-Management/student/profile");
     }
 
     public function completeProject(){

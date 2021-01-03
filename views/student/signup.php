@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project SignUp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="/assets/css/signup/signup-style.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link href="/Graduation-Project-Management/assets/css/signup/signup-style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="/Graduation-Project-Management/assets/Image/favicon.ico">
 
 
 </head>
@@ -17,7 +17,7 @@
     Sign up your granduation project
 </h1>
 <div class='container'>
-    <form action="/student/signup" method="POST">
+    <form action="/Graduation-Project-Management/student/signup" method="POST">
 
 
         <div class='form-group'>

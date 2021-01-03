@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Library</title>
-    <link href="/assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
+    <link href="./assets/css/library-css/library-style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link rel="icon" type="image/png" href="./assets/Image/favicon.ico">
 
 
 </head>
@@ -23,7 +23,7 @@
         <div class=' left col-xl-3'>
             <div class='container-left'>
                 <div class='search-div'>
-                    <input type="text" placeholder="search..." id='search'>
+                    <input type="text" placeholder="search" id='search'>
                     <button type="button"><i class="fa fa-search" onclick="search()"></i></button>
                 </div>
                 <div class='select-div'>
@@ -44,8 +44,8 @@
                 <h1>HUS PROJECT LIBRARY</h1>
                 <div class="user">
                     <?php
-                        echo "<img src='assets/image/".$data['user']['avatar']."' class='rounded-circle' alt='Cinque Terre'>";
-                        echo "<a href='/login'>".$data['user']['user_name']."</a>";
+                        echo "<img src='./assets/image/".$data['user']['avatar']."' class='rounded-circle' alt='Cinque Terre'>";
+                        echo "<a href='/Graduation-Project-Management/login'>".$data['user']['user_name']."</a>";
                     ?>
 
                 </div>
@@ -78,11 +78,11 @@
                                     <strong class='branch'>".$project['branch']."</strong>
                                 </li>
                                 <li>
-                                    <label><b>Document:</b>:</label>
-                                    <a href='#' style='text-decoration: none;'><strong class='content'>".$project['content']."</strong></a>
+                                    <label><b>Document:</b></label>
+                                    <a href='/assets/user_document/".$project['content']."' style='text-decoration: none;' download=''><strong class='content'>".$project['content']."</strong></a>
                                 </li>
                                 <li>
-                                    <label><b>Point:</b>:</label>
+                                    <label><b>Point:</b></label>
                                     <strong class='point'>".$project['point']."/10</strong>
                                 </li>
                             </div>
@@ -166,7 +166,7 @@
         }
     }
 </script>
-<script src="/assets/js/library_script.js"></script>
+<script src="./assets/js/library_script.js"></script>
 </body>
 
 </html>

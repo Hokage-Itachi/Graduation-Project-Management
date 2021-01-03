@@ -1,2 +1,2 @@
 <?php
-echo "Page not found";
+echo "<h1> 404 Not Found </h1>";

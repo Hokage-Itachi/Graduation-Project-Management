@@ -144,17 +144,21 @@ class AdminController extends BaseController
         $pass_hashed = password_hash($password, PASSWORD_DEFAULT);
 //        error_log($pass_hashed);
 
-        $inactive_user = $this->userService->getInActiveUser();
-        if($inactive_user){
-            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"0", $pass_hashed);
-            $this->userService->activeUser($inactive_user->getUserId());
-            $this->studentService->updateStudent($student_id, $class, $year, $branch_id, $inactive_user->getUserId());
-        } else{
-            $this->userService->insertUser($email, $pass_hashed, $name, '0', '3');
-            $user = $this->userService->findByEmail($email);
-            $this->studentService->insertStudent($student_id, $class, $year, $branch_id, $user->getUserId());
+//        $inactive_user = $this->userService->getInActiveUser();
+//        if($inactive_user){
+//            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"0", $pass_hashed);
+//            $this->userService->activeUser($inactive_user->getUserId());
+//            $this->userService->updateAvatar("", $inactive_user->getUserId());
+//            $this->studentService->updateStudent($student_id, $class, $year, $branch_id, $inactive_user->getUserId());
+//        } else{
+        if($this->userService->findByEmail($email)){
+            die("Account exist");
         }
-        header('location: /admin/students');
+        $this->userService->insertUser($email, $pass_hashed, $name, '0', '3');
+        $user = $this->userService->findByEmail($email);
+        $this->studentService->insertStudent($student_id, $class, $year, $branch_id, $user->getUserId());
+//        }
+        header('location: /Graduation-Project-Management/admin/students');
 
 
 
@@ -171,11 +175,14 @@ class AdminController extends BaseController
         $year = $_POST['year'];
         $branch = $_POST['branch'];
         $student = $this->studentService->findByStudentID($student_id);
+        if($this->userService->findByEmail($email) && $student->getEmail() != $email){
+            die("Account exist");
+        }
         $this->studentService->updateStudent($student_id,$class, $year,$branch, $student->getUserId());
         $this->userService->updateUser($student->getUserId(), $email, $name,$phone, $student->getPassHashed());
 
 
-        header("location: /admin/students");
+        header("location: /Graduation-Project-Management/admin/students");
     }
 
     public function deleteStudent()
@@ -187,7 +194,7 @@ class AdminController extends BaseController
 //        $this->studentService->deleteStudent($student_id);
         $this->userService->deleteUser($user_id);
 
-        header("location: /admin/students");
+        header("location: /Graduation-Project-Management/admin/students");
     }
 
     public function updateTeacher(){
@@ -196,23 +203,27 @@ class AdminController extends BaseController
         $work_place = $_POST['work_place'];
         $degree = $_POST['degree'];
         $academic_rank = $_POST['academic_rank'];
+        $id = $_POST['id'];
+        $teacher = $this->teacherService->findByID($id);
 //        $branch_id = $_POST['branch'];
 
-        $user = $this->userService->findByEmail($email);
-        $teacher = $this->teacherService->getByUserID($user->getUserId());
+        $user = $this->userService->findByID($teacher->getUserId());
+        if($this->userService->findByEmail($email) && $user->getEmail() != $email){
+            die($email." has exist on this system");
+        }
+//        $teacher = $this->teacherService->getByUserID($user->getUserId());
         $this->userService->updateUser($user->getUserId(), $email, $name,$user->getPhoneNumber(), $user->getPassHashed());
         $this->teacherService->update($user->getUserId(),$degree, $work_place, $academic_rank, $teacher->getBranchId());
 //        error_log("HEre");
-        header('location: /admin/teachers');
+        header('location: /Graduation-Project-Management/admin/teachers');
 
     }
 
     public function deleteTeacher(){
-        $email = $_POST['email'];
-
-        $user = $this->userService->findByEmail($email);
-        $this->userService->deleteUser($user->getUserId());
-        header('location: /admin/teachers');
+        $id = $_POST['id'];
+        $teacher = $this->teacherService->findByID($id);
+        $this->userService->deleteUser($teacher->getUserId());
+        header('location: /Graduation-Project-Management/admin/teachers');
     }
 
     public function addTeacher(){
@@ -226,17 +237,21 @@ class AdminController extends BaseController
 
         $pass_hashed = password_hash($password, PASSWORD_DEFAULT);
 
-        $inactive_user = $this->userService->getInActiveUser();
-        if($inactive_user){
-            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"0", $pass_hashed);
-            $this->userService->activeUser($inactive_user->getUserId());
-            $this->teacherService->update($inactive_user->getUserId(), $degree,$work_place, $academic_rank, $branch_id);
-        } else{
+//        $inactive_user = $this->userService->getInActiveUser();
+//        if($inactive_user){
+//            $this->userService->updateUser($inactive_user->getUserId(), $email, $name,"0", $pass_hashed);
+//            $this->userService->updateAvatar("", $inactive_user->getUserId());
+//            $this->userService->activeUser($inactive_user->getUserId());
+//            $this->teacherService->update($inactive_user->getUserId(), $degree,$work_place, $academic_rank, $branch_id);
+//        } else{
+        if($this->userService->findByEmail($email)){
+            die("Account exist");
+        }
             $this->userService->insertUser($email, $pass_hashed, $name, '0', '2');
             $user = $this->userService->findByEmail($email);
             $this->teacherService->insert($user->getUserId(), $degree,$work_place, $academic_rank, $branch_id);
-        }
-        header('location: /admin/teachers');
+//        }
+        header('location: /Graduation-Project-Management/admin/teachers');
     }
 
     public function getProjectData(){
@@ -297,7 +312,7 @@ class AdminController extends BaseController
         $this->projectService->updateComplete($project_id, $status);
         $this->projectService->updateContent($document, $project_id);
 
-        header("location: /admin/projects");
+        header("location: /Graduation-Project-Management/admin/projects");
 
 
     }
@@ -331,11 +346,13 @@ class AdminController extends BaseController
         $project = $this->projectService->findByName($project_name)[0];
         $document = "Pr_".$project->getProjectId()."_".$file['name'];
 
-        move_uploaded_file($file['tmp_name'], "assets/user_document/".$document);
+        if(!move_uploaded_file($file['tmp_name'], "./assets/user_document/".$document)){
+            die("Upload Project Failed");
+        }
 
         $this->projectService->updateContent($document, $project->getProjectId());
 
-        header("location: /admin/projects");
+        header("location: /Graduation-Project-Management/admin/projects");
 
 
     }

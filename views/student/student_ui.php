@@ -10,10 +10,10 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
 
     <title>Student GPMS</title>
-    <link href='/assets/css/admin-style.css' rel='stylesheet'>
+    <link href='/Graduation-Project-Management/assets/css/admin-style.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css'>
     <script src='https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js'></script>
-    <link rel="icon" type="image/png" href="/assets/image/favicon.ico">
+    <link rel="icon" type="image/png" href="/Graduation-Project-Management/assets/image/favicon.ico">
 
 </head>
 
@@ -24,19 +24,19 @@
             <div class='text-center'>
                 <a href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     <?php
-                    echo "<img src='/assets/image/".$data['avatar']."' width='150px' height='150px' class='rounded' alt='...'>"
+                    echo "<img src='/Graduation-Project-Management/assets/image/".$data['avatar']."' width='150px' height='150px' class='rounded' alt='...'>"
                     ?>
                 </a>
                 <div class='dropdown-menu'>
-                    <a class='dropdown-item' href='/student/profile'>View detail profile</a>
+                    <a class='dropdown-item' href='/Graduation-Project-Management/student/profile'>View detail profile</a>
                     <div class='dropdown-divider'></div>
-                    <a class='dropdown-item' href='/logout'>Logout</a>
+                    <a class='dropdown-item' href='/Graduation-Project-Management/logout'>Logout</a>
                 </div>
             </div>
 
             <div class='sidebar-sticky'>
-                <a class='btn btn-outline-danger my-5' href='/student'>Home</a>
-                <a class='btn btn-outline-danger my-5' href='/library'>Library</a>
+                <a class='btn btn-outline-danger my-5' href='/Graduation-Project-Management/student'>Home</a>
+                <a class='btn btn-outline-danger my-5' href='/Graduation-Project-Management/library'>Library</a>
             </div>
         </nav>
         <main role='main' class='col-md-9 ml-sm-auto col-lg-10 pt-3 px-3'>
@@ -98,7 +98,7 @@
                                                         </button>
                                                     </div>
                                                     <div class='modal-body'>
-                                                        <form id='task-" . $task['id'] . "-detail-form' action='/task/update'
+                                                        <form id='task-" . $task['id'] . "-detail-form' action='/Graduation-Project-Management/task/update'
                                                               method='POST'>
                                                             <div class='input-group input-group-sm mb-3'>
                                                                 <div class='input-group-prepend'>
@@ -138,7 +138,7 @@
                                                             <input name='id' value='" . $task['id'] . "' type='hidden'>
                                                             <input name='project_id' value='" . $data['project']['id'] . "' type='hidden'>  
                                                             </form>
-                                                            <form id='task-" . $task['id'] . "-deleted-form' action='/task/delete' method='POST'>
+                                                            <form id='task-" . $task['id'] . "-deleted-form' action='/Graduation-Project-Management/task/delete' method='POST'>
                                                                 <input name='id' value='" . $task['id'] . "' type='hidden'>
                                                                 <input name='project_id' value='" . $data['project']['id'] . "' type='hidden'>
                                                            
@@ -186,7 +186,7 @@
                                             </button>
                                         </div>
                                         <div class='modal-body'>
-                                            <form id='newTask" . $phase['id'] . "Form' action='/task/add'
+                                            <form id='newTask" . $phase['id'] . "Form' action='/Graduation-Project-Management/task/add'
                                                   method='POST'>
                                                 <div class='input-group input-group-sm mb-3'>
                                                     <div class='input-group-prepend'>
@@ -306,7 +306,7 @@
                                         </button>
                                     </div>
                                     <div class='modal-body'>
-                                        <form id="newPhaseForm" action="/phase/add" method="post">
+                                        <form id="newPhaseForm" action="/Graduation-Project-Management/phase/add" method="post">
                                             <div class='form-group'>
                                                 <label for='phase_name'>Name</label>
                                                 <input type='text' name='name' class='form-control' id='phase_name'>
@@ -325,13 +325,13 @@
                         </div>
                         <div class='border rounded text-center' style='margin-top: 10px;'>
                             <h3>Upload Document</h3>
-                            <form action="/student/project/upload" enctype="multipart/form-data" method="POST">
+                            <form action="/Graduation-Project-Management/student/project/upload" enctype="multipart/form-data" method="POST">
                              <input type='file' id='uploadFile' name="document" class='form-control' required>
                              <button class='form-control btn btn-outline-primary' type='submit'>Upload</button>
                             </form>
                         </div>
                         <div class='border rounded text-center' style='margin-top: 250px;'>
-                            <form action="/student/project/complete" method="POST">
+                            <form action="/Graduation-Project-Management/student/project/complete" method="POST">
                                 <button class="form-control btn btn-outline-primary" type="submit" onclick="return canCompleted()">
                                     <i class="fas fa-lock"></i>
                                     Completed project
@@ -348,7 +348,7 @@
                             <div class='bottom-sticky'>
                                 <div id='editor'></div>
                             </div>
-                            <form action='/post/add' method="post">
+                            <form action='/Graduation-Project-Management/post/add' method="post">
                                 <input type='hidden' value='' name="content" id='post-content'>
 
 
@@ -369,7 +369,7 @@
                             <div class='pb-3 border-bottom'>
                                 <div class='container-fluid'>
                                     <div class='row'>
-                                        <img src='/assets/image/".$post['avatar']."' width='50'
+                                        <img src='/Graduation-Project-Management/assets/image/".$post['avatar']."' width='50'
                                              class='rounded rounded-circle'
                                              alt='...'>
                                         <div class='col'>
@@ -389,7 +389,7 @@
                                 <div class='container-fluid'>";
                             foreach ($post['comments'] as $comment) {
                                 echo "<div class='row'>
-                                                <img src='/assets/image/".$comment['avatar']."' width='50'
+                                                <img src='/Graduation-Project-Management/assets/image/".$comment['avatar']."' width='50'
                                                      class='p-1 rounded rounded-circle'
                                                      alt='...'>
                                                 <div class='col'>
@@ -400,7 +400,7 @@
                             }
                             echo "
                                 </div>
-                                <form action='/comment/add' method='POST' class='pt-2'>
+                                <form action='/Graduation-Project-Management/comment/add' method='POST' class='pt-2'>
                                     <div class='input-group input-group-sm mb-3'>
                                         <div class='input-group-prepend'>
                                             <span class='input-group-text' id='inputGroup-sizing-sm'>Comment</span>
@@ -476,7 +476,7 @@
 <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>
-<script src="/assets/js/teacher_project_script.js"></script>
+<script src="/Graduation-Project-Management/assets/js/teacher_project_script.js"></script>
 </body>
 
 </html>

@@ -10,9 +10,9 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
 
     <title>Teacher GPMS</title>
-    <link href='/assets/css/admin-style.css' rel='stylesheet'>
+    <link href='/Graduation-Project-Management/assets/css/admin-style.css' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css'>
-    <link rel="icon" type="image/png" href="/assets/image/favicon.ico">
+    <link rel="icon" type="image/png" href="/Graduation-Project-Management/assets/image/favicon.ico">
     <script src='https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js'></script>
 
 </head>
@@ -24,19 +24,19 @@
                 <div class='text-center'>
                     <a href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         <?php
-                            echo "<img src='/assets/image/".$data['avatar']."' width='150px' height='150px' class='rounded' alt='...'>"
+                            echo "<img src='/Graduation-Project-Management/assets/image/".$data['avatar']."' width='150px' height='150px' class='rounded' alt='...'>"
                         ?>
                     </a>
                     <div class='dropdown-menu'>
-                        <a class='dropdown-item' href='/teacher/profile'>View detail profile</a>
+                        <a class='dropdown-item' href='/Graduation-Project-Management/teacher/profile'>View detail profile</a>
                         <div class='dropdown-divider'></div>
-                        <a class='dropdown-item' href='/logout'>Logout</a>
+                        <a class='dropdown-item' href='/Graduation-Project-Management/logout'>Logout</a>
                     </div>
                 </div>
 
                 <div class='sidebar-sticky'>
-                    <a class='btn btn-outline-danger my-5' href='/teacher'>Home</a>
-                    <a class='btn btn-outline-danger my-5' href='/library'>Library</a>
+                    <a class='btn btn-outline-danger my-5' href='/Graduation-Project-Management/teacher'>Home</a>
+                    <a class='btn btn-outline-danger my-5' href='/Graduation-Project-Management/library'>Library</a>
                 </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -65,7 +65,7 @@
                                         <td>" . $j . "</td>
                                         <td>" . $data['projects'][$i]['id'] . "</td>
                                         <td>
-                                            <a href='/teacher/project/" . $data['projects'][$i]['id'] . "'>" . $data['projects'][$i]['name'] . "</a>
+                                            <a href='/Graduation-Project-Management/teacher/project/" . $data['projects'][$i]['id'] . "'>" . $data['projects'][$i]['name'] . "</a>
                                         </td>
                                         
                                         <td>" . $data['projects'][$i]['student']['name'] . "</td>
@@ -136,7 +136,7 @@
     <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous'></script>
-    <script src="/assets/js/teacher_project_script.js"></script>
+    <script src="/Graduation-Project-Management/assets/js/teacher_project_script.js"></script>
 </body>
 
 </html>
