@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
-    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link rel="icon" type="image/png" href="/Graduation-Project-Management/assets/Image/favicon.ico">
 
 
     <title>Admin | Teacher</title>
@@ -19,7 +19,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="/assets/css/admin-style.css" rel="stylesheet">
+    <link href="/Graduation-Project-Management/assets/css/admin-style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- <script src="https://kit.fontawesome.com/f83b9ba1b1.js" crossorigin="anonymous"></script> -->
 </head>
@@ -31,7 +31,7 @@
            id='search-field' onkeyup="search('teacher')">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="/logout">Log out</a>
+            <a class="nav-link" href="/Graduation-Project-Management/logout">Log out</a>
         </li>
     </ul>
 </nav>
@@ -42,19 +42,19 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin">
+                        <a class="nav-link" href="/Graduation-Project-Management/admin">
                             <i class="fas fa-home"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/projects">
+                        <a class="nav-link" href="/Graduation-Project-Management/admin/projects">
                             <i class="fas fa-file-alt"></i>
                             <span>Projects</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/students">
+                        <a class="nav-link" href="/Graduation-Project-Management/admin/students">
                             <i class="fas fa-users"></i>
                             <span>Students</span>
                         </a>
@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/library">
+                        <a class="nav-link" href="/Graduation-Project-Management/library">
                             <i class="fas fa-server "></i>
                             <span>Library</span>
                         </a>
@@ -103,7 +103,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="addStudentForm" action="/admin/teachers/add" method="POST">
+                                    <form id="addStudentForm" action="/Graduation-Project-Management/admin/teachers/add" method="POST">
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="name">Teacher Name</label>
@@ -209,7 +209,7 @@
                                                             </button>
                                                         </div>
                                                         <div class='modal-body'>
-                                                            <form id='updateTeacher".$data['teachers'][$i]['email']."Form' action='/admin/teachers/update' method='POST'>
+                                                            <form id='updateTeacher".$data['teachers'][$i]['email']."Form' action='/Graduation-Project-Management/admin/teachers/update' method='POST'>
                                                                 <div class='form-group'>
                                                                     <label>Name</label>
                                                                     <input class='form-control' name='name' value='" . $data['teachers'][$i]['name'] . "'>
@@ -230,6 +230,7 @@
                                                                     <label>Academic Rank</label>
                                                                     <input class='form-control' name='academic_rank' value='" . $data['teachers'][$i]['academic_rank'] . "'>
                                                                 </div>
+                                                                <input type='hidden'  name='id' value='" . $data['teachers'][$i]['id'] . "'>
                                                             </form>
                                                         </div>
                                                         <div class='modal-footer'>
@@ -252,8 +253,8 @@
                                                         </div>
                                                         <div class='modal-body'>
                                                             <h4 class='text-danger'>To be carefully, this action can't be undo!</h4>
-                                                            <form id='deleteTeacher".$data['teachers'][$i]['email']."Form' action='/admin/teachers/delete' method='POST'>
-                                                                <input type='hidden'  name='email' value='" . $data['teachers'][$i]['email'] . "'>
+                                                            <form id='deleteTeacher".$data['teachers'][$i]['email']."Form' action='/Graduation-Project-Management/admin/teachers/delete' method='POST'>
+                                                                <input type='hidden'  name='id' value='" . $data['teachers'][$i]['id'] . "'>
                                                             </form>
                                                         </div>
                                                         <div class='modal-footer'>
@@ -283,7 +284,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="/assets/js/admin_script.js"></script>
+<script src="/Graduation-Project-Management/assets/js/admin_script.js"></script>
 </body>
 
 </html>

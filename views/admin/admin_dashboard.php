@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico"> -->
-    <link rel="icon" type="image/png" href="/assets/Image/favicon.ico">
+    <link rel="icon" type="image/png" href="./assets/Image/favicon.ico">
 
 
     <title>Admin | Dashboard</title>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="/assets/css/admin-style.css" rel="stylesheet">
+    <link href="./assets/css/admin-style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- <script src="https://kit.fontawesome.com/f83b9ba1b1.js" crossorigin="anonymous"></script> -->
 </head>
@@ -29,7 +29,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id='search-field'">
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="/logout">Log out</a>
+                <a class="nav-link" href="/Graduation-Project-Management/logout">Log out</a>
             </li>
         </ul>
     </nav>
@@ -40,31 +40,31 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/admin">
+                            <a class="nav-link active" href="/Graduation-Project-Management/admin">
                                 <i class="fas fa-home"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/projects">
+                            <a class="nav-link" href="/Graduation-Project-Management/admin/projects">
                                 <i class="fas fa-file-alt"></i>
                                 <span>Projects</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/students">
+                            <a class="nav-link" href="/Graduation-Project-Management/admin/students">
                                 <i class="fas fa-users"></i>
                                 <span>Students</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/teachers">
+                            <a class="nav-link" href="/Graduation-Project-Management/admin/teachers">
                                 <i class="fas fa-user-tie"></i>
                                 <span>Teachers</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/library">
+                            <a class="nav-link" href="/Graduation-Project-Management/library">
                                 <i class="fas fa-server "></i>
                                 <span>Library</span>
                             </a>
@@ -101,7 +101,7 @@
                                     <?php echo "<h5 class='card-title'>" . $data['dashboard']['student_number'] . "</h5>"; ?>
                                     <h6 class="card-subtitle mb-2 text-muted">Students</h6>
                                     <p class="card-text">All is learning online now because of N.Covi 19</p>
-                                    <a href="/admin/students" class="card-link">Details</a>
+                                    <a href="/Graduation-Project-Management/admin/students" class="card-link">Details</a>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                                     <?php echo "<h5 class='card-title'>" . $data['dashboard']['teacher_number'] . "</h5>"; ?>
                                     <h6 class="card-subtitle mb-2 text-muted">Teachers</h6>
                                     <p class="card-text">All is masters, doctors, professors</p>
-                                    <a href="/admin/teachers" class="card-link">Details</a>
+                                    <a href="/Graduation-Project-Management/admin/teachers" class="card-link">Details</a>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                                     <?php echo "<h5 class='card-title'>" . $data['dashboard']['project_number'] . "</h5>"; ?>
                                     <h6 class="card-subtitle mb-2 text-muted">Projects</h6>
                                     <p class="card-text">In Library</p>
-                                    <a href="/admin/projects" class="card-link">Details</a>
+                                    <a href="/Graduation-Project-Management/admin/projects" class="card-link">Details</a>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="/assets/js/admin_script.js"></script>
+    <script src="./assets/js/admin_script.js"></script>
 </body>
 
 </html>

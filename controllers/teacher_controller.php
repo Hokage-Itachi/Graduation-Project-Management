@@ -281,6 +281,9 @@ class TeacherController extends BaseController{
     public function updateProfile(){
         $teacher = $this->teacherService->getByUserID($_SESSION['user']['id']);
         $email = $_POST['email'];
+        if($this->userService->findByEmail($email) && $teacher->getEmail() != $email){
+            die("Email has exist on system");
+        }
         $name = $_POST['name'];
         $phone = $_POST['phone'];
         $branch = $_POST['branch'];
@@ -301,15 +304,13 @@ class TeacherController extends BaseController{
                 $new_avatar = "Tec_".$teacher->getTeacherId()."_".$avatar_img['name'];
             }
         }
-        $current_avatar = $teacher->getAvatar();
-        if(file_exists("/assets/image/user_avatar/".$current_avatar)){
-            unlink("/assets/image/user_avatar/".$current_avatar);
-        }
 //        die(getcwd());
-        move_uploaded_file($avatar_img['tmp_name'], "assets/image/user_avatar/".$new_avatar);
+        if(!move_uploaded_file($avatar_img['tmp_name'], "./assets/image/user_avatar/".$new_avatar)){
+            error_log("Upload avatar Failed: ".$new_avatar);
+        }
 
         $this->userService->updateAvatar($new_avatar, $_SESSION['user']['id']);
-        header("location: /teacher");
+        header("location: /Graduation-Project-Management/teacher");
 
 
     }

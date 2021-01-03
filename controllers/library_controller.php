@@ -54,7 +54,7 @@ class LibraryController extends BaseController
                     "year" => $student->getYear(),
                     "teacher" => $teacher->getName(),
                     "branch" => $branch->getName(),
-                    "content" => "Unknown",
+                    "content" => $projects[$i]->getContent(),
                     "point" => round($projects[$i]->getPoint(), 2)
                 );
                 $project_data[$i] = $data;

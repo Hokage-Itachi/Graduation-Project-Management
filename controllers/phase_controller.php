@@ -19,14 +19,14 @@ class PhaseController
         $result = $this->phaseService->insert($project_id, $phase_name);
         if($_SESSION['user']['role'] == 2){
             if($result == "Success"){
-                header('location: /teacher/project/'.$project_id);
+                header('location: /Graduation-Project-Management/teacher/project/'.$project_id);
                 die();
             } else {
                 echo $result;
             }
         } else {
             if($result == "Success"){
-                header('location: /student');
+                header('location: /Graduation-Project-Management/student');
                 die();
             } else {
                 echo $result;

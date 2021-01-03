@@ -21,14 +21,14 @@ class TaskController
         $result = $this->taskService->insert($phase_id, $name, $description, $deadline);
         if($_SESSION['user']['role'] == 2){
             if($result == "Success"){
-                header('location: /teacher/project/'.$project_id);
+                header('location: /Graduation-Project-Management/teacher/project/'.$project_id);
                 die();
             } else {
                 echo $result;
             }
         } else {
             if($result == "Success"){
-                header('location: /student');
+                header('location: /Graduation-Project-Management/student');
                 die();
             } else {
                 echo $result;
@@ -51,14 +51,14 @@ class TaskController
         $result = $this->taskService->update($task_id, $name, $description, $deadline, $status);
         if($_SESSION['user']['role'] == 2){
             if($result == "Success"){
-                header('location: /teacher/project/'.$project_id);
+                header('location: /Graduation-Project-Management/teacher/project/'.$project_id);
                 die();
             } else {
                 echo $result;
             }
         } else {
             if($result == "Success"){
-                header('location: /student');
+                header('location: /Graduation-Project-Management/student');
                 die();
             } else {
                 echo $result;
@@ -72,14 +72,14 @@ class TaskController
         $result = $this->taskService->delete($task_id);
         if($_SESSION['user']['role'] == 2){
             if($result == "Success"){
-                header('location: /teacher/project/'.$project_id);
+                header('location: /Graduation-Project-Management/teacher/project/'.$project_id);
                 die();
             } else {
                 echo $result;
             }
         } else {
             if($result == "Success"){
-                header('location: /student');
+                header('location: /Graduation-Project-Management/student');
                 die();
             } else {
                 echo $result;
