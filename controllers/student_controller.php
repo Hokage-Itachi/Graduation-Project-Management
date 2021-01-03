@@ -292,8 +292,8 @@ class StudentController extends BaseController{
         if(file_exists("/assets/user_document/".$current_document)){
             unlink("/assets/user_document/".$current_document);
         }
-        $new_document = $file['name'];
-        if(move_uploaded_file($file['tmp_name'], "./assets/user_document/".$new_document)){
+        $new_document = "Pr_".$project->getProjectId()."_".$file['name'];
+        if(!move_uploaded_file($file['tmp_name'], "./assets/user_document/".$new_document)){
             die("Upload Document Failed");
         }
 
@@ -379,7 +379,7 @@ class StudentController extends BaseController{
         $project_id = $_POST['project_id'];
 
         $this->projectService->updateComplete($project_id, "3");
-        header("location: /library");
+        header("location: /Graduation-Project-Management/library");
     }
 
 
