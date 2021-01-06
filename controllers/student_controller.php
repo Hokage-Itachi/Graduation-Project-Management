@@ -136,7 +136,8 @@ class StudentController extends BaseController{
             "name"=>$project->getName(),
             "content"=>$project->getContent(),
             'phases'=>$this->getPhaseData($project->getProjectId()),
-            'posts'=>$this->getPostData($project->getProjectId())
+            'posts'=>$this->getPostData($project->getProjectId()),
+            'status'=>$project->getCompleted()
         );
 
         $project_data['project'] = $data;

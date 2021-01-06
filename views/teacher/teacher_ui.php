@@ -54,6 +54,7 @@
                             <th>Name</th>
                             <th>Student</th>
                             <th>Status</th>
+                            <th>Detail</th>
                         </tr>
                         </thead>
                         <tbody>
